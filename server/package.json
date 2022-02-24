@@ -4,6 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
+    "beautifull" : "prettier --single-quote --trailing-comma all --write src/**/*.{js,json,scss}",
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "nodemon src/server.js"
   },
@@ -15,6 +16,12 @@
     "express": "^4.17.3",
     "express-handlebars": "^6.0.2",
     "mongoose": "^6.2.3",
+    "morgan": "^1.10.0",
     "nodemon": "^2.0.15"
+  },
+  "devDependencies": {
+    "husky": "^7.0.4",
+    "lint-staged": "^12.3.4",
+    "prettier": "^2.5.1"
   }
 }

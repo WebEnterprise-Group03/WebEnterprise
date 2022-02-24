@@ -1,6 +1,6 @@
 const account = require('../routes/accountRouter');
 
-function route(app){
+function route(app) {
   app.use('/', account);
 }
 
