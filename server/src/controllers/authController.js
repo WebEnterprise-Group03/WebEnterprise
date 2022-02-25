@@ -23,7 +23,7 @@ class authController {
         res.json('Ban da tao tk thanh cong');
       })
       .catch((err) => {
-        res.status(500).json('Ban tao tk thao bai');
+        res.status(500).json('Ban tao tk that bai');
       });
   }
 
@@ -54,6 +54,11 @@ class authController {
       .catch((err) => {
         res.status(500).json('Loi server', err);
       });
+  }
+
+  logout(req,res) {
+    res.cookie('jwt','',{maxAge : 1});
+    res.json('logout succesfull');
   }
 }
 
