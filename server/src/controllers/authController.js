@@ -1,10 +1,7 @@
 const Account = require('../models/accountModels');
+const jwt = require('jsonwebtoken');
 
-class accountController {
-  index(req, res) {
-    res.json('Home');
-  }
-
+class authController {
   register(req, res) {
     let username = req.body.username;
     let password = req.body.password;
@@ -40,7 +37,16 @@ class accountController {
     })
       .then((data) => {
         if (data) {
-          res.json('Dang nhap thanh cong');
+          let token = jwt.sign(
+            {
+              _id: data._id,
+            },
+            'mk',
+          );
+          return res.json({
+            message: 'Dang nhap thanh cong',
+            token: token,
+          });
         } else {
           return res.json('Thap bai');
         }
@@ -51,4 +57,4 @@ class accountController {
   }
 }
 
-module.exports = new accountController();
+module.exports = new authController();
