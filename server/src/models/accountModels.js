@@ -14,16 +14,12 @@ const AccountSchema = new Schema(
         type: String,
         required: true
       },
-    dateofbirth: {
+    dateOfBirth: {
         type: String,
         required: true
       },
     phone: {
         type: Number,
-        required: true
-      },
-    fullName: {
-        type: String,
         required: true
       },
     email: {
