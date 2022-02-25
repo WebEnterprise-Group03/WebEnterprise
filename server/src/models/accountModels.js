@@ -5,7 +5,7 @@ const AccountSchema = new Schema(
   {
     username: String,
     password: String,
-    roles: String,
+    role: String,
   },
   {
     collection: 'accounts',
