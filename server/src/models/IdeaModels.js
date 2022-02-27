@@ -17,5 +17,8 @@ const AccountSchema = new Schema(
     {
     collection: 'ideas',
     },
+    {
+    timestamp:true,
+    }
 );
 module.exports = mongoose.model('Idea', AccountSchema);
