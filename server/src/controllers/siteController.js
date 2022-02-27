@@ -1,6 +1,6 @@
 class siteController {
   index(req, res) {
-    res.json('Home');
+    res.render('Home');
   }
 }
 

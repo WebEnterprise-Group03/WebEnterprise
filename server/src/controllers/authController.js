@@ -2,20 +2,35 @@ const Account = require('../models/accountModels');
 const jwt = require('jsonwebtoken');
 
 class authController {
+  registerPage(req,res){
+    res.render('auth/register');
+  }
+
   register(req, res) {
     let username = req.body.username;
     let password = req.body.password;
+    let fullName = req.body.fullName;
+    let phone = req.body.phone;
+    let email = req.body.email;
+    let gender = req.body.gender;
+    let role = req.body.role;
 
     Account.findOne({
       username: username,
     })
       .then((data) => {
         if (data) {
-          res.json('User nay da ton tai');
+          alert('User nay da ton tai');
+          // res.json('User nay da ton tai');
         } else {
           return Account.create({
             username: username,
             password: password,
+            fullName: fullName,
+            phone: phone,
+            email: email,
+            gender: gender,
+            role: role,
           });
         }
       })
@@ -25,6 +40,10 @@ class authController {
       .catch((err) => {
         res.status(500).json('Ban tao tk that bai');
       });
+  }
+
+  loginPage(req,res){
+    res.render('auth/login');
   }
 
   login(req, res) {
@@ -56,9 +75,15 @@ class authController {
       });
   }
 
-  logout(req,res) {
-    res.cookie('jwt','',{maxAge : 1});
-    res.json('logout succesfull');
+  logout(req, res) {
+    try{
+      // res.clearCookie('jwt');
+      res.cookie('jwt', '', { maxAge: 1 });
+      // console.log('logout succesfull');
+      res.redirect('/');
+    }catch (error){
+      res.status(500).send(error);
+    }
   }
 }
 
