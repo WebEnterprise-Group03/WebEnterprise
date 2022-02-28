@@ -1,11 +1,12 @@
 const Account = require('../models/accountModel');
 const jwt = require('jsonwebtoken');
+const KEY = process.env.key;
 
 class authJwt {
   checkLogin(req, res, next) {
     try {
       let token = req.cookies.token;
-      let id = jwt.verify(token, 'mk');
+      let id = jwt.verify(token, KEY);
       Account.findOne({
         _id: id,
       })

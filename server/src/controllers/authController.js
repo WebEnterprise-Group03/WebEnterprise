@@ -1,8 +1,9 @@
 const Account = require('../models/accountModel');
 const jwt = require('jsonwebtoken');
+const KEY = process.env.key;
 
 class authController {
-  registerPage(req,res){
+  registerPage(req, res) {
     res.render('auth/register');
   }
 
@@ -42,7 +43,7 @@ class authController {
       });
   }
 
-  loginPage(req,res){
+  loginPage(req, res) {
     res.render('auth/login');
   }
 
@@ -60,7 +61,7 @@ class authController {
             {
               _id: data._id,
             },
-            'mk',
+            KEY,
           );
           return res.json({
             message: 'Dang nhap thanh cong',
@@ -76,12 +77,12 @@ class authController {
   }
 
   logout(req, res) {
-    try{
+    try {
       // res.clearCookie('jwt');
       res.cookie('jwt', '', { maxAge: 1 });
       // console.log('logout succesfull');
       res.redirect('/');
-    }catch (error){
+    } catch (error) {
       res.status(500).send(error);
     }
   }

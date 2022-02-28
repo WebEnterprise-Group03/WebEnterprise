@@ -1,8 +1,8 @@
 const express = require('express');
 const router = express.Router();
 const AuthJwt = require('../middlewares/authJwt');
-const ManageController = require('../controllers/manageController');
+const MainController = require('../controllers/mainController');
 
-router.get('/show', AuthJwt.checkLogin, ManageController.show);
+router.get('/show', AuthJwt.checkLogin, MainController.show);
 
 module.exports = router;
