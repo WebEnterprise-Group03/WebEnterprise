@@ -1,10 +1,12 @@
-const manage = require('./manageRoute');
+const main = require('./mainRoute');
 const site = require('./siteRoute');
 const auth = require('./authRoute');
+const idea = require('./ideaRoute');
 
 function route(app) {
-  app.use('/manage', manage);
   app.use('/auth', auth);
+  app.use('/main', main);
+  app.use('/idea', idea);
   app.use('/', site);
 }
 

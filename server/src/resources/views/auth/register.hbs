@@ -1,0 +1,34 @@
+<div>
+    UserName:<input type="text" id="username"><br>
+    PassWord:<input type="text" id="password"><br>
+    FullName:<input type="text" id="fullname"><br>
+    Phone:<input type="text" id="phone"><br>
+    Email:<input type="text" id="email"><br>
+    Gender:<input type="text" id="gender"><br>
+    Role:<input type="text" id="role"><br>
+    <button onclick="register()">Register</button>
+</div>
+
+<script>
+    function register(){
+      $.ajax({
+          url:'/auth/register',
+          method:'POST',
+          data:{
+              username: $('#username').val(),
+              password: $('#password').val(),
+              fullName: $('#fullname').val(),
+              phone: $('#phone').val(),
+              email: $('#email').val(),
+              gender: $('#gender').val(),
+              role: $('#role').val(),
+          },
+          success:function (){
+            alert('You have created ');
+          },
+          error: function (){
+            alert('access failure');
+          }
+      });
+    }
+</script>

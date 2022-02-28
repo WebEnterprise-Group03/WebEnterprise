@@ -1,4 +1,4 @@
-const Account = require('../models/accountModels');
+const Account = require('../models/accountModel');
 const jwt = require('jsonwebtoken');
 
 class verifySignUp {}

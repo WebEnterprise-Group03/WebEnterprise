@@ -1,13 +1,14 @@
 const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
-const AccountSchema = new Schema(
-    {
+
+const IdeaCategorySchema = new Schema(
+  {
     name: String,
     code: String,
     description: String,
-    },
-    {
-    collection: 'IdeaCategory',
-    },
+  },
+  {
+    collection: 'ideaCategories',
+  },
 );
-module.exports = mongoose.model('IdeaCategory', AccountSchema);
+module.exports = mongoose.model('ideaCategories', IdeaCategorySchema);
