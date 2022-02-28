@@ -8,7 +8,7 @@ const IdeaCategorySchema = new Schema(
     description: String,
   },
   {
-    collection: 'IdeaCategory',
+    collection: 'ideaCategories',
   },
 );
 module.exports = mongoose.model('ideaCategories', IdeaCategorySchema);

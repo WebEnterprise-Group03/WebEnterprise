@@ -3,6 +3,8 @@ const { create } = require('express-handlebars');
 const morgan = require('morgan');
 const path = require('path');
 const cookieParser = require('cookie-parser');
+const {allowInsecurePrototypeAccess} = require('@handlebars/allow-prototype-access');
+const Handlebars = require('handlebars');
 require('dotenv').config();
 
 const app = express();
@@ -14,6 +16,7 @@ const db = require('./config');
 const hbs = create({
   extname: '.hbs',
   defaultLayout: 'main',
+  handlebars: allowInsecurePrototypeAccess(Handlebars),
 });
 
 app.engine('hbs', hbs.engine);

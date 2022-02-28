@@ -8,12 +8,21 @@ class ideaController{
 
   //[GET] /idea/create
   create(req, res, next){
-
+    res.render('idea/create');
   }
 
   //[POST] /idea/store
   store(req, res, next){
-
+    const formData = req.body;
+    const idea = new Idea(formData);
+    idea
+      .save()
+      .then(() =>{
+          res.redirect('/main/show');
+        })
+      .catch((error) =>{
+        res.send('Failed saved');
+    });
   }
 
   //[GET] /idea/:id/update
