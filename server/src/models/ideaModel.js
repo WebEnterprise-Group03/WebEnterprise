@@ -8,7 +8,7 @@ const IdeaSchema = new Schema(
       type: String,
       slug: 'title',
       unique: true,
-      required: true
+      required: true,
     },
     // file: String,
     // name: {

@@ -7,6 +7,7 @@ const {
   allowInsecurePrototypeAccess,
 } = require('@handlebars/allow-prototype-access');
 const Handlebars = require('handlebars');
+const methodOverride = require('method-override');
 require('dotenv').config();
 
 const app = express();
@@ -31,6 +32,8 @@ app.set('view engine', 'hbs');
 app.set('views', path.join(__dirname, 'resources', 'views'));
 
 app.use(cookieParser());
+
+app.use(methodOverride('_method'));
 
 app.use(express.static(path.join(__dirname, 'public')));
 
