@@ -1,5 +1,7 @@
 const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
+const slug = require('mongoose-slug-generator');
+
 const IdeaSchema = new Schema(
   {
     title: String,
@@ -27,4 +29,7 @@ const IdeaSchema = new Schema(
     timestamp: true,
   },
 );
+
+mongoose.plugin(slug);
+
 module.exports = mongoose.model('ideas', IdeaSchema);
