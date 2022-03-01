@@ -2,38 +2,43 @@ const Account = require('../models/accountModel');
 const jwt = require('jsonwebtoken');
 
 class verifySignUp {
-  checkPermission(req ,res, next){
+  checkPermission(req, res, next) {
     let role = req.data.role;
-    if (role === 'staff' || role === 'admin' || role === 'manager' || role === 'coordinator'){
+    if (
+      role === 'staff' ||
+      role === 'admin' ||
+      role === 'manager' ||
+      role === 'coordinator'
+    ) {
       next();
-    }else {
+    } else {
       res.json('Not Permission');
     }
   }
 
-  checkHighPermission(req, res, next){
+  checkHighPermission(req, res, next) {
     let role = req.data.role;
-    if (role === 'admin'){
+    if (role === 'admin') {
       next();
-    }else {
+    } else {
       res.json('Not Permission');
     }
   }
 
-  checkMediumPermission(req, res, next){
+  checkMediumPermission(req, res, next) {
     let role = req.data.role;
-    if (role === 'admin' || role === 'manager'){
+    if (role === 'admin' || role === 'manager') {
       next();
-    }else {
+    } else {
       res.json('Not Permission');
     }
   }
 
-  checkLowPermission(req, res, next){
+  checkLowPermission(req, res, next) {
     let role = req.data.role;
-    if (role === 'admin' || role === 'manager' || role === 'coordinator'){
+    if (role === 'admin' || role === 'manager' || role === 'coordinator') {
       next();
-    }else {
+    } else {
       res.json('Not Permission');
     }
   }

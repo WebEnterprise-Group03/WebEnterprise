@@ -5,8 +5,8 @@ class mainController {
   //[GET] /main/show
   show(req, res, next) {
     Idea.find({})
-      .then((ideas) =>{
-        res.render('main/show',{
+      .then((ideas) => {
+        res.render('main/show', {
           ideas: ideas,
         });
       })

@@ -4,6 +4,12 @@ const IdeaSchema = new Schema(
   {
     title: String,
     description: String,
+    slug: {
+      type: String,
+      slug: 'title',
+      unique: true,
+      required: true
+    },
     // file: String,
     // name: {
     //   type: mongoose.Schema.Types.ObjectId,
