@@ -3,10 +3,12 @@ const jwt = require('jsonwebtoken');
 const KEY = process.env.key;
 
 class authController {
+  //[GET] /auth/registerPage
   registerPage(req, res) {
     res.render('auth/register');
   }
 
+  //[POST] /auth/register
   register(req, res) {
     let username = req.body.username;
     let password = req.body.password;
@@ -43,10 +45,12 @@ class authController {
       });
   }
 
+  //[GET] /auth/loginPage
   loginPage(req, res) {
     res.render('auth/login');
   }
 
+  //[POST] /auth/login
   login(req, res) {
     let username = req.body.username;
     let password = req.body.password;
@@ -76,6 +80,7 @@ class authController {
       });
   }
 
+  //[GET] /auth/logout
   logout(req, res) {
     try {
       // res.clearCookie('jwt');

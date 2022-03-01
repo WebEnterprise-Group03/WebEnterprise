@@ -27,7 +27,7 @@ class ideaController{
 
   //[GET] /idea/:id/update
   update(req,res,next){
-
+    res.render('idea/update');
   }
 
   //[PUT] /idea/:id
