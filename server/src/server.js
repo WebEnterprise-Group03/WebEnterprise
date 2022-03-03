@@ -8,6 +8,7 @@ const {
 } = require('@handlebars/allow-prototype-access');
 const Handlebars = require('handlebars');
 const methodOverride = require('method-override');
+// const multer  = require('multer');
 require('dotenv').config();
 
 const app = express();
@@ -45,6 +46,17 @@ app.use(
     extended: true,
   }),
 );
+
+// const storage = multer.diskStorage({
+//   destination: function (req, file, cb) {
+//     cb(null, './publics/img')
+//   },
+//   filename: function (req, file, cb) {
+//     cb(null, Date.now() + '--' + file.originalname);
+//   }
+// });
+//
+// const upload = multer({ storage: storage });
 
 db.connect();
 route(app);

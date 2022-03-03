@@ -47,6 +47,12 @@ class ideaController {
       .catch(next);
   }
 
+  //[POST] /idea/uploads
+  uploadFiles(req, res, next){
+    console.log(req.file);
+    res.send("Single file upload success");
+  }
+
   //[DELETE] /idea/:id
   deleteIdea(req, res, next){
 
