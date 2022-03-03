@@ -12,7 +12,8 @@ const IdeaSchema = new Schema(
       unique: true,
       required: true,
     },
-    // file: String,
+    image: String,
+    file: String,
     // name: {
     //   type: mongoose.Schema.Types.ObjectId,
     //   ref: 'accounts',
