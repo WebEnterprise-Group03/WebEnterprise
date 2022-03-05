@@ -22,7 +22,7 @@ class ideaController {
       description: req.body.description,
       slug: req.body.slug,
       image: req.body.image,
-      file: req.file.originalname
+      file: req.file.originalname,
     };
     const idea = new Idea(formData);
     idea
@@ -54,14 +54,10 @@ class ideaController {
   }
 
   //[DELETE] /idea/:id
-  deleteIdea(req, res, next){
-
-  }
+  deleteIdea(req, res, next) {}
 
   //[DELETE] /idea/:id/forceDeleteIdea
-  forceDeleteCourse(req, res, next) {
-
-  }
+  forceDeleteCourse(req, res, next) {}
 }
 
 module.exports = new ideaController();
