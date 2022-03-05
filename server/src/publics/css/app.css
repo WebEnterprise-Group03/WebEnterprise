@@ -1,26 +1,6 @@
-.navbar .dropdown-toggle,
-.navbar .dropdown-menu a {
-  cursor: pointer; }
+html, body {
+  height: 100%;
+  margin: 0; }
 
-.navbar .dropdown-item.active,
-.navbar .dropdown-item:active {
-  color: inherit;
-  text-decoration: none;
-  background-color: inherit; }
-
-.navbar .dropdown-item:focus,
-.navbar .dropdown-item:hover {
-  color: #16181b;
-  text-decoration: none;
-  background-color: #f8f9fa; }
-
-@media (min-width: 767px) {
-  .navbar .dropdown-toggle:not(.nav-link)::after {
-    display: inline-block;
-    width: 0;
-    height: 0;
-    margin-left: 0.5em;
-    vertical-align: 0;
-    border-bottom: 0.3em solid transparent;
-    border-top: 0.3em solid transparent;
-    border-left: 0.3em solid; } }
+.form-body {
+  height: 800px; }
