@@ -4,7 +4,6 @@ const Schema = mongoose.Schema;
 const IdeaCategorySchema = new Schema(
   {
     name: String,
-    code: String,
     description: String,
   },
   {
