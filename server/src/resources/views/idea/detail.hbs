@@ -1,1 +1,20 @@
-<h1>Hello ca nha</h1>
+{{> main}}
+<div class="container">
+    <ul class="list-group">
+        <li class="list-group-item d-flex justify-content-between align-items-start">
+            <div class="ms-2 me-auto">
+                <div class="fw-bold">{{ideas.title}}</div>
+            </div>
+            <span class="badge bg-primary rounded-pill">Ask question</span>
+        </li>
+        <li class="list-group-item d-flex justify-content-between align-items-start">
+            <div class="ms-2 me-auto">
+                <p>
+                    {{ideas.description}}
+                </p>
+                <img class="rounded float-right" src="{{ideas.image}}">
+                <a href="{{ideas.file}}">{{ideas.file}}</a>
+            </div>
+        </li>
+    </ul>
+</div>

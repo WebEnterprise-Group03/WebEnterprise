@@ -74,7 +74,7 @@ class authController {
         } else {
           return res.json('Thap bai');
         }
-      })
+      },res.redirect('/main/show'))
       .catch((err) => {
         res.status(500).json('Loi server', err);
       });

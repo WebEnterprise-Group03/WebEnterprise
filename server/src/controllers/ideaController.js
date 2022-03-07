@@ -17,7 +17,13 @@ class ideaController {
 
   //[POST] /idea/store
   store(req, res, next) {
-    const formData = req.body;
+    const formData = {
+      title: req.body.title,
+      description: req.body.description,
+      slug: req.body.slug,
+      image: req.body.image,
+      file: req.file.originalname,
+    };
     const idea = new Idea(formData);
     idea
       .save()
@@ -48,7 +54,7 @@ class ideaController {
   }
 
   //[DELETE] /idea/:id
-  deleteIdea(req, res, next){
+  deleteIdea(req, res, next) {
 
   }
 
