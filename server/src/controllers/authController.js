@@ -84,7 +84,7 @@ class authController {
   logout(req, res) {
     try {
       // res.clearCookie('jwt');
-      res.cookie('jwt', '', { maxAge: 1 });
+      res.cookie('token', '', { maxAge: 1 });
       // console.log('logout succesfull');
       res.redirect('/');
     } catch (error) {
