@@ -24,13 +24,21 @@
             </form>
         </div>
     </div>
+<<<<<<< HEAD
         
        <button type="submit" onclick="login()"> Submit</button> 
     
     
+=======
+    <button type="submit" onclick="login()">Submit</button>
+<!--        <a onclick="login()">Submit</a>-->
+
+>>>>>>> bb31b81551d3689b6b8eea43801be399fdb9be96
 </div>
 
 <script>
+    let isAuthenticated = false;
+
     function setCookie(cname, cvalue, exdays) {
         const d = new Date();
         d.setTime(d.getTime() + (exdays*24*60*60*1000));
@@ -65,6 +73,9 @@
         })
                 .then(data=>{
                     setCookie('token', data.token, 1);
+                    if (data){
+                        location.assign('/main/show');
+                    }
                 })
                 .catch(err=>{
                     console.log(err);
