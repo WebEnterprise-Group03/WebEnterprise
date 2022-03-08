@@ -23,6 +23,10 @@ class authJwt {
       res.status(500).json('Token khong hop le');
     }
   }
+
+  checkCurrentUser(req, res, next){
+
+  }
 }
 
 module.exports = new authJwt();
