@@ -1,14 +1,14 @@
 <div>
 	<div class="container">
 		<div class="login-content">
-			<form action="index.html">
+			<form>
            		<div class="input-div one">
            		   <div class="i">
            		   		<i class="fas fa-user"></i>
            		   </div>
            		   <div class="div">
            		   		<h5>Username</h5>
-           		   		<input type="text" class="input">
+           		   		<input id="username" type="text" class="input" name="username">
            		   </div>
            		</div>
            		<div class="input-div pass">
@@ -18,7 +18,7 @@
            		   <div class="div">
            		    	<h5>Password</h5>
 						<span class="show-btn"><i class="fas fa-eye"></i></span>
-           		    	<input type="password" class="input" required>
+           		    	<input id="password" type="text" class="input" name="password" required>
             	   </div>
             	</div>
             </form>
@@ -67,9 +67,7 @@
         })
                 .then(data=>{
                     setCookie('token', data.token, 1);
-                    if (data){
-                        location.assign('/main/show');
-                    }
+                    location.assign('/main/show');
                 })
                 .catch(err=>{
                     console.log(err);
