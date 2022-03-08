@@ -18,7 +18,7 @@
            		   <div class="div">
            		    	<h5>Password</h5>
 						<span class="show-btn"><i class="fas fa-eye"></i></span>
-           		    	<input id="password" type="text" class="input" name="password" required>
+           		    	<input id="password" type="password" class="input" name="password" required>
             	   </div>
             	</div>
             </form>
@@ -32,14 +32,12 @@
 
 <script>
     let isAuthenticated = false;
-
     function setCookie(cname, cvalue, exdays) {
         const d = new Date();
         d.setTime(d.getTime() + (exdays*24*60*60*1000));
         let expires = "expires="+ d.toUTCString();
         document.cookie = cname + "=" + cvalue + ";" + expires + ";path=/";
     }
-
     function getCookie(cname) {
         let name = cname + "=";
         let decodedCookie = decodeURIComponent(document.cookie);
