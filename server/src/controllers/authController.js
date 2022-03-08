@@ -67,7 +67,6 @@ class authController {
             },
             KEY,
           );     
-        
           return res.json({
             message: 'Dang nhap thanh cong',
             token: token,

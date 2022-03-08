@@ -55,7 +55,7 @@ class ideaController {
 
   //[DELETE] /idea/:id
   deleteIdea(req, res, next) {
-
+    
   }
 
   //[DELETE] /idea/:id/forceDeleteIdea
