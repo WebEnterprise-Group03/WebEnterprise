@@ -25,6 +25,7 @@ class authJwt {
   }
 
   checkCurrentUser(req, res, next){
+    let token = req.cookies.jwt;
 
   }
 }
