@@ -54,14 +54,10 @@ class ideaController {
   }
 
   //[DELETE] /idea/:id
-  deleteIdea(req, res, next) {
-    
-  }
+  deleteIdea(req, res, next) {}
 
   //[DELETE] /idea/:id/forceDeleteIdea
-  forceDeleteCourse(req, res, next) {
-
-  }
+  forceDeleteCourse(req, res, next) {}
 }
 
 module.exports = new ideaController();

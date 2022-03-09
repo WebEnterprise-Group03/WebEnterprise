@@ -2,8 +2,8 @@ const Category = require('../models/ideaCategoryModel');
 
 class categoryController {
   // [Get] /category/create
-  create(req,res, next){
-    res.render('category/create')
+  create(req, res, next) {
+    res.render('category/create');
   }
   // [Post] /category/store
   store(req, res, next) {
@@ -19,11 +19,13 @@ class categoryController {
       });
   }
 
-  show(req,res,next){
-   Category.find({})
-   .then(categories=> {categories=categories.map(category => category.toObject())
-   res.render('category/view',{categories})
-   }).catch(next);
+  show(req, res, next) {
+    Category.find({})
+      .then((categories) => {
+        categories = categories.map((category) => category.toObject());
+        res.render('category/view', { categories });
+      })
+      .catch(next);
   }
 }
 module.exports = new categoryController();

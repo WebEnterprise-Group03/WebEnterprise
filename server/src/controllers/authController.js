@@ -66,12 +66,12 @@ class authController {
               _id: data._id,
             },
             KEY,
-          );     
+          );
           return res.json({
             message: 'Dang nhap thanh cong',
             token: token,
-            });
-          } else {
+          });
+        } else {
           return res.json('Thap bai');
         }
       })

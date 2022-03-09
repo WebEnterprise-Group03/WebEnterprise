@@ -8,7 +8,7 @@ function route(app) {
   app.use('/auth', auth);
   app.use('/main', main);
   app.use('/idea', idea);
-  app.use('/category',category);
+  app.use('/category', category);
   app.use('/', site);
 }
 
