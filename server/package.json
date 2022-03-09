@@ -5,7 +5,7 @@
   "main": "index.js",
   "scripts": {
     "beautifull": "prettier --single-quote --trailing-comma all --write src/**/*.{js,json,scss}",
-    "watch": "node-sass --watch src/resources/scss/app.scss src/publics/css/app.css",
+    "watch": "node-sass --watch src/resources/scss --output src/publics/css",
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "nodemon src/server.js"
   },
