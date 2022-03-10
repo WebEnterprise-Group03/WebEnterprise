@@ -65,11 +65,15 @@ class ideaController {
 
   //[DELETE] /idea/:id
   deleteIdea(req, res, next) {
-
+    Idea.deleteOne({ _id: req.params.id })
+      .then(() => res.redirect('back'))
+      .catch(next);
   }
 
   //[DELETE] /idea/:id/forceDeleteIdea
-  forceDeleteCourse(req, res, next) {}
+  forceDeleteCourse(req, res, next) {
+
+  }
 }
 
 module.exports = new ideaController();

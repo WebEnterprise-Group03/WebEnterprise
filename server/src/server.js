@@ -32,7 +32,7 @@ app.set('views', path.join(__dirname, 'resources', 'views'));
 
 app.use(cookieParser());
 
-app.use(methodOverride('_method'));
+app.use(methodOverride('_Method'));
 
 app.use(express.static(path.join(__dirname, 'publics')));
 
