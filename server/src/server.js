@@ -22,9 +22,7 @@ const hbs = create({
   defaultLayout: 'main',
   handlebars: allowInsecurePrototypeAccess(Handlebars),
   helpers: {
-    inc(value) {
-      return parseInt(value) + 1;
-    },
+    sum: (a, b) => a + b,
   },
 });
 

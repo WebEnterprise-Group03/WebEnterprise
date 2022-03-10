@@ -1,0 +1,32 @@
+{{> main}}
+<div class="container">
+    <table class="table">
+        <thead class="thead-dark">
+        <tr>
+            <th scope="col">#</th>
+            <th scope="col">Title</th>
+            <th scope="col">Description</th>
+            <th scope="col">Image</th>
+            <th scope="col">Slug</th>
+            <th scope="col">Action</th>
+        </tr>
+        </thead>
+        <tbody>
+        {{#each ideas}}
+        <tr>
+            <th scope="row">{{sum @index 1}}</th>
+            <td>{{this.title}}</td>
+            <td>{{this.description}}</td>
+            <td>
+                <img class="rounded float-right idea-image" src="{{this.image}}">
+            </td>
+            <td>{{this.slug}}</td>
+            <td>
+                <button type="button" class="btn btn-info"><a href="" style="color: white">Update</a></button>
+                <button type="button" class="btn btn-info"><a href="" style="color: white" data-toggle="modal" data-id="" data-target="#delete-course">Delete</a></button>
+            </td>
+        </tr>
+        {{/each}}
+        </tbody>
+    </table>
+</div>

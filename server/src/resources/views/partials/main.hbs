@@ -19,21 +19,21 @@
                     <a class="nav-link" href="/forTeam">For Team</a>
                 </li>
             </ul>
-
+        </div>
     <div class="dropdown">
         {{#if account}}
-            Welcome, {{username}}
+            <ul class="nav navbar-nav">
+                <li class="active"><a href="javascript:">{{ account.username }} <span class="sr-only">(current)</span></a></li>
+            </ul>
         {{/if}}
 	  <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
-          <!--          <img src="https://i.pinimg.com/564x/04/d3/e7/04d3e74c4f9137c8041a1dc6c386d469.jpg" class="user-avatar">-->
       </button>
 	  <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
 		<li><a class="dropdown-item" href="#">Action</a></li>
 		<li><a class="dropdown-item" href="#">Another action</a>
-		<li><a class="dropdown-item" href="#">Something else here</a>
+		<li><a class="dropdown-item" href="/auth/logout">Logout</a>
 	  </ul>
     </div>
-        </div>
     </div>
 </nav>
 

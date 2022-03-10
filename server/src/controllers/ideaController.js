@@ -35,6 +35,16 @@ class ideaController {
       });
   }
 
+  //[GET] /idea/storedIdeas
+  storedIdeas(req,res,next){
+    Idea.find({})
+      .then((ideas) =>{
+        res.render('idea/storedIdeas', {ideas: ideas})
+      })
+      .catch(next);
+    // res.render('idea/storedIdeas');
+  }
+
   //[GET] /idea/:id/update
   update(req, res, next) {
     Idea.findById(req.params.id)
