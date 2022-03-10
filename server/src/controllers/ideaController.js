@@ -71,9 +71,17 @@ class ideaController {
   }
 
   //[DELETE] /idea/:id/forceDeleteIdea
+<<<<<<< HEAD
   forceDeleteCourse(req, res, next) {
 
   }
+=======
+
+  forceDeleteCourse(req, res, next) {
+    
+  }
+
+>>>>>>> 6892076a9dc7704dc0b3b61da67d62492047baae
 }
 
 module.exports = new ideaController();

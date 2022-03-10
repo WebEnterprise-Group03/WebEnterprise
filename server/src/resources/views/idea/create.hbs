@@ -1,15 +1,18 @@
 <div class="mt-4">
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js" ></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/js/bootstrap.min.js" integrity="sha384-Atwg2Pkwv9vp0ygtn1JAojH0nYbwNJLPhwyoVbhoPwBhjQPR5VtM2+xf0Uwh9KtT" crossorigin="anonymous"></script>
+
     <h3>List Idea</h3>
 
-    <form method="POST" action="/idea/store" enctype="multipart/form-data">
+    <form  method="POST" action="/idea/store" enctype="multipart/form-data">
         <div class="form-group" >
             <label for="title">Title</label>
-            <input type="text" class="form-control" id="title" name="title">
+            <input type="text" class="form-control" id="title" name="title" required>
         </div>
 
         <div class="form-group">
             <label for="description">Description</label>
-            <input type="text" class="form-control" id="description" name="description">
+            <input type="text" class="form-control" id="description" name="description" required>
         </div>
 
         <div class="form-group">
@@ -19,7 +22,7 @@
 
         <div class="form-group">
             <label for="file">File</label>
-            <input type="file" class="form-control" id="file" name="file">
+            <input type="file" class="form-control" id="file" name="file" >
         </div>
 
         <div class="form-group">
@@ -27,6 +30,42 @@
             <input type="text" class="form-control" id="slug" name="slug">
         </div>
         <br>
-        <button type="submit" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">Add Idea</button>
+         <div class="dropdown">
+	     <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
+		Category
+	     </button>
+	    <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
+		<li><a class="dropdown-item" href="#">{{name}}</a></li>
+	        </ul>
+	    </div>
+       
+        <br>
+         <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#AddIdea">Add Idea</button>
+         <div class="modal fade" id="AddIdea" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+         <div class="modal-dialog">
+        <div class="modal-content">
+         <div class="modal-header">
+        <h5 class="modal-title" id="staticBackdropLabel">DELETE</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+         </div>
+         <div class="modal-body">
+            YOU SURE WANTO ADD THIS 
+        </div> 
+        <br>
+        <p><input type="checkbox" required name="terms"> I accept the <u>Terms and Conditions</p>
+          <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+        <button type="Submit" class="btn btn-secondary">ADD</button>
+      </div>
+    </div>
+  </div>
+</div>
+</form>
     </form>
+
+
+
+    <!-- Modal -->
+    
+
 </div>

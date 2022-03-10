@@ -18,10 +18,10 @@ const IdeaSchema = new Schema(
     //   type: mongoose.Schema.Types.ObjectId,
     //   ref: 'accounts',
     // },
-    // category: {
-    //   type: mongoose.Schema.Types.ObjectId,
-    //   ref: 'ideaCategories',
-    // },
+     category: {
+       type: mongoose.Schema.Types.ObjectId,
+       ref: 'ideaCategories',
+     },
   },
   {
     collection: 'ideas',
@@ -29,6 +29,7 @@ const IdeaSchema = new Schema(
   {
     timestamp: true,
   },
+
 );
 
 mongoose.plugin(slug);
