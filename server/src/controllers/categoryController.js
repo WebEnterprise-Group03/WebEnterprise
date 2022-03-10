@@ -12,18 +12,26 @@ class categoryController {
     category
       .save()
       .then(() => {
-        res.send('add succesfull');
+        res.redirect('view');
       })
       .catch((error) => {
         res.send('Failed saved');
       });
   }
-
+//view category
   show(req,res,next){
    Category.find({})
    .then(categories=> {categories=categories.map(category => category.toObject())
    res.render('category/view',{categories})
    }).catch(next);
   }
+
+//Delete category
+  delete(req,res,next){
+    Category.deleteOne({_id:req.params.id})
+            .then(()=> res.redirect('back'))
+            .catch(next);  
+  }
+
 }
 module.exports = new categoryController();

@@ -5,6 +5,10 @@ const IdeaCategorySchema = new Schema(
   {
     description: String,
     name: String
+  //{
+  //     type: mongoose.Schema.Types.ObjectId,
+  //     ref: "ideas"
+  // },
   },
   {
     collection: 'ideaCategories',

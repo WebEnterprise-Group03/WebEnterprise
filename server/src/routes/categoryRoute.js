@@ -7,6 +7,6 @@ const router = express.Router();
 router.get('/create', categoryController.create)
 router.post('/store', categoryController.store)
 router.get('/view', categoryController.show)
-
+router.delete('/:id',categoryController.delete)
 
 module.exports = router;

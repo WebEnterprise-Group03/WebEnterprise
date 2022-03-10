@@ -60,7 +60,7 @@ class ideaController {
 
   //[DELETE] /idea/:id/forceDeleteIdea
   forceDeleteCourse(req, res, next) {
-
+    
   }
 }
 
