@@ -5,12 +5,12 @@ class siteController {
   }
 
   //[GET] /about
-  about(req,res){
+  about(req, res) {
     res.render('about');
   }
 
   //[GET] /forTeam
-  forTeam(req,res){
+  forTeam(req, res) {
     res.render('forTeam');
   }
 }

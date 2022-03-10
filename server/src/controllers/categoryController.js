@@ -2,8 +2,8 @@ const Category = require('../models/ideaCategoryModel');
 
 class categoryController {
   // [Get] /category/create
-  create(req,res, next){
-    res.render('category/create')
+  create(req, res, next) {
+    res.render('category/create');
   }
   // [Post] /category/store
   store(req, res, next) {
@@ -18,12 +18,15 @@ class categoryController {
         res.send('Failed saved');
       });
   }
+
 //view category
   show(req,res,next){
    Category.find({})
    .then(categories=> {categories=categories.map(category => category.toObject())
    res.render('category/view',{categories})
    }).catch(next);
+
+
   }
 
 //Delete category

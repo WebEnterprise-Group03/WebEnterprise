@@ -35,9 +35,19 @@ class ideaController {
       });
   }
 
+  //[GET] /idea/storedIdeas
+  storedIdeas(req,res,next){
+    Idea.find({})
+      .then((ideas) =>{
+        res.render('idea/storedIdeas', {ideas: ideas})
+      })
+      .catch(next);
+    // res.render('idea/storedIdeas');
+  }
+
   //[GET] /idea/:id/update
   update(req, res, next) {
-    Idea.findById(req.params.id)
+    Idea.findById(req.params._id)
       .then((ideas) => {
         res.render('idea/update', {
           ideas: ideas,
@@ -55,13 +65,15 @@ class ideaController {
 
   //[DELETE] /idea/:id
   deleteIdea(req, res, next) {
-    
+
   }
 
   //[DELETE] /idea/:id/forceDeleteIdea
+
   forceDeleteCourse(req, res, next) {
     
   }
+
 }
 
 module.exports = new ideaController();
