@@ -13,20 +13,48 @@
         </thead>
         <tbody>
         {{#each ideas}}
-        <tr>
-            <th scope="row">{{sum @index 1}}</th>
-            <td>{{this.title}}</td>
-            <td>{{this.description}}</td>
-            <td>
-                <img class="rounded float-right idea-image" src="{{this.image}}">
-            </td>
-            <td>{{this.slug}}</td>
-            <td>
-                <button type="button" class="btn btn-info"><a href="" style="color: white">Update</a></button>
-                <button type="button" class="btn btn-info"><a href="" style="color: white" data-toggle="modal" data-id="" data-target="#delete-course">Delete</a></button>
-            </td>
-        </tr>
+            <tr>
+                <th scope="row">{{sum @index 1}}</th>
+                <td>{{this.title}}</td>
+                <td>{{this.description}}</td>
+                <td>
+                    <img class="rounded float-right idea-image" src="{{this.image}}">
+                </td>
+                <td>{{this.slug}}</td>
+                <td>
+                    <button type="button" class="btn btn-info"><a href="/idea/:id/update" style="color: white">Update</a>
+                    </button>
+                    <button type="button" class="btn btn-info"><a href="" style="color: white" data-toggle="modal" data-target="#delete-idea">Delete</a>
+                    </button>
+                </td>
+            </tr>
         {{/each}}
         </tbody>
     </table>
 </div>
+
+<!-- Confirm delete idea -->
+<div class="modal fade" id="delete-idea" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                ...
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                <button type="button" class="btn btn-primary">Save changes</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<script language="JavaScript">
+
+</script>

@@ -47,7 +47,7 @@ class ideaController {
 
   //[GET] /idea/:id/update
   update(req, res, next) {
-    Idea.findById(req.params.id)
+    Idea.findById(req.params._id)
       .then((ideas) => {
         res.render('idea/update', {
           ideas: ideas,
@@ -64,7 +64,9 @@ class ideaController {
   }
 
   //[DELETE] /idea/:id
-  deleteIdea(req, res, next) {}
+  deleteIdea(req, res, next) {
+
+  }
 
   //[DELETE] /idea/:id/forceDeleteIdea
   forceDeleteCourse(req, res, next) {}
