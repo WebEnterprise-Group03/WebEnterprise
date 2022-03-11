@@ -4,6 +4,6 @@ const AuthJwt = require('../middlewares/authJwt');
 const VerifySignUp = require('../middlewares/verifySignUp');
 const MainController = require('../controllers/mainController');
 
-router.get('/show', AuthJwt.checkLogin, VerifySignUp.checkPermission, MainController.show);
+router.get('/show', AuthJwt.checkLogin, MainController.show);
 
 module.exports = router;

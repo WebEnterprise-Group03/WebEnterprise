@@ -1,5 +1,5 @@
     <div class="form-body">
-        <div class="login-content">
+        <div>
                 <div class="input-div one">
                     <div class="i">
                         <i class="fas fa-user"></i>
@@ -19,7 +19,7 @@
                         <input id="password" type="password" class="input" name="password" required>
                     </div>
                 </div>
-            <button class="btn" type="submit" onclick="login()">Submit</button>
+            <button id="btn-login" class="btn" type="submit">Submit</button>
         </div>
     </div>
 <script>
@@ -46,21 +46,43 @@
         return "";
     }
     
-    function login(){
-        $.ajax({
-            url: '/auth/login',
-            method: 'POST',
-            data: {
-                username: $('#username').val(),
-                password: $('#password').val(),
-            }
-        })
-                .then(data=>{
-                    setCookie('token', data.token, 1);
-                    location.assign('/main/show');
-                })
-                .catch(err=>{
-                    console.log(err);
-                })
-    }
+    // function login(){
+    //     $.ajax({
+    //         url: '/auth/login',
+    //         method: 'POST',
+    //         data: {
+    //             username: $('#username').val(),
+    //             password: $('#password').val(),
+    //         }
+    //     })
+    //             .then(data=>{
+    //                 setCookie('token', data.token, 1);
+    //                 location.assign('/main/show');
+    //             })
+    //             .catch(err=>{
+    //                 console.log(err);
+    //             })
+    // }
+
+    document.addEventListener('DOMContentLoaded', function (){
+      let btnLogin = document.getElementById('btn-login')
+
+        btnLogin.onclick = function (){
+            $.ajax({
+                url: '/auth/login',
+                method: 'POST',
+                data: {
+                    username: $('#username').val(),
+                    password: $('#password').val(),
+                }
+            })
+                    .then(data=>{
+                        setCookie('token', data.token, 1);
+                        location.assign('/main/show');
+                    })
+                    .catch(err=>{
+                        console.log(err);
+                    })
+        }
+    })
 </script>
