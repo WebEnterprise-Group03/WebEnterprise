@@ -22,8 +22,11 @@
                 </td>
                 <td>{{this.slug}}</td>
                 <td>
+
+
                     <button type="button" class="btn btn-info"><a href="/idea/{{this._id}}/update" style="color: white">Update</a></button>
                     <button type="button" class="btn btn-info"><a href="" style="color: white" data-id="{{this._id}}" data-toggle="modal" data-target="#delete-idea">Delete</a></button>
+
                 </td>
             </tr>
         {{/each}}
@@ -31,7 +34,7 @@
     </table>
 </div>
 
-<!-- Confirm delete idea -->
+
 <div class="modal fade" id="delete-idea" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
     <div class="modal-dialog">
         <div class="modal-content">
@@ -49,8 +52,11 @@
                 <button id="btn-delete-idea" type="button" class="btn btn-primary">Delete Idea</button>
             </div>
         </div>
+
     </div>
+  </div>
 </div>
+
 
 <form name="delete-idea-form" method="POST"></form>
 
@@ -72,3 +78,4 @@
         }
     });
 </script>
+
