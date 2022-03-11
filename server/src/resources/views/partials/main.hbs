@@ -15,20 +15,16 @@
                 </li>
             </ul>
         </div>
-    <div class="dropdown">
-        {{#if account}}
-            <ul class="nav navbar-nav">
-                <li class="active"><a href="javascript:">{{ account.username }} <span class="sr-only">(current)</span></a></li>
-            </ul>
-        {{/if}}
-	  <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
-      </button>
-	  <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
-		<li><a class="dropdown-item" href="#">Action</a></li>
-		<li><a class="dropdown-item" href="#">Another action</a>
-		<li><a class="dropdown-item" href="/auth/logout">Logout</a>
-	  </ul>
-    </div>
+        <div class="dropdown">
+            <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenu2" data-toggle="dropdown" aria-expanded="false">
+                <img src="https://i.pinimg.com/564x/04/d3/e7/04d3e74c4f9137c8041a1dc6c386d469.jpg" class="account-avatar">
+            </button>
+            <div class="dropdown-menu" aria-labelledby="dropdownMenu2">
+                <button class="dropdown-item" type="button">Action</button>
+                <button class="dropdown-item" type="button">Another action</button>
+                <button class="dropdown-item" type="button"><a href="/auth/logout">Logout</a></button>
+            </div>
+        </div>
     </div>
 </nav>
 
