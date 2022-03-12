@@ -2,7 +2,7 @@ class siteController {
   //[GET] /
   index(req, res) {
     res.render('home', {
-      home: true
+      home: true,
     });
   }
 

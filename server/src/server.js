@@ -25,15 +25,15 @@ const hbs = create({
     sum: (a, b) => a + b,
     ifCond: (v1, opr, v2, opt) => {
       switch (opr) {
-        case "===":
+        case '===':
           if (v1 === v2) return opt.fn(this);
           break;
 
-        case "!==":
+        case '!==':
           if (v1 !== v2) return opt.fn(this);
           break;
       }
-    }
+    },
   },
 });
 

@@ -9,7 +9,7 @@ class mainController {
         .then((ideas) => {
           res.render('main/show', {
             ideas: ideas,
-            check: req.data.role
+            check: req.data.role,
           });
         })
         .catch(next);

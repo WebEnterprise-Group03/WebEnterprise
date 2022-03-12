@@ -15,7 +15,7 @@ class verifySignUp {
         // res
         //   .status(400)
         //   .send({ message: 'Failed! Username is already in use!' });
-        console.log('Failde')
+        console.log('Failde');
         return;
       }
       //email
@@ -28,7 +28,7 @@ class verifySignUp {
         }
         if (user) {
           // res.status(400).send({ message: 'Failed! Email is already in use!' });
-          console.log('failed email')
+          console.log('failed email');
           return;
         }
         next();
