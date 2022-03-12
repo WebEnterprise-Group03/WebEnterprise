@@ -23,6 +23,17 @@ const hbs = create({
   handlebars: allowInsecurePrototypeAccess(Handlebars),
   helpers: {
     sum: (a, b) => a + b,
+    ifCond: (v1, opr, v2, opt) => {
+      switch (opr) {
+        case "===":
+          if (v1 === v2) return opt.fn(this);
+          break;
+
+        case "!==":
+          if (v1 !== v2) return opt.fn(this);
+          break;
+      }
+    }
   },
 });
 
