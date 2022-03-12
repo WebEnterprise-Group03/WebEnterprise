@@ -19,22 +19,21 @@ class categoryController {
       });
   }
 
-//view category
-  show(req,res,next){
-   Category.find({})
-   .then(categories=> {categories=categories.map(category => category.toObject())
-   res.render('category/view',{categories})
-   }).catch(next);
-
-
+  //view category
+  show(req, res, next) {
+    Category.find({})
+      .then((categories) => {
+        categories = categories.map((category) => category.toObject());
+        res.render('category/view', { categories });
+      })
+      .catch(next);
   }
 
-//Delete category
-  delete(req,res,next){
-    Category.deleteOne({_id:req.params.id})
-            .then(()=> res.redirect('back'))
-            .catch(next);  
+  //Delete category
+  delete(req, res, next) {
+    Category.deleteOne({ _id: req.params.id })
+      .then(() => res.redirect('back'))
+      .catch(next);
   }
-
 }
 module.exports = new categoryController();

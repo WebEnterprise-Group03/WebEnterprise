@@ -36,10 +36,10 @@ class ideaController {
   }
 
   //[GET] /idea/storedIdeas
-  storedIdeas(req,res,next){
+  storedIdeas(req, res, next) {
     Idea.find({})
-      .then((ideas) =>{
-        res.render('idea/storedIdeas', {ideas: ideas})
+      .then((ideas) => {
+        res.render('idea/storedIdeas', { ideas: ideas });
       })
       .catch(next);
     // res.render('idea/storedIdeas');
@@ -71,9 +71,7 @@ class ideaController {
   }
 
   //[DELETE] /idea/:id/forceDeleteIdea
-  forceDeleteCourse(req, res, next) {
-
-  }
+  forceDeleteCourse(req, res, next) {}
 }
 
 module.exports = new ideaController();

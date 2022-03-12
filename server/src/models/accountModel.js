@@ -35,14 +35,14 @@ const AccountSchema = new Schema(
       type: String,
       required: true,
     },
-    avatar: {
-      type: String,
-      required: false,
-    },
-    category: {
-       type: mongoose.Schema.Types.ObjectId,
-      ref: "Category"
-    }
+    // avatar: {
+    //   type: String,
+    //   required: false,
+    // },
+    // category: {
+    //   type: mongoose.Schema.Types.ObjectId,
+    //   ref: 'Category',
+    // },
   },
   {
     collection: 'accounts',
