@@ -4,11 +4,7 @@ const AuthController = require('../controllers/authController');
 const VerifySignUp = require('../middlewares/verifySignUp');
 
 router.get('/registerPage', AuthController.registerPage);
-router.post(
-  '/register',
-  [VerifySignUp.checkDuplicateUsernameOrEmail],
-  AuthController.register,
-);
+router.post('/register', AuthController.register);
 router.get('/loginPage', AuthController.loginPage);
 router.post('/login', AuthController.login);
 router.get('/logout', AuthController.logout);

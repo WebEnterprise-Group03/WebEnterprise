@@ -12,10 +12,9 @@ class verifySignUp {
         return;
       }
       if (user) {
-        // res
-        //   .status(400)
-        //   .send({ message: 'Failed! Username is already in use!' });
-        console.log('Failde');
+        res
+          .status(400)
+          .send({ message: 'Failed! Username is already in use!' });
         return;
       }
       //email
@@ -27,8 +26,7 @@ class verifySignUp {
           return;
         }
         if (user) {
-          // res.status(400).send({ message: 'Failed! Email is already in use!' });
-          console.log('failed email');
+          res.status(400).send({ message: 'Failed! Email is already in use!' });
           return;
         }
         next();

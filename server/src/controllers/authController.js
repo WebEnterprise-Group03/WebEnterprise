@@ -23,8 +23,8 @@ class authController {
     })
       .then((data) => {
         if (data) {
-          alert('User nay da ton tai');
-          // res.json('User nay da ton tai');
+          // alert('User nay da ton tai');
+          res.json('User nay da ton tai');
         } else {
           return Account.create({
             username: username,
