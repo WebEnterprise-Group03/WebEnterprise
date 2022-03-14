@@ -5,8 +5,10 @@ class sendEmail{
     const mailOptions = {
       from: 'tuhuu7165@gmail.com',
       to: 'tudhgch18565@fpt.edu.vn',
-      subject: 'Email from HUUTU: A text message',
-      text: 'Hello con cac'
+      subject: 'The staff submitted the idea',
+      text: 'Dear Mr Coordinator ,\n' +
+        'There is a staff who submits the idea. Please check it and give any feedback to the staff\n' +
+        'Thank you in advance.'
     };
 
 //Email transport configuration
