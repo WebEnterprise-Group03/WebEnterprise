@@ -39,9 +39,9 @@ const AccountSchema = new Schema(
     //   type: String,
     //   required: false,
     // },
-    // category: {
+    // role: {
     //   type: mongoose.Schema.Types.ObjectId,
-    //   ref: 'Category',
+    //   ref: 'roles',
     // },
   },
   {

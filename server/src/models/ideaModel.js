@@ -14,13 +14,21 @@ const IdeaSchema = new Schema(
     },
     image: String,
     file: String,
-    // name: {
-    //   type: mongoose.Schema.Types.ObjectId,
-    //   ref: 'accounts',
-    // },
-    category: {
+    account: {
       type: mongoose.Schema.Types.ObjectId,
-      ref: 'ideaCategories',
+      ref: 'accounts',
+    },
+    comments: {
+      type: mongoose.Schema.Types.ObjectId,
+      ref: 'comments',
+    },
+    reactions: {
+      type: mongoose.Schema.Types.ObjectId,
+      ref: 'reactions',
+    },
+    submit: {
+      type: mongoose.Schema.Types.ObjectId,
+      ref: 'submits',
     },
   },
   {
