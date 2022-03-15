@@ -1,9 +1,24 @@
-<form class="login">
-        <input type="text" placeholder="Username">
-        <input type="password" placeholder="Password">
-        <button>Login</button>
-</form>
-
+<div class="center">
+      <h1>Login</h1>
+      <form>
+        <div class="txt_field">
+          <input type="text" required>
+          <span></span>
+          <label>Username</label>
+        </div>
+        <div class="txt_field">
+          <input type="password" required>
+          <span></span>
+          <label>Password</label>
+        </div>
+        <div class="pass">Forgot Password?</div>
+        {{!-- <input id="btn-login" type="submit" value="Login"> --}}
+        <button id="btn-login" class="btn" type="submit">Submit</button>
+        {{!-- <div class="signup_link">
+          Not a member? <a href="#">Signup</a>
+        </div> --}}
+      </form>
+    </div>
 <script>
     let isAuthenticated = false;
     function setCookie(cname, cvalue, exdays) {
@@ -29,7 +44,7 @@
     }
 
     document.addEventListener('DOMContentLoaded', function (){
-      let btnLogin = document.getElementById('btnLogin')
+      let btnLogin = document.getElementById('btn-login')
 
         btnLogin.onclick = function (){
             $.ajax({
