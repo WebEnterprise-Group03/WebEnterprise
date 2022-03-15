@@ -1,4 +1,4 @@
-<p class="text-center h1 fw-bold mb-5 mx-1 mx-md-4 mt-4">Sign up</p>
+{{!-- <p class="text-center h1 fw-bold mb-5 mx-1 mx-md-4 mt-4">Sign up</p>
 <div class="needs-validation" novalidate>
     <div class="form-group">
         <label for="uname">Username:</label>
@@ -48,6 +48,41 @@
             <div class="valid-feedback">Valid.</div>
             <div class="invalid-feedback">Check this checkbox to continue.</div>
         </label>
+    </div> --}}
+    <div class="center">
+      <h1>Login</h1>
+      <form>
+        <div class="txt_field">
+          <input type="text" required>
+          <span></span>
+          <label>Username</label>
+        </div>
+        <div class="txt_field">
+          <input type="password" required>
+          <span></span>
+          <label>Password</label>
+        </div>
+        <div class="txt_field">
+          <input type="fullname" required>
+          <span></span>
+          <label>FullName</label>
+        </div>
+        <div class="txt_field">
+          <input type="email" required>
+          <span></span>
+          <label>Email</label>
+        </div>
+        <div class="txt_field">
+          <input type="gender" required>
+          <span></span>
+          <label>Gender</label>
+        </div>
+        <div class="txt_field">
+          <input required>
+          <span></span>
+          <label>Role</label>
+        </div>
+      </form>
     </div>
     <button onclick="register()" type="submit" class="btn btn-primary">Submit</button>
 </div>

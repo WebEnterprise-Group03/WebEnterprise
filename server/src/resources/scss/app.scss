@@ -1,7 +1,10 @@
 html,
 body {
-  height: 100%;
   margin: 0;
+  padding: 0;
+  background: linear-gradient(120deg, #2980b9, #8e44ad);
+  height: 100vh;
+  overflow: hidden;
 }
 
 .form-body {
@@ -23,5 +26,5 @@ body {
 }
 
 .dropdown {
-  margin-right: 10px;
+  margin-right: 4px;
 }
