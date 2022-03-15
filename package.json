@@ -1,0 +1,8 @@
+{
+  "dependencies": {
+    "express-handlebars": "^6.0.3",
+    "morgan": "^1.10.0",
+    "node-sass": "^7.0.1",
+    "nodemon": "^2.0.15"
+  }
+}

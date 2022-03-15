@@ -5,7 +5,7 @@
   "main": "index.js",
   "scripts": {
     "beautifull": "prettier --single-quote --trailing-comma all --write src/**/*.{js,json,scss}",
-    "watch": "node-sass --watch src/resources/scss --output src/publics/css",
+    "watch": "node-sass --watch src/resources/scss/ --output src/publics/css/",
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "nodemon src/server.js"
   },
@@ -35,6 +35,7 @@
     "husky": "^7.0.4",
     "lint-staged": "^12.3.4",
     "node-sass": "^7.0.1",
-    "prettier": "^2.5.1"
+    "prettier": "^2.5.1",
+    "sass": "^1.49.9"
   }
 }

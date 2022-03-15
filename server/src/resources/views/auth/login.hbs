@@ -1,27 +1,9 @@
-    <div class="form-body">
-        <div>
-                <div class="input-div one">
-                    <div class="i">
-                        <i class="fas fa-user"></i>
-                    </div>
-                    <div class="div">
-                        <h5>Username</h5>
-                        <input id="username" type="text" class="input" name="username">
-                    </div>
-                </div>
-                <div class="input-div pass">
-                    <div class="i">
-                        <i class="fas fa-lock"></i>
-                    </div>
-                    <div class="div">
-                        <h5>Password</h5>
-                        <span class="show-btn"><i class="fas fa-eye"></i></span>
-                        <input id="password" type="password" class="input" name="password" required>
-                    </div>
-                </div>
-            <button id="btn-login" class="btn" type="submit">Submit</button>
-        </div>
-    </div>
+<form class="login">
+        <input type="text" placeholder="Username">
+        <input type="password" placeholder="Password">
+        <button>Login</button>
+</form>
+
 <script>
     let isAuthenticated = false;
     function setCookie(cname, cvalue, exdays) {
@@ -47,7 +29,7 @@
     }
 
     document.addEventListener('DOMContentLoaded', function (){
-      let btnLogin = document.getElementById('btn-login')
+      let btnLogin = document.getElementById('btnLogin')
 
         btnLogin.onclick = function (){
             $.ajax({
@@ -67,4 +49,5 @@
                     })
         }
     })
+    
 </script>
