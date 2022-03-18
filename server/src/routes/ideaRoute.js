@@ -19,7 +19,7 @@ router.delete('/:id', [AuthJwt.checkLogin], IdeaController.deleteIdea);
 router.delete(
   '/:id/force',
   [AuthJwt.checkLogin],
-  IdeaController.forceDeleteCourse,
+  IdeaController.forceDeleteIdea,
 );
 
 module.exports = router;

@@ -71,7 +71,7 @@ class ideaController {
   }
 
   //[DELETE] /idea/:id/forceDeleteIdea
-  forceDeleteCourse(req, res, next) {}
+  forceDeleteIdea(req, res, next) {}
 }
 
 module.exports = new ideaController();

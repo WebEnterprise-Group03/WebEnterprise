@@ -3,8 +3,8 @@ const Schema = mongoose.Schema;
 
 const IdeaCategorySchema = new Schema(
   {
-    description: String,
     name: String,
+    description: String,
   },
   {
     collection: 'ideaCategories',
