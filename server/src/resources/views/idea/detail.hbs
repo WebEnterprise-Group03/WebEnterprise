@@ -16,5 +16,36 @@
             </div>
         </li>
     </ul>
+    <br>
+
+
+{{!Comment}}
+<form method="POST" action="/cmt/store" >
+  <input type="text" id="author" name="author" placeholder="Username"> 
+<br>
+<textarea id="content" name="content" rows="4" cols="50" placeholder=" Leave comment here"></textarea>
+ <br>
+ <input type="submit">
+</form>
 </div>
+<form>
+{{!show comment}}
+
+<div>
+<br>
+{{#each ideas.comments}}
+{{ideas.comments.author}}
+<br>
+{{ideas.comments.content}}
+{{/each}}
+
+
+</form>
+</div>
+</div>
+
+ 
+
+
+
 

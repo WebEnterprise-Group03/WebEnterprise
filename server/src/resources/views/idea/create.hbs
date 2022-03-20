@@ -30,22 +30,24 @@
             <input type="text" class="form-control" id="slug" name="slug">
         </div>
         <br>
+        
+        
          <div class="dropdown">
 	     <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
 		Category
 	     </button>
 	    <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
-		<li><a class="dropdown-item" href="#">{{name}}</a></li>
+		<li><a class="dropdown-item" href="#">{{ideas.category}}</a></li>
 	        </ul>
 	    </div>
-       
+        
         <br>
          <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#AddIdea">Add Idea</button>
          <div class="modal fade" id="AddIdea" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
          <div class="modal-dialog">
         <div class="modal-content">
          <div class="modal-header">
-        <h5 class="modal-title" id="staticBackdropLabel">DELETE</h5>
+        <h5 class="modal-title" id="staticBackdropLabel">ADD</h5>
         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
          </div>
          <div class="modal-body">
