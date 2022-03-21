@@ -5,21 +5,19 @@
             <th scope="col">#</th>
             <th scope="col">Title</th>
             <th scope="col">Description</th>
-            <th scope="col">Image</th>
             <th scope="col">Slug</th>
+            <th scope="col">IdeaCategory.name</th>
             <th scope="col">Action</th>
         </tr>
         </thead>
         <tbody>
-        {{#each ideas}}
+        {{#each task}}
             <tr>
                 <th scope="row">{{sum @index 1}}</th>
                 <td>{{this.title}}</td>
                 <td>{{this.description}}</td>
-                <td>
-                    <img class="rounded float-right idea-image" src="{{this.image}}">
-                </td>
                 <td>{{this.slug}}</td>
+                <td>{{this.ideaCategory.name}}</td>
                 <td>
                     <button type="button" class="btn btn-info"><a href="/idea/{{this._id}}/update" style="color: white">Update</a></button>
                     <button type="button" class="btn btn-info"><a href="" style="color: white" data-id="{{this._id}}" data-toggle="modal" data-target="#delete-idea">Delete</a></button>
@@ -28,8 +26,6 @@
         {{/each}}
         </tbody>
     </table>
-
-    <div class="pagenumbers" id="pagination"></div>
 </div>
 
 
@@ -52,7 +48,7 @@
         </div>
 
     </div>
-  </div>
+</div>
 </div>
 
 
@@ -75,28 +71,5 @@
             deleteForm.submit();
         }
     });
-</script>
-
-
-{{!pagination}}
-<script>
-    const listItem = ideas;
-    const paginationElement = document.getElementById('pagination');
-    let current_page =1 ;
-    let row = 5;
-
-    function Displaylist(idea,wrapper,row_per_page,page){
-        wrapper.innerHTML="";
-        page--;
-        let loop_start = row_per_page *page;
-        let paginatedIdea = idea.slice(loop_start,loop_start+ row_per_page);
-        console.log(paginatedIdea);
-        for(let i =loop_start; i <loop_start + row_per_page, i++)
-        {
-
-        }
-    }
-    Displaylist(List)
-
 </script>
 

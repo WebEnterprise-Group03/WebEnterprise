@@ -3,7 +3,10 @@ const Schema = mongoose.Schema;
 
 const CmtSchema = new Schema(
   {
-    author: String,
+    author: {
+      type:mongoose.Schema.Types.ObjectId,
+      ref: 'accounts',
+    },
     content: String,
     
     

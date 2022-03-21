@@ -1,8 +1,10 @@
 const Idea = require('../models/ideaModel');
+const Comment = require('../models/cmtModel')
 
 class ideaController {
   //[GET] /idea/detail/:slug
-  detail(req, res, next) {
+   detail(req, res, next) {
+    
     Idea.findOne({ slug: req.params.slug })
       .then((ideas) => {
         res.render('idea/detail', { ideas: ideas });
@@ -71,7 +73,7 @@ class ideaController {
   }
 
   //[DELETE] /idea/:id/forceDeleteIdea
-  forceDeleteCourse(req, res, next) {}
+  forceDeleteIdea(req, res, next) {}
 }
 
 module.exports = new ideaController();

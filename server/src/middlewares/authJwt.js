@@ -20,7 +20,8 @@ class authJwt {
         })
         .catch((err) => {});
     } catch (error) {
-      res.status(500).json('Token khong hop le');
+      
+      res.redirect('back')
     }
   }
 

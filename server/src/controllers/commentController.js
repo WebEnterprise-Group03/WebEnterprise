@@ -18,15 +18,8 @@ class cmtController {
         res.send('Fail');
       });
   }
- // view comment
-  show(req, res, next) {
-    Comment.find({})
-      .then((comments) => {
-        comments = comments.map((comment) => comment.toObject());
-        res.render('idea/detail', { comments });
-      })
-      .catch(next);
-  }
+ 
+
   }
   module.exports = new cmtController();
 

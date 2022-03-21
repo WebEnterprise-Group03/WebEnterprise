@@ -4,6 +4,8 @@ const auth = require('./authRoute');
 const idea = require('./ideaRoute');
 const category = require('./categoryRoute.js');
 const comment = require('./cmtRoute.js');
+const task = require('./taskRoute.js');
+
 
 function route(app) {
   app.use('/auth', auth);
@@ -11,6 +13,7 @@ function route(app) {
   app.use('/idea', idea);
   app.use('/category', category);
   app.use('/cmt', comment);
+  app.use('/task', task);
   app.use('/', site);
 }
 

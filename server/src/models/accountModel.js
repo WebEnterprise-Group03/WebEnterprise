@@ -1,6 +1,6 @@
 const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
-
+const comment = require('./cmtModel')
 const AccountSchema = new Schema(
   {
     username: {

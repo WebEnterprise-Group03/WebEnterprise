@@ -5,6 +5,7 @@ const FileUpload = require('../middlewares/fileUpload');
 const SendEmail = require('../middlewares/sendEmail');
 const AuthJwt = require('../middlewares/authJwt');
 
+
 router.get('/detail/:slug', [AuthJwt.checkLogin], IdeaController.detail);
 router.get('/storedIdeas', [AuthJwt.checkLogin], IdeaController.storedIdeas);
 router.get('/create', [AuthJwt.checkLogin], IdeaController.create);
@@ -19,7 +20,7 @@ router.delete('/:id', [AuthJwt.checkLogin], IdeaController.deleteIdea);
 router.delete(
   '/:id/force',
   [AuthJwt.checkLogin],
-  IdeaController.forceDeleteCourse,
+  IdeaController.forceDeleteIdea,
 );
 
 module.exports = router;
