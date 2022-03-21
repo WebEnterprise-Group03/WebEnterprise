@@ -4,12 +4,13 @@ const Category = require('../models/ideaCategoryModel');
 class taskController {
   //[GET] /task/listTask
   async listTask(req, res, next) {
-    const ideaCategory = await Category.find({})
-    const task =  await Task.find({ ideaCategory })
-      .lean().populate('ideaCategory', 'name', "ideaCategories")
+    const ideaCategory = await Category.find({});
+    await Task.find({ ideaCategory })
+      .lean()
+      .populate('ideaCategory', 'name', 'ideaCategories')
       .then((task) => {
         res.render('task/listTask', {
-          task: task
+          task: task,
         });
       })
       .catch(next);
