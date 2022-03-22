@@ -7,8 +7,9 @@ class cmtController {
       }
 
     store(req, res, next) {
-    const formData = req.body;
-    const comment = new Comment(formData);
+    const comment = new Comment({
+      content: req.body.content,
+    });
     comment
       .save()
       .then(() => {

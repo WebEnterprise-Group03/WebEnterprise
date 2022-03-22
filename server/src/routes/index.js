@@ -12,7 +12,6 @@ function route(app) {
   app.use('/main', main);
   app.use('/idea', idea);
   app.use('/category', category);
-  app.use('/cmt', comment);
   app.use('/task', task);
   app.use('/', site);
 }
