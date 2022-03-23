@@ -27,37 +27,36 @@
             <input type="text" class="form-control" id="slug" name="slug">
         </div>
         <br>
-        
-        
-         <div class="dropdown">
-	     <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
-		Category
-	     </button>
-	    <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
-		<li><a class="dropdown-item" href="#">{{ideas.category}}</a></li>
-	        </ul>
-	    </div>
-        
-        <br>
-         <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#AddIdea">Add Idea</button>
-         <div class="modal fade" id="AddIdea" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
-         <div class="modal-dialog">
-        <div class="modal-content">
-         <div class="modal-header">
-        <h5 class="modal-title" id="staticBackdropLabel">ADD</h5>
-        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-         </div>
-         <div class="modal-body">
-            YOU SURE WANTO ADD THIS 
-        </div> 
-        <br>
-            <p><input type="checkbox" required name="terms"> I accept the <u>Terms and Conditions</u></p>
-          <div class="modal-footer">
-        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-        <button type="Submit" class="btn btn-secondary">ADD</button>
+         <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#Addidea">
+         Add Idea
+        </button>   
+
+    
+
+
+
+    <!-- Modal -->
+  <!-- Modal -->
+<div class="modal fade" id="Addidea" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Add Idea</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <input type="checkbox" required name="term" value="term">
+       <label for="term"> Term</label><br>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+        <button type="submit" class="btn btn-primary">ADD</button>
       </div>
     </div>
   </div>
 </div>
-</form>
+
 </div>
+</form>

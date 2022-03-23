@@ -17,7 +17,6 @@ class ideaController {
     res.render('idea/create');
   }
 
-  //[POST] /idea/store
   store(req, res, next) {
     const formData = {
       title: req.body.title,
