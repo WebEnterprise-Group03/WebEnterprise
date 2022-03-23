@@ -3,17 +3,15 @@ const Comment = require('../models/cmtModel.js');
 class cmtController {
 
     create(req, res, next) {
-        res.render('cmt/create');
-      }
-
-    store(req, res, next) {
     const comment = new Comment({
       content: req.body.content,
+      author: req.body.author
     });
+    
     comment
       .save()
       .then(() => {
-        res.redirect("back")
+        res.redirect("/")
       })
       .catch((error) => {
         res.send('Fail');

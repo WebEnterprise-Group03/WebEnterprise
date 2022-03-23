@@ -12,6 +12,7 @@
                     {{ideas.description}}
                 </p>
                 <img class="rounded float-right" src="{{ideas.image}}">
+                <br>
                 <a href="{{ideas.file}}">{{ideas.file}}</a>
             </div>
         </li>
@@ -20,7 +21,7 @@
 
 
 {{!Comment}}
-<form method="POST" action="/idea/{{ideas.slug}}/comment" >
+<form method="POST" action="/idea/{{ideas.id}}/comment" >
 <textarea id="content" name="content" rows="4" cols="50" require placeholder=" Leave comment here"></textarea>
  <br>
  <input type="submit">
