@@ -11,7 +11,8 @@ class cmtController {
     comment
       .save()
       .then(() => {
-        res.redirect("/")
+        res.redirect("back");
+        
       })
       .catch((error) => {
         res.send('Fail');
