@@ -28,7 +28,20 @@ class taskController {
 
   //[POST] /task/storeTask
   async storeTask(req, res, next) {
+    const dateTime = new Date();
+    const day = req.body.day;
+    const time = req.body.start;
+
+    dateTime.setFullYear(day.split('-')[0]);
+    dateTime.setMonth(day.split('-')[1] - 1);
+    dateTime.setDate(day.split('-')[2]);
+
+    dateTime.setHours(time.split(':')[0]);
+    dateTime.setMinutes(time.split(':')[1]);
+
     const formData = {
+      dayTime: dateTime,
+      duration: req.body.duration,
       title: req.body.title,
       description: req.body.description,
       slug: req.body.slug,

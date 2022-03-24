@@ -4,10 +4,22 @@ const slug = require('mongoose-slug-generator');
 
 const TaskSchema = new Schema(
   {
-    title: String,
-    description: String,
-    // startDate: Number,
-    // dueDate: Number,
+    dayTime: {
+      type: Date,
+      required: true,
+    },
+    duration: {
+      type: Number,
+      required: true,
+    },
+    title: {
+      type: String,
+      required: true,
+    },
+    description: {
+      type: String,
+      require: true,
+    },
     slug: {
       type: String,
       slug: 'title',
