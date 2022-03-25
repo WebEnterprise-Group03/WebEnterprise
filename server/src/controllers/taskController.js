@@ -79,8 +79,11 @@ class taskController {
       .catch(next);
   }
 
-  trashTask(req,res,next){
-    Task.findDeleted({})
+  async trashTask(req,res,next){
+    const ideaCategory = await Category.find({});
+    Task.findDeleted({ ideaCategory })
+      .lean()
+      .populate('ideaCategory', 'name', 'ideaCategories')
       .then((tasks) => res.render('task/trashTask', {
         tasks,
       }))
