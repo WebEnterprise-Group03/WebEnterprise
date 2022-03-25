@@ -28,7 +28,7 @@ const IdeaSchema = new Schema(
       type: mongoose.Schema.Types.ObjectId,
       ref: 'reactions',
     },
-    task: {
+    tasks: {
       type: mongoose.Schema.Types.ObjectId,
       ref: 'tasks',
     },
