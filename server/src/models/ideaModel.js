@@ -1,7 +1,9 @@
 const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
 const slug = require('mongoose-slug-generator');
-const comments = require('./ideaCategoryModel')
+const comments = require('./ideaCategoryModel');
+const mongoose_delete = require('mongoose-delete');
+
 const IdeaSchema = new Schema(
   {
     title: String,

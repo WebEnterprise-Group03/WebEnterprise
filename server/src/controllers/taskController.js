@@ -28,19 +28,19 @@ class taskController {
 
   //[POST] /task/storeTask
   async storeTask(req, res, next) {
-    const dateTime = new Date();
+    const endTime = new Date();
     const day = req.body.day;
-    const time = req.body.start;
+    const time = req.body.end;
 
-    dateTime.setFullYear(day.split('-')[0]);
-    dateTime.setMonth(day.split('-')[1] - 1);
-    dateTime.setDate(day.split('-')[2]);
+    endTime.setFullYear(day.split('-')[0]);
+    endTime.setMonth(day.split('-')[1] - 1);
+    endTime.setDate(day.split('-')[2]);
 
-    dateTime.setHours(time.split(':')[0]);
-    dateTime.setMinutes(time.split(':')[1]);
+    endTime.setHours(time.split(':')[0]);
+    endTime.setMinutes(time.split(':')[1]);
 
     const formData = {
-      dayTime: dateTime,
+      endTime: endTime,
       duration: req.body.duration,
       title: req.body.title,
       description: req.body.description,
@@ -56,8 +56,6 @@ class taskController {
     }
 
     formData.ideaCategory = category._id;
-    // await Task.create(formData);
-    // return res.redirect('/task/listTask');
     const task = new Task(formData);
     await task
       .save()
@@ -69,9 +67,29 @@ class taskController {
       });
   }
 
-  deleteTask(req, res, next) {}
+  deleteTask(req, res, next) {
+    Task.delete({ _id: req.params.id })
+      .then(() => res.redirect('back'))
+      .catch(next);
+  }
 
-  forceDeleteTask(req, res, next) {}
+  forceDeleteTask(req, res, next) {
+    Task.deleteOne({ _id: req.params.id })
+      .then(() => res.redirect('back'))
+      .catch(next);
+  }
+
+  trashTask(req,res,next){
+    Task.findDeleted({})
+      .then((tasks) => res.render('task/trashTask', {
+        tasks,
+      }))
+      .catch(next);
+  }
+
+  restoreTask(req,res,next){
+
+  }
 }
 
 module.exports = new taskController();
