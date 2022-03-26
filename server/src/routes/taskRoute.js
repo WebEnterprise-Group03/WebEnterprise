@@ -9,6 +9,6 @@ router.post('/storeTask', TaskController.storeTask);
 router.delete('/:id', TaskController.deleteTask);
 router.delete('/:id/force', TaskController.forceDeleteTask);
 router.get('/trashTask', TaskController.trashTask);
-router.patch('/restoreTask', TaskController.restoreTask);
+router.patch('/:id/restoreTask', TaskController.restoreTask);
 
 module.exports = router;

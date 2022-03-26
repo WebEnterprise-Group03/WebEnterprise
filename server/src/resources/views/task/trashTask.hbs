@@ -28,7 +28,7 @@
                 <td>{{this.slug}}</td>
                 <td>{{this.ideaCategory.name}}</td>
                 <td>
-                    <button type="button" class="btn btn-info"><a href="" style="color: white" data-id="{{this._id}}">Restore</a></button>
+                    <button type="button" class="btn btn-info"><a href="" style="color: white" class="btn-restore-task" data-id="{{this._id}}">Restore</a></button>
                     <button type="button" class="btn btn-info"><a href="" style="color: white" data-id="{{this._id}}" data-toggle="modal" data-target="#delete-task">Delete Forever</a></button>
                 </td>
             </tr>
@@ -73,7 +73,9 @@
     document.addEventListener('DOMContentLoaded', function (){
         let ideaID;
         let deleteForm = document.forms['delete-task-form'];
-        let btnDeleteIdea = document.getElementById('btn-delete-task');
+        let btnDeleteTask = document.getElementById('btn-delete-task');
+        let restoreForm = document.forms['restore-task-form'];
+        let btnRestoreTask = $('.btn-restore-task');
 
         //When confirm clicked
         $('#delete-task').on('show.bs.modal', function (event) {
@@ -81,10 +83,25 @@
             ideaID = button.data('id');
         })
 
-        btnDeleteIdea.onclick = function (){
+        //Delete forever task
+        btnDeleteTask.onclick = function (){
             deleteForm.action = '/task/' + ideaID + '/force?_Method=DELETE';
             deleteForm.submit();
         }
+
+        //Restore task
+        // btnRestoreTask.onclick = function (e){
+        //   e.preventDefault();
+        //
+        //   let taskId = $(this).data('id');
+        //   restoreForm.action = '/task/' + taskId + '/restoreTask?_Method=PATCH';
+        //   restoreForm.submit();
+        // }
+
+        btnRestoreTask.click(function (e){
+          e.preventDefault();
+          console.log('Clickted')
+        })
     });
 </script>
 
