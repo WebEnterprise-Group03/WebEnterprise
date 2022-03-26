@@ -91,7 +91,7 @@ class taskController {
   }
 
   restoreTask(req,res,next){
-    Task.restore({ _id: req.body.id })
+    Task.restore({ _id: req.params.id })
       .then(() => res.redirect('back'))
       .catch(next);
   }

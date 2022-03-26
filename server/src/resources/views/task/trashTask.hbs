@@ -100,7 +100,10 @@
 
         btnRestoreTask.click(function (e){
           e.preventDefault();
-          console.log('Clickted')
+
+          let taskId = $(this).data('id');
+          restoreForm.action = '/task/' + taskId + '/restoreTask?_Method=PATCH';
+          restoreForm.submit();
         })
     });
 </script>
