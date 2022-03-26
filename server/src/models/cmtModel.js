@@ -8,9 +8,9 @@ const CmtSchema = new Schema(
       ref: 'accounts',
     },
     content: String,
-    
-    
   },
+
+  
   {
     collection: 'comments',
   },

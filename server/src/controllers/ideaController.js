@@ -1,13 +1,15 @@
+const Comment = require('../models/cmtModel');
 const Idea = require('../models/ideaModel');
-const Comment = require('../models/cmtModel')
+
+
 
 class ideaController {
   //[GET] /idea/detail/:slug
-   detail(req, res, next) {
-    
-    Idea.findOne({ slug: req.params.slug })
+  detail(req, res, next) {
+    const commments = Comment.find({});
+    Idea.findById({ _id: req.params.id}).lean().populate('comments','content')
       .then((ideas) => {
-        res.render('idea/detail', { ideas: ideas });
+        res.render('idea/detail',{ ideas:ideas });
       })
       .catch(next);
   }
@@ -70,9 +72,12 @@ class ideaController {
       .then(() => res.redirect('back'))
       .catch(next);
   }
-
+  
+  
   //[DELETE] /idea/:id/forceDeleteIdea
   forceDeleteIdea(req, res, next) {}
-}
+};
+
+  
 
 module.exports = new ideaController();
