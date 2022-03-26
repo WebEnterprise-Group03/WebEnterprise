@@ -26,6 +26,34 @@ class taskController {
     });
   }
 
+  //[GET] /task/:id/updateTask
+  async updateTask(req,res,next){
+    const categories = await Category.find({}).lean();
+    Task.findById(req.params.id)
+      .then((tasks) =>{
+        res.render('task/updateTask', {
+          tasks: tasks,
+          categories: categories
+        });
+      })
+      .catch(next)
+  }
+
+  //[PUT] /task/:id
+  async update(req,res,next){
+    const title = req.body.title;
+    const day = req.body.day;
+    const endTime = req.body.endTime;
+    const duration = req.body.duration;
+    const ideaCategory = await Category.findOne({name: req.body.ideaCategory});
+    const description = req.body.description;
+    const slug = req.body.slug;
+
+    Task.updateOne({ _id: req.body._id }, { title: title, day: day, endTime: endTime, duration: duration, ideaCategory: ideaCategory._id, description: description, slug: slug })
+      .then(() => res.redirect('/task/listTask'))
+      .catch(next)
+  }
+
   //[POST] /task/storeTask
   async storeTask(req, res, next) {
     const endTime = new Date();
@@ -91,7 +119,9 @@ class taskController {
   }
 
   restoreTask(req,res,next){
-
+    Task.restore({ _id: req.params.id })
+      .then(() => res.redirect('back'))
+      .catch(next);
   }
 }
 
