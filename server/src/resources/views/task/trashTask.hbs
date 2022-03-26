@@ -71,7 +71,7 @@
 
 <script language="JavaScript">
     document.addEventListener('DOMContentLoaded', function (){
-        let ideaID;
+        let taskID;
         let deleteForm = document.forms['delete-task-form'];
         let btnDeleteTask = document.getElementById('btn-delete-task');
         let restoreForm = document.forms['restore-task-form'];
@@ -80,24 +80,16 @@
         //When confirm clicked
         $('#delete-task').on('show.bs.modal', function (event) {
             let button = $(event.relatedTarget)
-            ideaID = button.data('id');
+            taskID = button.data('id');
         })
 
         //Delete forever task
         btnDeleteTask.onclick = function (){
-            deleteForm.action = '/task/' + ideaID + '/force?_Method=DELETE';
+            deleteForm.action = '/task/' + taskID + '/force?_Method=DELETE';
             deleteForm.submit();
         }
 
         //Restore task
-        // btnRestoreTask.onclick = function (e){
-        //   e.preventDefault();
-        //
-        //   let taskId = $(this).data('id');
-        //   restoreForm.action = '/task/' + taskId + '/restoreTask?_Method=PATCH';
-        //   restoreForm.submit();
-        // }
-
         btnRestoreTask.click(function (e){
           e.preventDefault();
 

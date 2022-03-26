@@ -6,7 +6,6 @@ const Task = require('../models/taskModel');
 class ideaController {
   //[GET] /idea/detail/:slug
    detail(req, res, next) {
-    
     Idea.findOne({ slug: req.params.slug })
       .then((ideas) => {
         res.render('idea/detail', { ideas: ideas });
