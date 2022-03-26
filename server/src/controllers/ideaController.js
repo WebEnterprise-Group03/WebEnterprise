@@ -1,6 +1,7 @@
 const Comment = require('../models/cmtModel');
 const Idea = require('../models/ideaModel');
-
+const Category = require('../models/ideaCategoryModel');
+const Task = require('../models/taskModel');
 
 
 class ideaController {
@@ -15,11 +16,14 @@ class ideaController {
   }
 
   //[GET] /idea/create
-  create(req, res, next) {
-    res.render('idea/create');
+  async create(req, res, next) {
+    const tasks = await Task.find({}).lean();
+    res.render('idea/create', {
+      tasks: tasks
+    });
   }
 
-  store(req, res, next) {
+  async store(req, res, next) {
     const formData = {
       title: req.body.title,
       description: req.body.description,
@@ -27,8 +31,17 @@ class ideaController {
       image: req.body.image,
       file: req.file.originalname,
     };
+    const task = await Task.findOne({ title: req.body.tasks });
+    if (!task){
+      return res.render('idea/create',{
+        error: true,
+        message: 'Task does not exist!',
+      })
+    }
+
+    formData.tasks = task._id;
     const idea = new Idea(formData);
-    idea
+    await idea
       .save()
       .then(() => {
         res.redirect('/main/show');
@@ -76,8 +89,20 @@ class ideaController {
   
   //[DELETE] /idea/:id/forceDeleteIdea
   forceDeleteIdea(req, res, next) {}
-};
 
-  
+    async listTask(req,res,next){
+    const ideaCategory = await Category.find({});
+    await Task.find({ ideaCategory })
+      .lean()
+      .populate('ideaCategory', 'name', 'ideaCategories')
+      .then((task) => {
+        res.render('idea/listTask', {
+          task: task,
+        });
+      })
+      .catch(next);
+  }
+}
+
 
 module.exports = new ideaController();

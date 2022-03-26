@@ -1,7 +1,7 @@
 <div class="container">
     <div>
-        <h3>My course</h3>
-            <a href="/task/trashTask">Restore</a>
+        <a href="/task/listTask">My Task</a>
+        <h3>Task Deleted</h3>
         <br>
     </div>
     <table class="table">
@@ -18,7 +18,7 @@
         </tr>
         </thead>
         <tbody>
-        {{#each task}}
+        {{#each tasks}}
             <tr>
                 <th scope="row">{{sum @index 1}}</th>
                 <td>{{this.title}}</td>
@@ -28,61 +28,61 @@
                 <td>{{this.slug}}</td>
                 <td>{{this.ideaCategory.name}}</td>
                 <td>
-                    <button type="button" class="btn btn-info"><a href="/idea/{{this._id}}/update" style="color: white">Update</a></button>
-                    <button type="button" class="btn btn-info"><a href="" style="color: white" data-id="{{this._id}}" data-toggle="modal" data-target="#delete-idea">Delete</a></button>
+                    <button type="button" class="btn btn-info"><a href="" style="color: white" data-id="{{this._id}}">Restore</a></button>
+                    <button type="button" class="btn btn-info"><a href="" style="color: white" data-id="{{this._id}}" data-toggle="modal" data-target="#delete-task">Delete Forever</a></button>
                 </td>
             </tr>
-
         {{else}}
-        <tr>
-            <td colspan="8">
-                You don't have any task.
-                <a href="/task/createTask">Create a task</a>
-            </td>
-        </tr>
+            <tr>
+                <td colspan="8">
+                    You don't have any task.
+<!--                    <a href="/task/listTask">Delete a task</a>-->
+                </td>
+            </tr>
         {{/each}}
         </tbody>
     </table>
 </div>
 
 
-<div class="modal fade" id="delete-idea" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+<div class="modal fade" id="delete-task" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
     <div class="modal-dialog">
         <div class="modal-content">
             <div class="modal-header">
-                <h5 class="modal-title" id="exampleModalLabel">Delete Idea</h5>
+                <h5 class="modal-title" id="exampleModalLabel">Delete Task</h5>
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                     <span aria-hidden="true">&times;</span>
                 </button>
             </div>
             <div class="modal-body">
-                Do you want to delete this idea?
+                Do you want to delete forever this task?
             </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                <button id="btn-delete-idea" type="button" class="btn btn-primary">Delete Idea</button>
+                <button id="btn-delete-task" type="button" class="btn btn-primary">Delete Forever</button>
             </div>
         </div>
     </div>
 </div>
 
+<form name="delete-task-form" method="POST"></form>
+<form name="restore-task-form" method="POST"></form>
 
-<form name="delete-idea-form" method="POST"></form>
 
 <script language="JavaScript">
     document.addEventListener('DOMContentLoaded', function (){
         let ideaID;
-        let deleteForm = document.forms['delete-idea-form'];
-        let btnDeleteIdea = document.getElementById('btn-delete-idea');
+        let deleteForm = document.forms['delete-task-form'];
+        let btnDeleteIdea = document.getElementById('btn-delete-task');
 
         //When confirm clicked
-        $('#delete-idea').on('show.bs.modal', function (event) {
+        $('#delete-task').on('show.bs.modal', function (event) {
             let button = $(event.relatedTarget)
             ideaID = button.data('id');
         })
 
         btnDeleteIdea.onclick = function (){
-            deleteForm.action = '/task/' + ideaID + '?_Method=DELETE';
+            deleteForm.action = '/task/' + ideaID + '/force?_Method=DELETE';
             deleteForm.submit();
         }
     });

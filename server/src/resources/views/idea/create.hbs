@@ -1,8 +1,12 @@
 <div class="mt-4">
-    <h3>List Idea</h3>
+    <h3>Create Idea</h3>
+
+    {{#if error}}
+        <p class="danger">{{message}}</p>
+    {{/if}}
 
     <form  method="POST" action="/idea/store" enctype="multipart/form-data">
-        <div class="form-group" >
+        <div class="form-group">
             <label for="title">Title</label>
             <input type="text" class="form-control" id="title" name="title" required>
         </div>
@@ -22,6 +26,18 @@
             <input type="file" class="form-control" id="file" name="file" >
         </div>
 
+        <div class="input-group mb-3">
+            <div class="input-group-prepend">
+                <label class="input-group-text" for="tasks">Options</label>
+            </div>
+            <select name="tasks" class="custom-select" id="tasks">
+                <option selected>Choose...</option>
+                {{#each tasks}}
+                    <option value={{title}}>{{title}}</option>
+                {{/each}}
+            </select>
+        </div>
+
         <div class="form-group">
             <label for="slug">Slug</label>
             <input type="text" class="form-control" id="slug" name="slug">
@@ -29,13 +45,10 @@
         <br>
          <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#Addidea">
          Add Idea
-        </button>   
-
-    
+        </button>
 
 
-
-    <!-- Modal -->
+<!-- Modal -->
   <!-- Modal -->
 <div class="modal fade" id="Addidea" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
   <div class="modal-dialog" role="document">
@@ -58,5 +71,5 @@
   </div>
 </div>
 
+    </form>
 </div>
-</form>
