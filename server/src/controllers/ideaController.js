@@ -6,14 +6,9 @@ const Task = require('../models/taskModel');
 
 class ideaController {
   //[GET] /idea/detail/:slug
-<<<<<<< HEAD
   detail(req, res, next) {
     const commments = Comment.find({});
     Idea.findById({ _id: req.params.id}).lean().populate('comments','content')
-=======
-   detail(req, res, next) {
-    Idea.findOne({ slug: req.params.slug })
->>>>>>> c1337a7b7a411000c6bfc74bea8c07fb9c08f34a
       .then((ideas) => {
         res.render('idea/detail',{ ideas:ideas });
       })
