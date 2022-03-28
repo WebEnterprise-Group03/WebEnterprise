@@ -1,6 +1,7 @@
 const express = require('express');
 const router = express.Router();
 const AuthController = require('../controllers/authController');
+const VerifySignUp = require('../middlewares/verifySignUp');
 
 router.get('/registerPage', AuthController.registerPage);
 router.post('/register', AuthController.register);

@@ -1,7 +1,7 @@
 <div>
     UserName:<input type="text" id="username"><br>
     PassWord:<input type="text" id="password"><br>
-    FullName:<input type="text" id="fullname"><br>
+    FullName:<input type="text" id="fullName"><br>
     Phone:<input type="text" id="phone"><br>
     Email:<input type="text" id="email"><br>
     Gender:<input type="text" id="gender"><br>
@@ -10,25 +10,84 @@
 </div>
 
 <script>
-    function register(){
-      $.ajax({
-          url:'/auth/register',
-          method:'POST',
-          data:{
-              username: $('#username').val(),
-              password: $('#password').val(),
-              fullName: $('#fullname').val(),
-              phone: $('#phone').val(),
-              email: $('#email').val(),
-              gender: $('#gender').val(),
-              role: $('#role').val(),
-          },
-          success:function (){
-            alert('You have created ');
-          },
-          error: function (){
-            alert('access failure');
-          }
-      });
-    }
+    // Disable form submissions if there are invalid fields
+    (function() {
+        'use strict';
+        window.addEventListener('load', function() {
+            // Get the forms we want to add validation styles to
+            var forms = document.getElementsByClassName('needs-validation');
+            // Loop over them and prevent submission
+            var validation = Array.prototype.filter.call(forms, function(form) {
+                form.addEventListener('submit', function(event) {
+                    if (form.checkValidity() === false) {
+                        event.preventDefault();
+                        event.stopPropagation();
+                    }
+                    form.classList.add('was-validated');
+                }, false);
+            });
+        }, false);
+    })();
+
+        function register(){
+          $.ajax({
+              url:'/auth/register',
+              method:'POST',
+              data:{
+                  username: $('#username').val(),
+                  password: $('#password').val(),
+                  fullName: $('#fullName').val(),
+                  phone: $('#phone').val(),
+                  email: $('#email').val(),
+                  gender: $('#gender').val(),
+                  role: $('#role').val(),
+              },
+              success:function (){
+                  alert('You was registered successfully');
+                  location.assign('/');
+              },
+              error: function (){
+                alert('Access failure');
+              }
+          });
+        }
+
 </script>
+
+
+
+<!--<div>-->
+<!--    UserName:<input type="text" id="username"><br>-->
+<!--    PassWord:<input type="text" id="password"><br>-->
+<!--    FullName:<input type="text" id="fullname"><br>-->
+<!--    Phone:<input type="text" id="phone"><br>-->
+<!--    Email:<input type="text" id="email"><br>-->
+<!--    Gender:<input type="text" id="gender"><br>-->
+<!--    Role:<input type="text" id="role"><br>-->
+<!--    <button onclick="register()">Register</button>-->
+<!--</div>-->
+
+<!--<script>-->
+<!--    function register(){-->
+<!--      $.ajax({-->
+<!--          url:'/auth/register',-->
+<!--          method:'POST',-->
+<!--          data:{-->
+<!--              username: $('#username').val(),-->
+<!--              password: $('#password').val(),-->
+<!--              fullName: $('#fullname').val(),-->
+<!--              phone: $('#phone').val(),-->
+<!--              email: $('#email').val(),-->
+<!--              gender: $('#gender').val(),-->
+<!--              role: $('#role').val(),-->
+<!--          },-->
+<!--          success:function (){-->
+<!--              alert('You was registered successfully');-->
+<!--              location.assign('/main/show');-->
+<!--          },-->
+<!--          error: function (){-->
+<!--            alert('Access failure');-->
+<!--          }-->
+<!--      });-->
+<!--    }-->
+<!--</script>-->

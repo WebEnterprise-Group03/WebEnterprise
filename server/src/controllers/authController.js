@@ -23,8 +23,8 @@ class authController {
     })
       .then((data) => {
         if (data) {
-          alert('User nay da ton tai');
-          // res.json('User nay da ton tai');
+          // alert('User nay da ton tai');
+          res.json('User nay da ton tai');
         } else {
           return Account.create({
             username: username,
@@ -74,7 +74,7 @@ class authController {
         } else {
           return res.json('Thap bai');
         }
-      },res.redirect('/main/show'))
+      })
       .catch((err) => {
         res.status(500).json('Loi server', err);
       });
@@ -84,7 +84,7 @@ class authController {
   logout(req, res) {
     try {
       // res.clearCookie('jwt');
-      res.cookie('jwt', '', { maxAge: 1 });
+      res.cookie('token', '', { maxAge: 1 });
       // console.log('logout succesfull');
       res.redirect('/');
     } catch (error) {

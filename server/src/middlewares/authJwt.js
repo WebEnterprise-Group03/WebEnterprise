@@ -20,7 +20,27 @@ class authJwt {
         })
         .catch((err) => {});
     } catch (error) {
-      res.status(500).json('Token khong hop le');
+      
+      res.redirect('back')
+    }
+  }
+
+  checkCurrentUser(req, res, next) {
+    let token = req.cookies.token;
+    if (token) {
+      jwt.verify(token, KEY, async (err, decodedToken) => {
+        if (err) {
+          res.locals.account = null;
+          next();
+        } else {
+          let account = await Account.findById(decodedToken.id);
+          res.locals.account = account;
+          next();
+        }
+      });
+    } else {
+      res.locals.account = null;
+      next();
     }
   }
 }

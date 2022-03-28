@@ -1,0 +1,71 @@
+<div class="mt-4">
+
+<h2>Category</h2>
+
+ {{#each categories }}
+        <div class="col">
+            <div class="p-3 border bg-light">
+                <a>{{this.description}}</a>
+                <p>{{this.name}}</p>
+               <button type="button" class="btn btn-primary" data-toggle="modal" data-id="{{this._id}}" data-target="#DeleteCategory">
+              Delete
+               </button>   
+             </div>
+              
+        </div>
+{{/each}}   
+{{!--confirm--}}
+<!-- Modal -->
+<div class="modal fade" id="DeleteCategory" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">DeleteIdea</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <h1>You wanto delete category</h1>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+        <button type="submit" id="btn-deletecategory" class="btn btn-primary">Delete</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+    </div>
+  </div>
+</div>
+
+  </div>
+</div>
+</body>
+</div>
+
+{{!--Hidend form--}}
+<form name="DeleteForm" method="POST"></form>
+
+<script language="JavaScript">
+ 
+  document.addEventListener('DOMContentLoaded',function(){
+  var categoryID;
+  var deleletForm = document.forms['DeleteForm']
+  var btnDelete = document.getElementById('btn-deletecategory');
+
+  $('#DeleteCategory').on('show.bs.modal', function (event) {
+
+  var button = $(event.relatedTarget) ;
+  categoryID = button.data('id') ;
+
+});
+    btnDelete.onclick = function() {
+    deleletForm.action= '/category/' + categoryID +'?_Method=DELETE';
+    deleletForm.submit();
+  }
+});
+</script>
+

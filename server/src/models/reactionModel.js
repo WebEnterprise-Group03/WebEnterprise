@@ -1,17 +1,16 @@
 const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
 
-const ContactSchema = new Schema(
+const ReactionSchema = new Schema(
   {
     like: Number,
     dislike: Number,
-    comment: String,
   },
   {
-    collection: 'contacts',
+    collection: 'reactions',
   },
   {
     timestamp: true,
   },
 );
-module.exports = mongoose.model('contacts', ContactSchema);
+module.exports = mongoose.model('reactions', ReactionSchema);

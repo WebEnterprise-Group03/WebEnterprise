@@ -1,21 +1,127 @@
-<nav class="navbar navbar-expand-md navbar-dark bg-dark mb-4">
-    <div class="container-fluid">
-        <a class="navbar-brand" href="/">Idea Enterprise</a>
-        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarTogglerDemo02" aria-controls="navbarTogglerDemo02" aria-expanded="false" aria-label="Toggle navigation">
-            <span class="navbar-toggler-icon"></span>
-        </button>
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+    <a class="navbar-brand" href="">Idea Enterprise</a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+    </button>
+
+    {{#if home}}
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <ul class="navbar-nav mr-auto">
+            <li class="nav-item active">
+                <a class="nav-link" href="/about">About</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="/forTeam">For Team</a>
+            </li>
+        </ul>
+        <form class="form-inline my-2 my-lg-0">
+            <button class="btn btn-outline-success my-2 my-sm-0" type="submit"><a href="/auth/loginPage">Login</a></button>
+        </form>
+    </div>
+    {{/if}}
+
+    {{#ifCond check "===" "admin"}}
+        <a class="navbar-brand" href="/main/show">Home</a>
         <div class="collapse navbar-collapse" id="navbarTogglerDemo02">
             <ul class="navbar-nav me-auto mb-2 mb-lg-0">
                 <li class="nav-item">
-                    <a class="nav-link" href="/about">About</a>
+                    <a class="nav-link" href="/auth/registerPage">Create new account</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="/forTeam">For Team</a>
+                    <a class="nav-link" href="/task/listTask">List Task</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="/task/createTask">Create New Task</a>
                 </li>
             </ul>
-            <form class="d-flex">
-                <a href="/auth/loginPage" class="btn btn-secondary btn-lg active" role="button" aria-pressed="true"> Login </a>
-            </form>
         </div>
-    </div>
+        <div class="dropdown">
+            <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenu2" data-toggle="dropdown" aria-expanded="false">
+                <img src="https://i.pinimg.com/564x/04/d3/e7/04d3e74c4f9137c8041a1dc6c386d469.jpg" class="account-avatar">
+            </button>
+            <div class="dropdown-menu" aria-labelledby="dropdownMenu2">
+                <button class="dropdown-item" type="button">Action</button>
+                <button class="dropdown-item" type="button">Another action</button>
+                <button class="dropdown-item" type="button"><a href="/auth/logout">Logout</a></button>
+            </div>
+        </div>
+    {{/ifCond}}
+
+    {{#ifCond check "===" "staff"}}
+        <a class="navbar-brand" href="/main/show">Home</a>
+        <div class="collapse navbar-collapse" id="navbarTogglerDemo02">
+            <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                <li class="nav-item">
+                    <a class="nav-link" href="/idea/create">Submit doc</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="/idea/listTask">List Task</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="">For Staff</a>
+                </li>
+            </ul>
+        </div>
+        <div class="dropdown">
+            <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenu2" data-toggle="dropdown" aria-expanded="false">
+                <img src="https://i.pinimg.com/564x/04/d3/e7/04d3e74c4f9137c8041a1dc6c386d469.jpg" class="account-avatar">
+            </button>
+            <div class="dropdown-menu" aria-labelledby="dropdownMenu2">
+                <button class="dropdown-item" type="button">Action</button>
+                <button class="dropdown-item" type="button">Another action</button>
+                <button class="dropdown-item" type="button"><a href="/auth/logout">Logout</a></button>
+            </div>
+        </div>
+    {{/ifCond}}
+
+    {{#ifCond check "===" "manager"}}
+        <a class="navbar-brand" href="/main/show">Home</a>
+        <div class="collapse navbar-collapse" id="navbarTogglerDemo02">
+            <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                <li class="nav-item">
+                    <a class="nav-link" href="/idea/storedIdeas">Manage Idea</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="/category/view">Manage Category</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="*">Chart</a>
+                </li>
+            </ul>
+        </div>
+        <div class="dropdown">
+            <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenu2" data-toggle="dropdown" aria-expanded="false">
+                <img src="https://i.pinimg.com/564x/04/d3/e7/04d3e74c4f9137c8041a1dc6c386d469.jpg" class="account-avatar">
+            </button>
+            <div class="dropdown-menu" aria-labelledby="dropdownMenu2">
+                <button class="dropdown-item" type="button">Action</button>
+                <button class="dropdown-item" type="button">Another action</button>
+                <button class="dropdown-item" type="button"><a href="/auth/logout">Logout</a></button>
+            </div>
+        </div>
+    {{/ifCond}}
+
+    {{#ifCond check "===" "coordinator"}}
+        <a class="navbar-brand" href="/main/show">Home</a>
+        <div class="collapse navbar-collapse" id="navbarTogglerDemo02">
+            <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                <li class="nav-item">
+                    <a class="nav-link" href="">Coordinator</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="">For Coordinator</a>
+                </li>
+            </ul>
+        </div>
+        <div class="dropdown">
+            <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenu2" data-toggle="dropdown" aria-expanded="false">
+                <img src="https://i.pinimg.com/564x/04/d3/e7/04d3e74c4f9137c8041a1dc6c386d469.jpg" class="account-avatar">
+            </button>
+            <div class="dropdown-menu" aria-labelledby="dropdownMenu2">
+                <button class="dropdown-item" type="button">Action</button>
+                <button class="dropdown-item" type="button">Another action</button>
+                <button class="dropdown-item" type="button"><a href="/auth/logout">Logout</a></button>
+            </div>
+        </div>
+    {{/ifCond}}
 </nav>

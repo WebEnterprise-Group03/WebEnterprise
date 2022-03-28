@@ -22,8 +22,17 @@ const hbs = create({
   defaultLayout: 'main',
   handlebars: allowInsecurePrototypeAccess(Handlebars),
   helpers: {
-    inc(value) {
-      return parseInt(value) + 1;
+    sum: (a, b) => a + b,
+    ifCond: (v1, opr, v2, opt) => {
+      switch (opr) {
+        case '===':
+          if (v1 === v2) return opt.fn(this);
+          break;
+
+        case '!==':
+          if (v1 !== v2) return opt.fn(this);
+          break;
+      }
     },
   },
 });
@@ -34,7 +43,7 @@ app.set('views', path.join(__dirname, 'resources', 'views'));
 
 app.use(cookieParser());
 
-app.use(methodOverride('_method'));
+app.use(methodOverride('_Method'));
 
 app.use(express.static(path.join(__dirname, 'publics')));
 

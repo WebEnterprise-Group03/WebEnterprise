@@ -1,40 +1,33 @@
-<div>
-	<div class="container">
-		<div class="login-content">
-			<form action="index.html">
-           		<div class="input-div one">
-           		   <div class="i">
-           		   		<i class="fas fa-user"></i>
-           		   </div>
-           		   <div class="div">
-           		   		<h5>Username</h5>
-           		   		<input type="text" class="input">
-           		   </div>
-           		</div>
-           		<div class="input-div pass">
-           		   <div class="i"> 
-           		    	<i class="fas fa-lock"></i>
-           		   </div>
-           		   <div class="div">
-           		    	<h5>Password</h5>
-						<span class="show-btn"><i class="fas fa-eye"></i></span>
-           		    	<input type="password" class="input" required>
-            	   </div>
-            	</div>
-            </form>
+    <div>
+        <div class="input-div one">
+            <div class="i">
+                <i class="fas fa-user"></i>
+            </div>
+            <div class="div">
+                <h5>Username</h5>
+                <input id="username" type="text" class="input" name="username">
+            </div>
         </div>
+        <div class="input-div pass">
+            <div class="i">
+                <i class="fas fa-lock"></i>
+            </div>
+            <div class="div">
+                <h5>Password</h5>
+                <span class="show-btn"><i class="fas fa-eye"></i></span>
+                <input id="password" type="password" class="input" name="password" required>
+            </div>
+        </div>
+        <button id="btn-login" class="btn" type="submit">Submit</button>
     </div>
-    <button onclick="login()">Submit</button>
-</div>
-
 <script>
+    let isAuthenticated = false;
     function setCookie(cname, cvalue, exdays) {
         const d = new Date();
         d.setTime(d.getTime() + (exdays*24*60*60*1000));
         let expires = "expires="+ d.toUTCString();
         document.cookie = cname + "=" + cvalue + ";" + expires + ";path=/";
     }
-
     function getCookie(cname) {
         let name = cname + "=";
         let decodedCookie = decodeURIComponent(document.cookie);
@@ -50,21 +43,27 @@
         }
         return "";
     }
+
+    document.addEventListener('DOMContentLoaded', function (){
+      let btnLogin = document.getElementById('btn-login')
+
+        btnLogin.onclick = function (){
+            $.ajax({
+                url: '/auth/login',
+                method: 'POST',
+                data: {
+                    username: $('#username').val(),
+                    password: $('#password').val(),
+                }
+            })
+                    .then(data=>{
+                        setCookie('token', data.token, 1);
+                        location.assign('/main/show');
+                    })
+                    .catch(err=>{
+                        console.log(err);
+                    })
+        }
+    })
     
-    function login(){
-        $.ajax({
-            url: '/auth/login',
-            method: 'POST',
-            data: {
-                username: $('#username').val(),
-                password: $('#password').val(),
-            }
-        })
-                .then(data=>{
-                    setCookie('token', data.token, 1);
-                })
-                .catch(err=>{
-                    console.log(err);
-                })
-    }
 </script>

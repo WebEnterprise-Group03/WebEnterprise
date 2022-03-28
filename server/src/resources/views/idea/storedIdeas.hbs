@@ -1,0 +1,102 @@
+<div class="container">
+    <table class="table">
+        <thead class="thead-dark">
+        <tr>
+            <th scope="col">#</th>
+            <th scope="col">Title</th>
+            <th scope="col">Description</th>
+            <th scope="col">Image</th>
+            <th scope="col">Slug</th>
+            <th scope="col">Action</th>
+        </tr>
+        </thead>
+        <tbody>
+        {{#each ideas}}
+            <tr>
+                <th scope="row">{{sum @index 1}}</th>
+                <td>{{this.title}}</td>
+                <td>{{this.description}}</td>
+                <td>
+                    <img class="rounded float-right idea-image" src="{{this.image}}">
+                </td>
+                <td>{{this.slug}}</td>
+                <td>
+                    <button type="button" class="btn btn-info"><a href="/idea/{{this._id}}/update" style="color: white">Update</a></button>
+                    <button type="button" class="btn btn-info"><a href="" style="color: white" data-id="{{this._id}}" data-toggle="modal" data-target="#delete-idea">Delete</a></button>
+                </td>
+            </tr>
+        {{/each}}
+        </tbody>
+    </table>
+
+    <div class="pagenumbers" id="pagination"></div>
+</div>
+
+
+<div class="modal fade" id="delete-idea" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">Delete Idea</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                Do you want to delete this idea?
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                <button id="btn-delete-idea" type="button" class="btn btn-primary">Delete Idea</button>
+            </div>
+        </div>
+
+    </div>
+  </div>
+</div>
+
+
+<form name="delete-idea-form" method="POST"></form>
+
+<script language="JavaScript">
+    document.addEventListener('DOMContentLoaded', function (){
+        let ideaID;
+        let deleteForm = document.forms['delete-idea-form'];
+        let btnDeleteIdea = document.getElementById('btn-delete-idea');
+
+        //When confirm clicked
+        $('#delete-idea').on('show.bs.modal', function (event) {
+            let button = $(event.relatedTarget)
+            ideaID = button.data('id');
+        })
+
+        btnDeleteIdea.onclick = function (){
+            deleteForm.action = '/idea/' + ideaID + '?_Method=DELETE';
+            deleteForm.submit();
+        }
+    });
+</script>
+
+
+{{!pagination}}
+<script>
+    const listItem = ideas;
+    const paginationElement = document.getElementById('pagination');
+    let current_page =1 ;
+    let row = 5;
+
+    function Displaylist(idea,wrapper,row_per_page,page){
+        wrapper.innerHTML="";
+        page--;
+        let loop_start = row_per_page *page;
+        let paginatedIdea = idea.slice(loop_start,loop_start+ row_per_page);
+        console.log(paginatedIdea);
+        for(let i =loop_start; i <loop_start + row_per_page, i++)
+        {
+
+        }
+    }
+    Displaylist(List)
+
+</script>
+

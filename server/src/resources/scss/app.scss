@@ -1,8 +1,27 @@
-html, body {
+html,
+body {
   height: 100%;
   margin: 0;
 }
 
-.form-body{
+.form-body {
   height: 1000px;
+}
+
+.account-avatar {
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  margin-right: 4px;
+}
+
+.idea-image {
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  margin-right: 4px;
+}
+
+.dropdown {
+  margin-right: 4px;
 }

@@ -1,6 +1,6 @@
 const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
-
+const comment = require('./cmtModel')
 const AccountSchema = new Schema(
   {
     username: {
@@ -35,10 +35,14 @@ const AccountSchema = new Schema(
       type: String,
       required: true,
     },
-    avatar: {
-      type: String,
-      required: false,
-    },
+    // avatar: {
+    //   type: String,
+    //   required: false,
+    // },
+    // role: {
+    //   type: mongoose.Schema.Types.ObjectId,
+    //   ref: 'roles',
+    // },
   },
   {
     collection: 'accounts',
