@@ -1,6 +1,8 @@
 const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
-const comment = require('./cmtModel')
+const comment = require('./cmtModel');
+const mongoose_delete = require('mongoose-delete');
+
 const AccountSchema = new Schema(
   {
     username: {
@@ -48,4 +50,10 @@ const AccountSchema = new Schema(
     collection: 'accounts',
   },
 );
+AccountSchema.plugin(mongoose_delete, {
+  deleteAt: true,
+  overrideMethods: 'all',
+});
+
+
 module.exports = mongoose.model('accounts', AccountSchema);

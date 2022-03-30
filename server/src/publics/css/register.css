@@ -9,11 +9,7 @@
   background-size: cover;
   margin: 30px auto;
   border-radius: 20px;
-<<<<<<< Updated upstream
   background-color: #676175; }
-=======
-  background-color: #383838; }
->>>>>>> Stashed changes
 
 .register .form {
   width: 100%;
@@ -54,7 +50,7 @@ select {
   box-sizing: border-box;
   border-radius: 5px;
   background: rgba(255, 255, 255, 0.5);
-  color: #fcf9f9; }
+  color: #070707; }
 
 .box {
   padding-bottom: 10px; }

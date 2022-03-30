@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 <div class="banner-left">
     <div class="choose">  
         <ul>
@@ -12,23 +11,23 @@
             <li>
                 <a href="#">
                     <span class="icon"><ion-icon name="help-outline"></ion-icon></span>
-                    <span class="title" onclick="questionList()">Questions</span>
+                    <span class="title" onclick="questionList()">Ideas</span>
                 </a>
             </li>
-            <li>
-                <a href="#">
-                    <span class="icon"><ion-icon name="person-outline"></ion-icon></span>
-                    <span class="title" onclick="profileList()">Profile</span>
-                </a>
-            </li>
-            {{!-- <li>
-                <a href="#">
-                    <span class="icon"><ion-icon name="person-outline"></ion-icon></span>
-                    <span class="title" onclick="userList()">User</span>    
-                </a>
-            </li> --}}
+<!--            <li>-->
+<!--                <a href="#">-->
+<!--                    <span class="icon"><ion-icon name="person-outline"></ion-icon></span>-->
+<!--                    <span class="title" onclick="profileList()">Profile</span>-->
+<!--                </a>-->
+<!--            </li>-->
             {{#ifCond check "===" "admin"}}
             <h2>Admin</h2>
+            <li>
+                <a href="/auth/listAccount">
+                        <span class="icon"><ion-icon name="list-outline"></ion-icon></span>
+                    <span class="title">Manage account</span>
+                </a>
+            </li>
             <li>
                 <a href="/auth/registerPage">
                     <span class="icon"><ion-icon name="person-add-outline"></ion-icon></span>
@@ -57,11 +56,53 @@
                 </a>
             </li>
             <li>
+                <a href="/idea/listTask">
+                    <span class="icon"><ion-icon name="receipt-outline"></ion-icon></span>
+                    <span class="title">List Task</span>
+                </a>
+            </li>
+            <li>
                 <a href="#">
                     <span class="icon"><ion-icon name="people-outline"></ion-icon></span>
                     <span class="title">For Staff</span>
                 </a>
             </li>
+            {{/ifCond}}
+            {{#ifCond check "===" "manager"}}
+                <h2>Manager</h2>
+                <li>
+                    <a href="/idea/storedIdeas">
+                        <span class="icon"><ion-icon name="albums-outline"></ion-icon></span>
+                        <span class="title">Manage Idea</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="/category/view">
+                        <span class="icon"><ion-icon name="copy-outline"></ion-icon></span>
+                        <span class="title">Manage Category</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="#">
+                        <span class="icon"><ion-icon name="bar-chart-outline"></ion-icon></span>
+                        <span class="title">Chart</span>
+                    </a>
+                </li>
+            {{/ifCond}}
+            {{#ifCond check "===" "coordinator"}}
+                <h2>Coordinator</h2>
+                <li>
+                    <a href="">
+                        <span class="icon"></span>
+                        <span class="title" href="#">Manage Category</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="">
+                        <span class="icon"></span>
+                        <span class="title" href="#">For Coordinator </span>
+                    </a>
+                </li>
             {{/ifCond}}
             <li>
                 <a href="/auth/logout" class="lout">
@@ -87,7 +128,7 @@
             <div id="listquestion">   
                 {{#each ideas}}
                 <div class="list-idea">
-                    <a href="/idea/detail/{{this.slug}}" class="list-group-item list-group-item-action">
+                    <a href="/idea/detail/{{this._id}}" class="list-group-item list-group-item-action">
                         <div class="d-flex w-100 justify-content-between">
                             <h5 class="mb-1">{{this.title}}</h5>
                             <small class="text-muted">Time</small>
@@ -130,22 +171,3 @@
 </script>
 <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
 <script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
-{{!-- <div class="container" id="listquestion">   
-    {{#each ideas}}
-    <div class="list-group">
-        <a href="/idea/detail/{{this.slug}}" class="list-group-item list-group-item-action">
-            <div class="d-flex w-100 justify-content-between">
-                <h5 class="mb-1">{{this.title}}</h5>
-                <small class="text-muted">Time</small>
-            </div>
-            <p class="mb-1">
-                {{this.description}}
-            </p>
-            <small class="text-muted">Reaction.</small>
-        </a>
-    </div>
-        <br>
-    {{/each}}
-</div> --}}
-=======
->>>>>>> e11111332e0565629f8affe67069d5144a816f8d

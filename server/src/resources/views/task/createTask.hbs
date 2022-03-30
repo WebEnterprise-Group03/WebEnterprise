@@ -1,60 +1,4 @@
-<<<<<<< HEAD
-<div class="banner-left">
-    <div class="choose">  
-        <ul>
-            <li>
-                <a href="#">
-                    <span class="icon"><ion-icon name="home-outline"></ion-icon></span>
-                    <span class="title">Home</span>
-                </a>
-            </li>
-            <h2>Public</h2>
-            <li>
-                <a href="#">
-                    <span class="icon"><ion-icon name="help-outline"></ion-icon></span>
-                    <span class="title" onclick="questionList()">Questions</span>
-                </a>
-            </li>
-            <li>
-                <a href="#">
-                    <span class="icon"><ion-icon name="person-outline"></ion-icon></span>
-                    <span class="title" onclick="profileList()">Profile</span>
-                </a>
-            </li>
-            {{!-- <li>
-                <a href="#">
-                    <span class="icon"><ion-icon name="person-outline"></ion-icon></span>
-                    <span class="title" onclick="userList()">User</span>    
-                </a>
-            </li> --}}
-            <h2>Admin</h2>
-            <li>
-                <a href="/auth/registerPage">
-                    <span class="icon"><ion-icon name="person-add-outline"></ion-icon></span>
-                    <span class="title">Create New Account</span>
-                </a>
-            </li>
-            <li>
-                <a href="/task/listTask">
-                    <span class="icon"><ion-icon name="list-outline"></ion-icon></span>
-                    <span class="title">List Task</span>
-                </a>
-            </li>
-            <li>
-                <a href="/task/createTask">
-                    <span class="icon"><ion-icon name="create-outline"></ion-icon></span>
-                    <span class="title">Create New Task</span>    
-                </a>
-            </li>
-            <li>
-                <a href="/auth/logout" class="lout">
-                    <span class="icon"><ion-icon name="log-out-outline"></ion-icon></span>
-                    <span class="title">Logout</span>    
-                </a>
-            </li>
-        </ul>
-    </div>
-    <div class="mt-4">
+<div class="mt-4">
     <h3>Create Task</h3>
 
     {{#if error}}
@@ -68,13 +12,18 @@
         </div>
 
         <div class="form-group">
-            <label for="description">Description</label>
-            <input type="text" class="form-control" id="description" name="description">
+            <label for="day">Day</label>
+            <input type="date" class="form-control" id="day" name="day">
         </div>
 
         <div class="form-group">
-            <label for="slug">Slug</label>
-            <input type="text" class="form-control" id="slug" name="slug">
+            <label for="end">End Time</label>
+            <input type="time" class="form-control" id="end" name="end">
+        </div>
+
+        <div class="form-group">
+            <label for="duration">Duration (Minutes)</label>
+            <input type="number" class="form-control" id="duration" name="duration">
         </div>
 
         <div class="input-group mb-3">
@@ -89,11 +38,17 @@
             </select>
         </div>
 
+        <div class="form-group">
+            <label for="description">Description</label>
+            <input type="text" class="form-control" id="description" name="description">
+        </div>
+
+        <div class="form-group">
+            <label for="slug">Slug</label>
+            <input type="text" class="form-control" id="slug" name="slug">
+        </div>
+
         <hr>
         <button type="submit" class="btn btn-primary">Add Task</button>
     </form>
-</div>  
-<script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
-<script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
-=======
->>>>>>> e11111332e0565629f8affe67069d5144a816f8d
+</div>

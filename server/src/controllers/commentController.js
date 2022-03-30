@@ -4,7 +4,6 @@ class cmtController {
 
     create(req, res, next) {
    const comment = new Comment(req.body);
-    
     comment
       .save()
       .then(() => Idea.findById( req.params.id))
@@ -18,8 +17,6 @@ class cmtController {
         res.send('Fail');
       });
   }
- 
-
   }
   module.exports = new cmtController();
 

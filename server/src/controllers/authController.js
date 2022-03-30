@@ -103,7 +103,31 @@ class authController {
   }
 
   deleteAccount(req,res,next){
+    Account.delete({ _id: req.params.id })
+      .then(() => res.redirect('back'))
+      .catch(next);
+  }
 
+  forceDeleteAccount(req,res,next){
+    Account.deleteOne({ _id: req.params.id })
+      .then(() => res.redirect('back'))
+      .catch(next);
+  }
+
+  trashAccount(req,res,next){
+    Account.findDeleted({})
+      .then((accounts)=>{
+        res.render('auth/trashAccount', {
+          accounts: accounts
+        })
+      })
+      .catch(next);
+  }
+
+  restoreAccount(req,res,next){
+    Account.restore({ _id: req.params.id })
+      .then(() => res.redirect('back'))
+      .catch(next);
   }
 
   //[GET] /auth/logout
