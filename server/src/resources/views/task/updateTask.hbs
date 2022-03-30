@@ -1,0 +1,54 @@
+<div class="mt-4">
+    <h3>Update Task</h3>
+
+    {{#if error}}
+        <p class="danger">{{message}}</p>
+    {{/if}}
+
+    <form method="POST" action="/task/{{tasks._id}}?_Method=PUT">
+        <div class="form-group">
+            <label for="title">title</label>
+            <input type="text" class="form-control" id="title" name="title" value="{{tasks.title}}">
+        </div>
+
+        <div class="form-group">
+            <label for="day">Day</label>
+            <input type="date" class="form-control" id="day" name="day" value="{{tasks.day}}">
+        </div>
+
+        <div class="form-group">
+            <label for="end">End Time</label>
+            <input type="time" class="form-control" id="end" name="end" value="{{tasks.endTime}}">
+        </div>
+
+        <div class="form-group">
+            <label for="duration">Duration (Minutes)</label>
+            <input type="number" class="form-control" id="duration" name="duration" value="{{tasks.duration}}">
+        </div>
+
+        <div class="input-group mb-3">
+            <div class="input-group-prepend">
+                <label class="input-group-text" for="ideaCategory">Options</label>
+            </div>
+            <select name="ideaCategory" class="custom-select" id="ideaCategory">
+                <option selected>Choose...</option>
+                {{#each categories}}
+                    <option value={{name}}>{{name}}</option>
+                {{/each}}
+            </select>
+        </div>
+
+        <div class="form-group">
+            <label for="description">Description</label>
+            <input type="text" class="form-control" id="description" name="description" value="{{tasks.description}}">
+        </div>
+
+        <div class="form-group">
+            <label for="slug">Slug</label>
+            <input type="text" class="form-control" id="slug" name="slug" value="{{tasks.slug}}">
+        </div>
+
+        <hr>
+        <button type="submit" class="btn btn-primary">Update Task</button>
+    </form>
+</div>

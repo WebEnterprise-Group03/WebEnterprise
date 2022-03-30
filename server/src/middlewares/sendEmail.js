@@ -4,7 +4,7 @@ class sendEmail {
   send(req, res, next) {
     const mailOptions = {
       from: 'tuhuu7165@gmail.com',
-      to: 'luongtdgch18814@fpt.edu.vn',
+      to: 'tudhgch18565@fpt.edu.vn',
       subject: 'The staff submitted the idea',
       text:
         'Dear Mr Coordinator ,\n' +

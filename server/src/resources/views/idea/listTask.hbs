@@ -1,0 +1,44 @@
+<div class="container">
+    <div>
+        <h3>My Task</h3>
+    </div>
+    <table class="table">
+        <thead class="thead-dark">
+        <tr>
+            <th scope="col">#</th>
+            <th scope="col">Title</th>
+            <th scope="col">DayTime</th>
+            <th scope="col">Duration</th>
+            <th scope="col">Description</th>
+            <th scope="col">Slug</th>
+            <th scope="col">IdeaCategory</th>
+            <th scope="col">Action</th>
+        </tr>
+        </thead>
+        <tbody>
+        {{#each task}}
+            <tr>
+                <th scope="row">{{sum @index 1}}</th>
+                <td>{{this.title}}</td>
+                <td>{{this.endTime}}</td>
+                <td>{{this.duration}}</td>
+                <td>{{this.description}}</td>
+                <td>{{this.slug}}</td>
+                <td>{{this.ideaCategory.name}}</td>
+                <td>
+                    <button type="button" class="btn btn-info"><a href="/idea/create" style="color: white">Apply Idea</a></button>
+                </td>
+            </tr>
+
+        {{else}}
+            <tr>
+                <td colspan="8">
+                    You don't have any task.
+                </td>
+            </tr>
+        {{/each}}
+        </tbody>
+    </table>
+</div>
+
+

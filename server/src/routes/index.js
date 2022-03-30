@@ -3,7 +3,7 @@ const site = require('./siteRoute');
 const auth = require('./authRoute');
 const idea = require('./ideaRoute');
 const category = require('./categoryRoute.js');
-const comment = require('./cmtRoute.js');
+
 const task = require('./taskRoute.js');
 
 

@@ -1,20 +1,19 @@
 const Comment = require('../models/cmtModel.js'); 
-
+const Idea = require('../models/ideaModel')
 class cmtController {
 
     create(req, res, next) {
-        res.render('cmt/create');
-      }
-
-    store(req, res, next) {
-    const comment = new Comment({
-      content: req.body.content,
-    });
+   const comment = new Comment(req.body);
+    
     comment
       .save()
-      .then(() => {
-        res.redirect("back")
+      .then(() => Idea.findById( req.params.id))
+      .then((idea) => {
+        idea.comments.unshift(comment);
+        return idea.save();
       })
+      .then(() => 
+      res.redirect('back'))
       .catch((error) => {
         res.send('Fail');
       });
