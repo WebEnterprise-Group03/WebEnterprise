@@ -28,7 +28,6 @@ class ideaController {
       title: req.body.title,
       description: req.body.description,
       slug: req.body.slug,
-      image: req.body.image,
       file: req.file.originalname,
     };
     const task = await Task.findOne({ title: req.body.tasks });

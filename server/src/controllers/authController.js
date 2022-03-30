@@ -80,6 +80,32 @@ class authController {
       });
   }
 
+  listAccount(req,res,next){
+    Account.find({})
+      .then((accounts) =>{
+        res.render('auth/listAccount', {
+          accounts: accounts
+        })
+      })
+      .catch(next);
+  }
+
+  updateAccount(req,res,next){
+    Account.findById(req.param.id)
+      .then((accounts) =>{
+        res.render('auth/updateAccounts',{ accounts: accounts })
+      })
+      .catch(next);
+  }
+
+  update(req,res,next){
+
+  }
+
+  deleteAccount(req,res,next){
+
+  }
+
   //[GET] /auth/logout
   logout(req, res) {
     try {

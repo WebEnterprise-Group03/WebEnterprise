@@ -14,7 +14,6 @@ const IdeaSchema = new Schema(
       unique: true,
       required: true,
     },
-    image: String,
     file: String,
     account: {
       type: mongoose.Schema.Types.ObjectId,
@@ -31,11 +30,7 @@ const IdeaSchema = new Schema(
     tasks: {
       type: mongoose.Schema.Types.ObjectId,
       ref: 'tasks',
-    },
-    category: [{
-      type: mongoose.Schema.Types.ObjectId,
-      ref: 'ideaCategories'
-    }],
+    }
   },
   {
     collection: 'ideas',

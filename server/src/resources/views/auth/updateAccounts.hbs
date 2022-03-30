@@ -1,0 +1,36 @@
+<div class="mt-4">
+    <h3>Update Account</h3>
+
+    <form method="POST" action="/auth/{{accounts._id}}?_Method=PUT">
+        <div class="form-group">
+            <label for="username">UserName</label>
+            <input type="text" class="form-control" id="username" name="username" value="{{accounts.username}}">
+        </div>
+        <div class="form-group">
+            <label for="password">PassWord</label>
+            <input type="text" class="form-control" id="password" name="password" value="{{accounts.password}}">
+        </div>
+        <div class="form-group">
+            <label for="fullName">FullName</label>
+            <input type="text" class="form-control" id="fullName" name="fullName" value="{{accounts.fullName}}">
+        </div>
+        <div class="form-group">
+            <label for="phone">Phone</label>
+            <input type="number" class="form-control" id="phone" name="phone" value="{{accounts.phone}}">
+        </div>
+        <div class="form-group">
+            <label for="email">Email</label>
+            <input type="text" class="form-control" id="email" name="email" value="{{accounts.email}}">
+        </div>
+        <div class="form-group">
+            <label for="gender">Gender</label>
+            <input type="text" class="form-control" id="gender" name="gender" value="{{accounts.gender}}">
+        </div>
+        <div class="form-group">
+            <label for="role">Role</label>
+            <input type="text" class="form-control" id="role" name="role" value="{{accounts.role}}">
+        </div>
+        <br>
+        <button type="submit" class="btn btn-primary">Update Account</button>
+    </form>
+</div>

@@ -6,6 +6,9 @@ const SendEmail = require('../middlewares/sendEmail');
 const AuthJwt = require('../middlewares/authJwt');
 const cmtController = require('../controllers/commentController');
 
+// const cpUpload = FileUpload.fields([{ name: 'image' }, { name: 'file', maxCount: 3 }])
+
+
 router.get('/detail/:id', [AuthJwt.checkLogin], IdeaController.detail);
 router.get('/storedIdeas', [AuthJwt.checkLogin], IdeaController.storedIdeas);
 router.get('/create', [AuthJwt.checkLogin], IdeaController.create);
