@@ -1,13 +1,14 @@
+<<<<<<< HEAD
 html,
 body {
-  min-height: 100vh;
   height: 100%;
+  min-height: 100vh;
   margin: 0;
   overflow-x: hidden;
 }
 
 .form-body {
-  height: 1000px;
+  height: 650px;
 }
 
 .account-avatar {
@@ -27,3 +28,11 @@ body {
 .dropdown {
   margin-right: 4px;
 }
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Ubuntu", sans-serif;
+}
+=======
+>>>>>>> e11111332e0565629f8affe67069d5144a816f8d

@@ -1,7 +1,139 @@
-<div class="container">
+<<<<<<< HEAD
+<div class="banner-left">
+    <div class="choose">  
+        <ul>
+            <li>
+                <a href="#">
+                    <span class="icon"><ion-icon name="home-outline"></ion-icon></span>
+                    <span class="title">Home</span>
+                </a>
+            </li>
+            <h2>Public</h2>
+            <li>
+                <a href="#">
+                    <span class="icon"><ion-icon name="help-outline"></ion-icon></span>
+                    <span class="title" onclick="questionList()">Questions</span>
+                </a>
+            </li>
+            <li>
+                <a href="#">
+                    <span class="icon"><ion-icon name="person-outline"></ion-icon></span>
+                    <span class="title" onclick="profileList()">Profile</span>
+                </a>
+            </li>
+            {{!-- <li>
+                <a href="#">
+                    <span class="icon"><ion-icon name="person-outline"></ion-icon></span>
+                    <span class="title" onclick="userList()">User</span>    
+                </a>
+            </li> --}}
+            {{#ifCond check "===" "admin"}}
+            <h2>Admin</h2>
+            <li>
+                <a href="/auth/registerPage">
+                    <span class="icon"><ion-icon name="person-add-outline"></ion-icon></span>
+                    <span class="title">Create New Account</span>
+                </a>
+            </li>
+            <li>
+                <a href="/task/listTask">
+                    <span class="icon"><ion-icon name="list-outline"></ion-icon></span>
+                    <span class="title">List Task</span>
+                </a>
+            </li>
+            <li>
+                <a href="/task/createTask">
+                    <span class="icon"><ion-icon name="create-outline"></ion-icon></span>
+                    <span class="title">Create New Task</span>    
+                </a>
+            </li>
+            {{/ifCond}}
+            {{#ifCond check "===" "staff"}}
+            <h2>Staff</h2>
+            <li>
+                <a href="/idea/create">
+                    <span class="icon"><ion-icon name="receipt-outline"></ion-icon></span>
+                    <span class="title">Submit Docs</span>
+                </a>
+            </li>
+            <li>
+                <a href="#">
+                    <span class="icon"><ion-icon name="people-outline"></ion-icon></span>
+                    <span class="title">For Staff</span>
+                </a>
+            </li>
+            {{/ifCond}}
+            <li>
+                <a href="/auth/logout" class="lout">
+                    <span class="icon"><ion-icon name="log-out-outline"></ion-icon></span>
+                    <span class="title">Logout</span>    
+                </a>
+            </li>
+        </ul>
+    </div>
+    <div class="main">
+        <div class="topbar">
+            <div class="toggle">
+                <ion-icon name="menu-outline"></ion-icon>
+            </div>
+            <div class="search">
+                <label class="search-box">
+                    <input class="box-search" type="text" placeholder="Search here">
+                    <ion-icon name="search-outline"></ion-icon>
+                </label>
+            </div>
+        </div>
+        <div class="content">
+            <div id="listquestion">   
+                {{#each ideas}}
+                <div class="list-idea">
+                    <a href="/idea/detail/{{this.slug}}" class="list-group-item list-group-item-action">
+                        <div class="d-flex w-100 justify-content-between">
+                            <h5 class="mb-1">{{this.title}}</h5>
+                            <small class="text-muted">Time</small>
+                        </div>
+                        {{!-- <p class="mb-1">
+                            {{this.description}}
+                        </p> --}}
+                        <small class="text-muted">Reaction.</small>
+                    </a>
+                </div>
+                <br>
+                {{/each}}
+            </div>
+            <div id="profile">
+                <h1>this is profile</h1>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+    //show the list of question
+    let question = document.getElementById('listquestion');
+    function questionList(){
+        question.style.display="block";
+    };
+    let profile = document.getElementById('profile');
+    function profileList(){
+        profile.style.display="block";
+    };
+    //hover
+    let list = document.querySelectorAll('.choose li');
+    function activeLink(){
+        list.forEach((item) => 
+        item.classList.remove('hovered'));
+        this.classList.add('hovered');
+    }
+    list.forEach((item) =>
+    item.addEventListener('mouseover',activeLink));
+</script>
+<script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
+<script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
+{{!-- <div class="container" id="listquestion">   
     {{#each ideas}}
     <div class="list-group">
-        <a href="/idea/detail/{{this._id}}" class="list-group-item list-group-item-action">
+        <a href="/idea/detail/{{this.slug}}" class="list-group-item list-group-item-action">
             <div class="d-flex w-100 justify-content-between">
                 <h5 class="mb-1">{{this.title}}</h5>
                 <small class="text-muted">Time</small>
@@ -14,4 +146,6 @@
     </div>
         <br>
     {{/each}}
-</div>
+</div> --}}
+=======
+>>>>>>> e11111332e0565629f8affe67069d5144a816f8d

@@ -1,16 +1,65 @@
-<div class="container">
-    <div>
-        <h3>My course</h3>
-            <a href="/task/trashTask">Restore</a>
-        <br>
+<<<<<<< HEAD
+<div class="banner-left">
+    <div class="choose">  
+        <ul>
+            <li>
+                <a href="#">
+                    <span class="icon"><ion-icon name="home-outline"></ion-icon></span>
+                    <span class="title">Home</span>
+                </a>
+            </li>
+            <h2>Public</h2>
+            <li>
+                <a href="#">
+                    <span class="icon"><ion-icon name="help-outline"></ion-icon></span>
+                    <span class="title" onclick="questionList()">Questions</span>
+                </a>
+            </li>
+            <li>
+                <a href="#">
+                    <span class="icon"><ion-icon name="person-outline"></ion-icon></span>
+                    <span class="title" onclick="profileList()">Profile</span>
+                </a>
+            </li>
+            {{!-- <li>
+                <a href="#">
+                    <span class="icon"><ion-icon name="person-outline"></ion-icon></span>
+                    <span class="title" onclick="userList()">User</span>    
+                </a>
+            </li> --}}
+            <h2>Admin</h2>
+            <li>
+                <a href="/auth/registerPage">
+                    <span class="icon"><ion-icon name="person-add-outline"></ion-icon></span>
+                    <span class="title">Create New Account</span>
+                </a>
+            </li>
+            <li>
+                <a href="/task/listTask">
+                    <span class="icon"><ion-icon name="list-outline"></ion-icon></span>
+                    <span class="title">List Task</span>
+                </a>
+            </li>
+            <li>
+                <a href="/task/createTask">
+                    <span class="icon"><ion-icon name="create-outline"></ion-icon></span>
+                    <span class="title">Create New Task</span>    
+                </a>
+            </li>
+            <li>
+                <a href="/auth/logout" class="lout">
+                    <span class="icon"><ion-icon name="log-out-outline"></ion-icon></span>
+                    <span class="title">Logout</span>    
+                </a>
+            </li>
+        </ul>
     </div>
+<div class="container">
     <table class="table">
         <thead class="thead-dark">
         <tr>
             <th scope="col">#</th>
             <th scope="col">Title</th>
-            <th scope="col">DayTime</th>
-            <th scope="col">Duration</th>
             <th scope="col">Description</th>
             <th scope="col">Slug</th>
             <th scope="col">IdeaCategory</th>
@@ -22,69 +71,64 @@
             <tr>
                 <th scope="row">{{sum @index 1}}</th>
                 <td>{{this.title}}</td>
-                <td>{{this.endTime}}</td>
-                <td>{{this.duration}}</td>
                 <td>{{this.description}}</td>
                 <td>{{this.slug}}</td>
                 <td>{{this.ideaCategory.name}}</td>
                 <td>
-                    <button type="button" class="btn btn-info"><a href="/task/{{this._id}}/updateTask" style="color: white">Update</a></button>
-                    <button type="button" class="btn btn-info"><a href="" style="color: white" data-id="{{this._id}}" data-toggle="modal" data-target="#delete-task">Delete</a></button>
+                    <button type="button" class="btn btn-info"><a href="/idea/{{this._id}}/update" style="color: white">Update</a></button>
+                    <button type="button" class="btn btn-info"><a href="" style="color: white" data-id="{{this._id}}" data-toggle="modal" data-target="#delete-idea">Delete</a></button>
                 </td>
             </tr>
-
-        {{else}}
-        <tr>
-            <td colspan="8">
-                You don't have any task.
-                <a href="/task/createTask">Create a task</a>
-            </td>
-        </tr>
         {{/each}}
         </tbody>
     </table>
 </div>
 
 
-<div class="modal fade" id="delete-task" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+<div class="modal fade" id="delete-idea" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
     <div class="modal-dialog">
         <div class="modal-content">
             <div class="modal-header">
-                <h5 class="modal-title" id="exampleModalLabel">Delete Task</h5>
+                <h5 class="modal-title" id="exampleModalLabel">Delete Idea</h5>
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                     <span aria-hidden="true">&times;</span>
                 </button>
             </div>
             <div class="modal-body">
-                Do you want to delete this task?
+                Do you want to delete this idea?
             </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                <button id="btn-delete-task" type="button" class="btn btn-primary">Delete Task</button>
+                <button id="btn-delete-idea" type="button" class="btn btn-primary">Delete Idea</button>
             </div>
         </div>
+
     </div>
+</div>
 </div>
 
 
-<form name="delete-task-form" method="POST"></form>
+<form name="delete-idea-form" method="POST"></form>
 
 <script language="JavaScript">
     document.addEventListener('DOMContentLoaded', function (){
-        let taskID;
-        let deleteForm = document.forms['delete-task-form'];
-        let btnDeleteTask = document.getElementById('btn-delete-task');
+        let ideaID;
+        let deleteForm = document.forms['delete-idea-form'];
+        let btnDeleteIdea = document.getElementById('btn-delete-idea');
 
         //When confirm clicked
-        $('#delete-task').on('show.bs.modal', function (event) {
+        $('#delete-idea').on('show.bs.modal', function (event) {
             let button = $(event.relatedTarget)
-            taskID = button.data('id');
+            ideaID = button.data('id');
         })
 
-        btnDeleteTask.onclick = function (){
-            deleteForm.action = '/task/' + taskID + '?_Method=DELETE';
+        btnDeleteIdea.onclick = function (){
+            deleteForm.action = '/idea/' + ideaID + '?_Method=DELETE';
             deleteForm.submit();
         }
     });
 </script>
-
+<script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
+<script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
+=======
+>>>>>>> e11111332e0565629f8affe67069d5144a816f8d

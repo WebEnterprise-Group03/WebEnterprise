@@ -1,0 +1,78 @@
+* {
+  box-sizing: border-box;
+  font-family: sans-serif; }
+
+.register {
+  width: 320px;
+  height: 900px;
+  border: 1px solid #d4c1c1;
+  background-size: cover;
+  margin: 30px auto;
+  border-radius: 20px;
+<<<<<<< Updated upstream
+  background-color: #676175; }
+=======
+  background-color: #383838; }
+>>>>>>> Stashed changes
+
+.register .form {
+  width: 100%;
+  height: 100%;
+  padding: 15px 25px; }
+
+.register .form h2 {
+  color: rgba(61, 163, 204, 0.9);
+  text-align: center;
+  font-weight: normal;
+  font-size: 50px;
+  margin-top: 60px;
+  margin-bottom: 80px; }
+
+.register .form button {
+  background: rgba(61, 163, 204, 0.9);
+  color: #444;
+  font-size: 15px;
+  margin-top: 40px;
+  font-weight: bold;
+  margin-left: 90px; }
+
+label {
+  display: block;
+  margin-bottom: 5px; }
+
+label i {
+  color: #999;
+  font-size: 80%; }
+
+input,
+select {
+  border: 1px solid rgba(31, 135, 231, 0.1);
+  padding: 0 15px;
+  display: block;
+  width: 100%;
+  height: 40px;
+  box-sizing: border-box;
+  border-radius: 5px;
+  background: rgba(255, 255, 255, 0.5);
+  color: #fcf9f9; }
+
+.box {
+  padding-bottom: 10px; }
+
+.form-inline {
+  border: 1px solid rgba(31, 135, 231, 0.1);
+  padding: 8px 10px 4px;
+  border-radius: 6px; }
+
+.form-inline label,
+.form-inline input {
+  display: inline-block;
+  width: auto;
+  padding-right: 15px; }
+
+.error {
+  color: red;
+  font-size: 90%; }
+
+input[type="text"] {
+  outline: none; }
