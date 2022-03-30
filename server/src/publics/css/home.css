@@ -1,9 +1,16 @@
+<<<<<<< Updated upstream
 @import url("https://fonts.googleapis.com/css2?family=Poppins:wght@300&display=swap");
 * {
   margin: 0;
   padding: 0;
   font-family: "Dosis", sans-serif;
   background: url(img/banner3.jpg); }
+=======
+* {
+  margin: 0;
+  padding: 0;
+  font-family: "Dosis", sans-serif; }
+>>>>>>> Stashed changes
 
 .banner {
   display: flex;
@@ -11,8 +18,12 @@
 
 .left-banner,
 .right-banner {
+<<<<<<< Updated upstream
   flex-basis: 50%;
   padding-top: 8%; }
+=======
+  flex-basis: 50%; }
+>>>>>>> Stashed changes
 
 .right-banner img {
   width: 100%; }
@@ -20,10 +31,16 @@
 .left-banner h1,
 h3,
 p {
+<<<<<<< Updated upstream
   margin: 30px 0 30px 150px;
   font-family: "Ubuntu", sans-serif; }
 
 span.title1 {
+=======
+  margin: 30px 0 30px 150px; }
+
+span {
+>>>>>>> Stashed changes
   color: #f14a60; }
 
 .btn button {

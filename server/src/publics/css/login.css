@@ -1,7 +1,12 @@
 * {
   box-sizing: border-box;
+<<<<<<< Updated upstream
   font-family: sans-serif; }
 
+=======
+  font-family: sans-serif;
+}
+>>>>>>> Stashed changes
 .login {
   width: 320px;
   height: 450px;
@@ -9,20 +14,38 @@
   background-size: cover;
   margin: 30px auto;
   border-radius: 20px;
+<<<<<<< Updated upstream
   background-color: white; }
+=======
+  background-color: rgb(56, 56, 56);
+}
+>>>>>>> Stashed changes
 
 .login .form {
   width: 100%;
   height: 100%;
+<<<<<<< Updated upstream
   padding: 15px 25px; }
 
 .login .form h2 {
   color: #dd8787;
+=======
+  padding: 15px 25px;
+}
+
+.login .form h2 {
+  color: rgba(61, 163, 204, 0.9);
+>>>>>>> Stashed changes
   text-align: center;
   font-weight: normal;
   font-size: 50px;
   margin-top: 60px;
+<<<<<<< Updated upstream
   margin-bottom: 80px; }
+=======
+  margin-bottom: 80px;
+}
+>>>>>>> Stashed changes
 
 .login .form input {
   width: 100%;
@@ -31,6 +54,7 @@
   background: rgba(255, 255, 255, 0.5);
   border: 1px solid rgba(31, 135, 231, 0.1);
   padding: 0 15px;
+<<<<<<< Updated upstream
   color: #fff;
   border-radius: 5px;
   font-size: 14px; }
@@ -45,3 +69,27 @@
   font-size: 15px;
   margin-top: 40px;
   font-weight: bold; }
+=======
+  color: rgb(252, 249, 249);
+  border-radius: 5px;
+  font-size: 14px;
+}
+
+.login .form input:focus {
+  border: 1px solid rgba(255, 255, 255, 0.8);
+  outline: none;
+}
+
+::-webkit-input-placeholder {
+  color: #ddd;
+}
+
+.login .form button {
+  background: rgba(61, 163, 204, 0.9);
+  color: #444;
+  font-size: 15px;
+  margin-top: 40px;
+  margin-left: 90px;
+  font-weight: bold;
+}
+>>>>>>> Stashed changes

@@ -1,4 +1,8 @@
+<<<<<<< Updated upstream
 <div class="register">
+=======
+{{!-- <div>
+>>>>>>> Stashed changes
     UserName:<input type="text" id="username"><br>
     PassWord:<input type="text" id="password"><br>
     FullName:<input type="text" id="fullName"><br>
@@ -7,8 +11,55 @@
     Gender:<input type="text" id="gender"><br>
     Role:<input type="text" id="role"><br>
     <button onclick="register()">Register</button>
-</div>
+</div> --}}
+<div class="register">
+  <div class="form">
+    <h2>Register</h2>
+    <div class="box">
+        <label>UserName</label>
+        <input type="text" id="username" name="username">
+        <div class="error" id="nameErr"></div>
+    </div>
+    <div class="box">
+        <label>Password</label>
+        <input type="text" id="password" name="password">
+        <div class="error" id="nameErr"></div>
+    </div>
+    <div class="box">
+        <label>Fullname</label>
+        <input type="text" id="fullName" name="fullName">
+        <div class="error" id="nameErr"></div>
+    </div>
+    <div class="box">
+        <label>Phone</label>
+        <input type="text" id="phone" name="phone">
+        <div class="error" id="nameErr"></div>
+    </div>
+    <div class="box">
+        <label>Email</label>
+        <input type="email" id="email" name="email">
+        <div class="error" id="nameErr"></div>
+    </div>
+    <div class="box">
+        <label>Role</label>
+        <input type="text" id="role" name="role">
+        <div class="error" id="nameErr"></div>
+    </div>
+    <div class="box">
+        <label>Gender</label>
+        <div class="form-inline" id="gender">
+            <label>
+                <input type="radio" name="gender" value="male"> "Male"
+            </label>
+            <label>
+                <input type="radio" name="gender" value="male"> "Female"
+            </label>
+        </div>
+    </div>
 
+    <button onclick="register()">Register</button>
+  </div>
+</div>
 <script>
     (function() {
         'use strict';
