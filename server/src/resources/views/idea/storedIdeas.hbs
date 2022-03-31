@@ -5,7 +5,6 @@
             <th scope="col">#</th>
             <th scope="col">Title</th>
             <th scope="col">Description</th>
-            <th scope="col">Image</th>
             <th scope="col">Slug</th>
             <th scope="col">Action</th>
         </tr>
@@ -16,9 +15,6 @@
                 <th scope="row">{{sum @index 1}}</th>
                 <td>{{this.title}}</td>
                 <td>{{this.description}}</td>
-                <td>
-                    <img class="rounded float-right idea-image" src="{{this.image}}">
-                </td>
                 <td>{{this.slug}}</td>
                 <td>
                     <button type="button" class="btn btn-info"><a href="/idea/{{this._id}}/update" style="color: white">Update</a></button>

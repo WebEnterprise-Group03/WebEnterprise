@@ -54,7 +54,6 @@ class ideaController {
       title: req.body.title,
       description: req.body.description,
       slug: req.body.slug,
-      image: req.body.image,
       file: req.file.originalname,
       like: req.body.like,
     };

@@ -1,7 +1,7 @@
 <div class="container">
     <div>
-        <h3>My course</h3>
-            <a href="/task/trashTask">Restore</a>
+        <h3>List Task</h3>
+        <a href="/task/trashTask">Restore</a>
         <br>
     </div>
     <table class="table">
@@ -28,18 +28,18 @@
                 <td>{{this.slug}}</td>
                 <td>{{this.ideaCategory.name}}</td>
                 <td>
-                    <button type="button" class="btn btn-info"><a href="/task/{{this._id}}/updateTask" style="color: white">Update</a></button>
+                    <!--                    <button type="button" class="btn btn-info"><a href="/task/{{this._id}}/updateTask" style="color: white">Update</a></button>-->
                     <button type="button" class="btn btn-info"><a href="" style="color: white" data-id="{{this._id}}" data-toggle="modal" data-target="#delete-task">Delete</a></button>
                 </td>
             </tr>
 
         {{else}}
-        <tr>
-            <td colspan="8">
-                You don't have any task.
-                <a href="/task/createTask">Create a task</a>
-            </td>
-        </tr>
+            <tr>
+                <td colspan="8">
+                    You don't have any task.
+                    <a href="/task/createTask">Create a task</a>
+                </td>
+            </tr>
         {{/each}}
         </tbody>
     </table>
@@ -87,4 +87,3 @@
         }
     });
 </script>
-

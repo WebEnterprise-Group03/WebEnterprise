@@ -1,0 +1,36 @@
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@300&display=swap");
+* {
+  margin: 0;
+  padding: 0;
+  font-family: "Dosis", sans-serif; }
+
+.banner {
+  display: flex;
+  margin-top: 80px; }
+
+.left-banner,
+.right-banner {
+  flex-basis: 50%;
+  padding-top: 8%; }
+
+.right-banner img {
+  width: 100%; }
+
+.left-banner h1,
+h3,
+p {
+  margin: 30px 0 30px 150px;
+  font-family: "Ubuntu", sans-serif; }
+
+span.title1 {
+  color: #f14a60; }
+
+.btn button {
+  padding: 7px 30px;
+  margin-left: 150px;
+  outline: none;
+  border: 1px solid #fb7381;
+  border-radius: 20px;
+  cursor: pointer;
+  color: #fb7381;
+  background: transparent; }

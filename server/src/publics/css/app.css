@@ -1,10 +1,12 @@
 html,
 body {
+  min-height: 100vh;
   height: 100%;
-  margin: 0; }
+  margin: 0;
+  overflow-x: hidden; }
 
 .form-body {
-  height: 1000px; }
+  height: 650px; }
 
 .account-avatar {
   width: 30px;
@@ -20,3 +22,9 @@ body {
 
 .dropdown {
   margin-right: 4px; }
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Ubuntu", sans-serif; }

@@ -7,12 +7,13 @@ const AuthJwt = require('../middlewares/authJwt');
 const cmtController = require('../controllers/commentController');
 
 
+
 router.get('/detail/:id', [AuthJwt.checkLogin], IdeaController.detail);
 router.get('/storedIdeas', [AuthJwt.checkLogin], IdeaController.storedIdeas);
 router.get('/create', [AuthJwt.checkLogin], IdeaController.create);
 router.post(
   '/store',
-  [AuthJwt.checkLogin, FileUpload.single('file'), SendEmail.send],
+  AuthJwt.checkLogin, FileUpload.single('file'), SendEmail.send,
   IdeaController.store,
 );
 router.get('/:id/update', [AuthJwt.checkLogin], IdeaController.update);

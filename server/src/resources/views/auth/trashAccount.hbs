@@ -1,0 +1,102 @@
+<div class="container">
+    <div>
+        <a href="/auth/listAccount">My Account</a>
+        <h3>Account Deleted</h3>
+        <br>
+    </div>
+    <table class="table">
+        <thead class="thead-dark">
+        <tr>
+            <th scope="col">#</th>
+            <th scope="col">Title</th>
+            <th scope="col">DayTime</th>
+            <th scope="col">Duration</th>
+            <th scope="col">Description</th>
+            <th scope="col">Slug</th>
+            <th scope="col">IdeaCategory</th>
+            <th scope="col">Action</th>
+        </tr>
+        </thead>
+        <tbody>
+        {{#each accounts}}
+            <tr>
+                <th scope="row">{{sum @index 1}}</th>
+                <td>{{this.username}}</td>
+                <td>{{this.password}}</td>
+                <td>{{this.fullName}}</td>
+                <td>{{this.phone}}</td>
+                <td>{{this.email}}</td>
+                <td>{{this.gender}}</td>
+                <td>{{this.role}}</td>
+                <td>
+                    <button type="button" class="btn btn-info"><a href="" style="color: white" class="btn-restore-account" data-id="{{this._id}}">Restore</a></button>
+                    <button type="button" class="btn btn-info"><a href="" style="color: white" data-id="{{this._id}}" data-toggle="modal" data-target="#delete-account">Delete Forever</a></button>
+                </td>
+            </tr>
+        {{else}}
+            <tr>
+                <td colspan="8">
+                    You don't have any account.
+                </td>
+            </tr>
+        {{/each}}
+        </tbody>
+    </table>
+</div>
+
+
+<div class="modal fade" id="delete-account" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">Delete Account</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                Do you want to delete forever this account?
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                <button id="btn-delete-account" type="button" class="btn btn-primary">Delete Forever</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<form name="delete-account-form" method="POST"></form>
+<form name="restore-account-form" method="POST"></form>
+
+
+<script language="JavaScript">
+    document.addEventListener('DOMContentLoaded', function (){
+        let accountID;
+        let deleteForm = document.forms['delete-account-form'];
+        let btnDeleteAccount = document.getElementById('btn-delete-account');
+        let restoreForm = document.forms['restore-account-form'];
+        let btnRestoreAccount = $('.btn-restore-account');
+
+        //When confirm clicked
+        $('#delete-account').on('show.bs.modal', function (event) {
+            let button = $(event.relatedTarget)
+            accountID = button.data('id');
+        })
+
+        //Delete forever account
+        btnDeleteAccount.onclick = function (){
+            deleteForm.action = '/auth/' + accountID + '/force?_Method=DELETE';
+            deleteForm.submit();
+        }
+
+        //Restore account
+        btnRestoreAccount.click(function (e){
+            e.preventDefault();
+
+            let accountId = $(this).data('id');
+            restoreForm.action = '/auth/' + accountId + '/restoreAccount?_Method=PATCH';
+            restoreForm.submit();
+        })
+    });
+</script>
+
