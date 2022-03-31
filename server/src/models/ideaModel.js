@@ -1,7 +1,6 @@
 const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
 const slug = require('mongoose-slug-generator');
-const comments = require('./ideaCategoryModel');
 const mongoose_delete = require('mongoose-delete');
 
 const IdeaSchema = new Schema(
@@ -36,7 +35,22 @@ const IdeaSchema = new Schema(
       type: mongoose.Schema.Types.ObjectId,
       ref: 'ideaCategories'
     }],
-  },
+    like : 
+    [{ 
+      type: mongoose.Schema.Types.ObjectId, 
+      ref: 'accounts' 
+    }],
+    dislike : 
+    [{ 
+      type: mongoose.Schema.Types.ObjectId, 
+      ref: 'accounts' 
+    }],
+    voteScore : 
+      { 
+      type: Number 
+      },
+
+    }, 
   {
     collection: 'ideas',
   },

@@ -6,6 +6,7 @@ const SendEmail = require('../middlewares/sendEmail');
 const AuthJwt = require('../middlewares/authJwt');
 const cmtController = require('../controllers/commentController');
 
+
 router.get('/detail/:id', [AuthJwt.checkLogin], IdeaController.detail);
 router.get('/storedIdeas', [AuthJwt.checkLogin], IdeaController.storedIdeas);
 router.get('/create', [AuthJwt.checkLogin], IdeaController.create);
@@ -24,5 +25,8 @@ router.delete(
 );
 router.post('/:id/comment',cmtController.create);
 router.get('/listTask', IdeaController.listTask);
+
+router.put('/detail/:id/like', IdeaController.like);
+router.put('/detail/:id/dislike',IdeaController.dislike);
 
 module.exports = router;

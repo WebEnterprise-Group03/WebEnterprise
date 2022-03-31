@@ -2,18 +2,39 @@ const Comment = require('../models/cmtModel');
 const Idea = require('../models/ideaModel');
 const Category = require('../models/ideaCategoryModel');
 const Task = require('../models/taskModel');
+const User = require('../models/accountModel')
+const authJwt = require('../middlewares/authJwt')
 
 
 class ideaController {
+
+  //Like
+  like(req, res, next){
+     
+      Idea.findById( req.params.id)
+      .then((idea) => {
+        User.findById(req.params.id).then((user)=>{
+        idea.like.push(user);     
+        return idea.save();
+      })
+    })
+      
+  }
+
+    //dislike
+    dislike(req, res, next){
+      Idea.findById( req.params.id).then((err, idea) => {
+        idea.dislike.push(req.user._id);
+        idea.voteScore += 1;
+        idea.save();
+      return res.status(200);
+      });
+    }
+
   //[GET] /idea/detail/:slug
-<<<<<<< HEAD
   detail(req, res, next) {
     const commments = Comment.find({});
     Idea.findById({ _id: req.params.id}).lean().populate('comments','content')
-=======
-   detail(req, res, next) {
-    Idea.findOne({ slug: req.params.slug })
->>>>>>> c1337a7b7a411000c6bfc74bea8c07fb9c08f34a
       .then((ideas) => {
         res.render('idea/detail',{ ideas:ideas });
       })
@@ -35,6 +56,7 @@ class ideaController {
       slug: req.body.slug,
       image: req.body.image,
       file: req.file.originalname,
+      like: req.body.like,
     };
     const task = await Task.findOne({ title: req.body.tasks });
     if (!task){

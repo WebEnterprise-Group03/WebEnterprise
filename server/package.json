@@ -29,7 +29,8 @@
     "morgan": "^1.10.0",
     "multer": "^1.4.4",
     "nodemailer": "^6.7.2",
-    "nodemon": "^2.0.15"
+    "nodemon": "^2.0.15",
+    "pretty": "^2.0.0"
   },
   "devDependencies": {
     "husky": "^7.0.4",
