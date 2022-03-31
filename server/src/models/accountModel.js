@@ -55,5 +55,4 @@ AccountSchema.plugin(mongoose_delete, {
   overrideMethods: 'all',
 });
 
-
 module.exports = mongoose.model('accounts', AccountSchema);

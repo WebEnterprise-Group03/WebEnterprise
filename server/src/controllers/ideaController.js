@@ -3,14 +3,15 @@ const Idea = require('../models/ideaModel');
 const Category = require('../models/ideaCategoryModel');
 const Task = require('../models/taskModel');
 
-
 class ideaController {
   //[GET] /idea/detail/:slug
   detail(req, res, next) {
     const commments = Comment.find({});
-    Idea.findById({ _id: req.params.id}).lean().populate('comments','content')
+    Idea.findById({ _id: req.params.id })
+      .lean()
+      .populate('comments', 'content')
       .then((ideas) => {
-        res.render('idea/detail',{ ideas:ideas });
+        res.render('idea/detail', { ideas: ideas });
       })
       .catch(next);
   }
@@ -19,7 +20,7 @@ class ideaController {
   async create(req, res, next) {
     const tasks = await Task.find({}).lean();
     res.render('idea/create', {
-      tasks: tasks
+      tasks: tasks,
     });
   }
 
@@ -31,11 +32,11 @@ class ideaController {
       file: req.file.originalname,
     };
     const task = await Task.findOne({ title: req.body.tasks });
-    if (!task){
-      return res.render('idea/create',{
+    if (!task) {
+      return res.render('idea/create', {
         error: true,
         message: 'Task does not exist!',
-      })
+      });
     }
 
     formData.tasks = task._id;
@@ -84,12 +85,11 @@ class ideaController {
       .then(() => res.redirect('back'))
       .catch(next);
   }
-  
-  
+
   //[DELETE] /idea/:id/forceDeleteIdea
   forceDeleteIdea(req, res, next) {}
 
-    async listTask(req,res,next){
+  async listTask(req, res, next) {
     const ideaCategory = await Category.find({});
     await Task.find({ ideaCategory })
       .lean()
@@ -102,6 +102,5 @@ class ideaController {
       .catch(next);
   }
 }
-
 
 module.exports = new ideaController();

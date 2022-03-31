@@ -27,10 +27,10 @@ const TaskSchema = new Schema(
       unique: true,
       required: true,
     },
-    ideaCategory: {
-      type: mongoose.Schema.Types.ObjectId,
-      ref: 'ideaCategories',
-    },
+    // ideaCategory: {
+    //   type: mongoose.Schema.Types.ObjectId,
+    //   ref: 'ideaCategories',
+    // },
   },
   {
     collection: 'tasks',

@@ -4,10 +4,7 @@ const Category = require('../models/ideaCategoryModel');
 class taskController {
   //[GET] /task/listTask
   async listTask(req, res, next) {
-    const ideaCategory = await Category.find({});
-    await Task.find({ ideaCategory })
-      .lean()
-      .populate('ideaCategory', 'name', 'ideaCategories')
+    await Task.find({})
       .then((task) => {
         res.render('task/listTask', {
           task: task,
@@ -16,42 +13,17 @@ class taskController {
       .catch(next);
   }
 
-  detailTask(req, res, next) {}
-
   //[GET] /task/createTask
   async createTask(req, res, next) {
-    const categories = await Category.find({}).lean();
-    res.render('task/createTask', {
-      categories: categories,
-    });
+    res.render('task/createTask');
   }
 
-  //[GET] /task/:id/updateTask
-  async updateTask(req,res,next){
-    const categories = await Category.find({}).lean();
-    Task.findById(req.params.id)
-      .then((tasks) =>{
-        res.render('task/updateTask', {
-          tasks: tasks,
-          categories: categories
-        });
-      })
-      .catch(next)
+  setDeadlineIdea(req, res, next) {
+    res.render('task/setDeadlineIdea');
   }
 
-  //[PUT] /task/:id
-  async update(req,res,next){
-    const title = req.body.title;
-    const day = req.body.day;
-    const endTime = req.body.endTime;
-    const duration = req.body.duration;
-    const ideaCategory = await Category.findOne({name: req.body.ideaCategory});
-    const description = req.body.description;
-    const slug = req.body.slug;
-
-    Task.updateOne({ _id: req.body._id }, { title: title, day: day, endTime: endTime, duration: duration, ideaCategory: ideaCategory._id, description: description, slug: slug })
-      .then(() => res.redirect('/task/listTask'))
-      .catch(next)
+  setDeadlineCmt(req, res, next) {
+    res.render('task/setDeadlineCmt');
   }
 
   //[POST] /task/storeTask
@@ -95,6 +67,47 @@ class taskController {
       });
   }
 
+  //[GET] /task/:id/updateTask
+  async updateTask(req, res, next) {
+    const categories = await Category.find({}).lean();
+    Task.findById(req.params.id)
+      .then((tasks) => {
+        res.render('task/updateTask', {
+          tasks: tasks,
+          categories: categories,
+        });
+      })
+      .catch(next);
+  }
+
+  //[PUT] /task/:id
+  async update(req, res, next) {
+    const title = req.body.title;
+    const day = req.body.day;
+    const endTime = req.body.endTime;
+    const duration = req.body.duration;
+    const ideaCategory = await Category.findOne({
+      name: req.body.ideaCategory,
+    });
+    const description = req.body.description;
+    const slug = req.body.slug;
+
+    Task.updateOne(
+      { _id: req.body._id },
+      {
+        title: title,
+        day: day,
+        endTime: endTime,
+        duration: duration,
+        ideaCategory: ideaCategory._id,
+        description: description,
+        slug: slug,
+      },
+    )
+      .then(() => res.redirect('/task/listTask'))
+      .catch(next);
+  }
+
   deleteTask(req, res, next) {
     Task.delete({ _id: req.params.id })
       .then(() => res.redirect('back'))
@@ -107,18 +120,20 @@ class taskController {
       .catch(next);
   }
 
-  async trashTask(req,res,next){
+  async trashTask(req, res, next) {
     const ideaCategory = await Category.find({});
     Task.findDeleted({ ideaCategory })
       .lean()
       .populate('ideaCategory', 'name', 'ideaCategories')
-      .then((tasks) => res.render('task/trashTask', {
-        tasks,
-      }))
+      .then((tasks) =>
+        res.render('task/trashTask', {
+          tasks,
+        }),
+      )
       .catch(next);
   }
 
-  restoreTask(req,res,next){
+  restoreTask(req, res, next) {
     Task.restore({ _id: req.params.id })
       .then(() => res.redirect('back'))
       .catch(next);

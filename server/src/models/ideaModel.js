@@ -19,10 +19,12 @@ const IdeaSchema = new Schema(
       type: mongoose.Schema.Types.ObjectId,
       ref: 'accounts',
     },
-    comments: [{
-      type: mongoose.Schema.Types.ObjectId,
-      ref: 'comments',
-    }],
+    comments: [
+      {
+        type: mongoose.Schema.Types.ObjectId,
+        ref: 'comments',
+      },
+    ],
     reactions: {
       type: mongoose.Schema.Types.ObjectId,
       ref: 'reactions',
@@ -30,7 +32,7 @@ const IdeaSchema = new Schema(
     tasks: {
       type: mongoose.Schema.Types.ObjectId,
       ref: 'tasks',
-    }
+    },
   },
   {
     collection: 'ideas',

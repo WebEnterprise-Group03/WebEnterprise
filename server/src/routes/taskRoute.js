@@ -3,7 +3,9 @@ const router = express.Router();
 const TaskController = require('../controllers/taskController');
 
 router.get('/listTask', TaskController.listTask);
-router.get('/detailTask/:slug', TaskController.detailTask);
+router.get('/setDeadlineIdea', TaskController.setDeadlineIdea);
+router.get('/setDeadlineCmt', TaskController.setDeadlineCmt);
+
 router.get('/createTask', TaskController.createTask);
 router.get('/:id/updateTask', TaskController.updateTask);
 router.put('/:id', TaskController.update);

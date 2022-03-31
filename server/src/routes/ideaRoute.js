@@ -8,13 +8,14 @@ const cmtController = require('../controllers/commentController');
 
 // const cpUpload = FileUpload.fields([{ name: 'image' }, { name: 'file', maxCount: 3 }])
 
-
 router.get('/detail/:id', [AuthJwt.checkLogin], IdeaController.detail);
 router.get('/storedIdeas', [AuthJwt.checkLogin], IdeaController.storedIdeas);
 router.get('/create', [AuthJwt.checkLogin], IdeaController.create);
 router.post(
   '/store',
-  AuthJwt.checkLogin, FileUpload.single('file'), SendEmail.send,
+  AuthJwt.checkLogin,
+  FileUpload.single('file'),
+  SendEmail.send,
   IdeaController.store,
 );
 router.get('/:id/update', [AuthJwt.checkLogin], IdeaController.update);
@@ -25,7 +26,7 @@ router.delete(
   [AuthJwt.checkLogin],
   IdeaController.forceDeleteIdea,
 );
-router.post('/:id/comment',cmtController.create);
+router.post('/:id/comment', cmtController.create);
 router.get('/listTask', IdeaController.listTask);
 
 module.exports = router;

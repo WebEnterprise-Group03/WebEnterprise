@@ -6,7 +6,6 @@ const category = require('./categoryRoute.js');
 
 const task = require('./taskRoute.js');
 
-
 function route(app) {
   app.use('/auth', auth);
   app.use('/main', main);
