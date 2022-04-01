@@ -96,24 +96,9 @@ class ideaController {
   //[DELETE] /idea/:id/forceDeleteIdea
   forceDeleteIdea(req, res, next) {}
 
-  async listTask(req, res, next) {
-    // const ideaCategory = await Category.find({});
-    await Task.find({  })
-      // .lean()
-      // .populate('ideaCategory', 'name', 'ideaCategories')
-      .then((task) => {
-        res.render('idea/listTask', {
-          task: task,
-        });
-      })
-      .catch(next);
-  }
 
   async listCategory(req, res, next) {
-    // const ideaCategory = await Category.find({});
     await Category.find({ })
-      // .lean()
-      // .populate('ideaCategory', 'name', 'ideaCategories')
       .then((categories) => {
         res.render('idea/listCategory', {
           categories: categories,
