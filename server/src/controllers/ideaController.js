@@ -3,34 +3,13 @@ const Idea = require('../models/ideaModel');
 const Category = require('../models/ideaCategoryModel');
 const Account = require('../models/accountModel');
 const Task = require('../models/taskModel');
-const User = require('../models/accountModel')
-const authJwt = require('../middlewares/authJwt')
+const account = require('../models/accountModel')
+const reqLogin = require('../middlewares/authJwt')
+
+const checkUser = reqLogin.checkCurrentUser;
 
 class ideaController {
-
-  //Like
-  like(req, res, next){
-     
-      Idea.findById( req.params.id)
-      .then((idea) => {
-        User.findById(req.params.id).then((user)=>{
-        idea.like.push(user);     
-        return idea.save();
-      })
-    })
-      
-  }
-
-    //dislike
-    dislike(req, res, next){
-      Idea.findById( req.params.id).then((err, idea) => {
-        idea.dislike.push(req.user._id);
-        idea.voteScore += 1;
-        idea.save();
-      return res.status(200);
-      });
-    }
-
+ 
   //[GET] /idea/detail/:slug
   detail(req, res, next) {
     Account.findOne({ _id: req.data._id})
@@ -57,8 +36,9 @@ class ideaController {
       description: req.body.description,
       slug: req.body.slug,
       file: req.file.originalname,
-      like: req.body.like,
+      
     };
+   
     // const task = await Task.findOne({ title: req.body.tasks });
     // if (!task) {
     //   return res.render('idea/create', {
@@ -69,6 +49,8 @@ class ideaController {
 
     // formData.tasks = task._id;
     const idea = new Idea(formData);
+    idea.upVotes = [];
+    idea.downVotes = [];
     await idea
       .save()
       .then(() => {

@@ -5,7 +5,7 @@ const FileUpload = require('../middlewares/fileUpload');
 const SendEmail = require('../middlewares/sendEmail');
 const AuthJwt = require('../middlewares/authJwt');
 const cmtController = require('../controllers/commentController');
-
+const Idea = require('../models/ideaModel');
 
 router.get('/detail/:id', [AuthJwt.checkLogin], IdeaController.detail);
 router.get('/storedIdeas', [AuthJwt.checkLogin], IdeaController.storedIdeas);
@@ -28,7 +28,29 @@ router.delete(
 router.post('/:id/comment', cmtController.create);
 router.get('/listTask', IdeaController.listTask);
 
-router.put('/detail/:id/like', IdeaController.like);
-router.put('/detail/:id/dislike',IdeaController.dislike);
+
+//like function
+router.put('/detail/:id/like',[AuthJwt.checkLogin], (req,res)=>{
+  Idea.findById(req.params.id).then((idea) => {
+    idea.like.push(req.data._id);
+    idea.save();
+    return res.status(200);
+ 
+})
+});
+
+//dislike funtion
+router.put('/detail/:id/dislike',[AuthJwt.checkLogin],(req,res)=>{
+
+  Idea.findById(req.params.id).
+  then((idea) => {
+    
+    idea.dislike.push(req.data._id);
+    idea.save();
+    return res.status(200);
+})
+});
+
+
 
 module.exports = router;

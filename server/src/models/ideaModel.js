@@ -47,10 +47,6 @@ const IdeaSchema = new Schema(
       type: mongoose.Schema.Types.ObjectId, 
       ref: 'accounts' 
     }],
-    voteScore : 
-      { 
-      type: Number 
-      },
     }, 
 
   {
