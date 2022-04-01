@@ -26,17 +26,17 @@
             <input type="file" class="form-control" id="file" name="file" >
         </div>
 
-<!--        <div class="input-group mb-3">-->
-<!--            <div class="input-group-prepend">-->
-<!--                <label class="input-group-text" for="tasks">Options</label>-->
-<!--            </div>-->
-<!--            <select name="tasks" class="custom-select" id="tasks">-->
-<!--                <option selected>Choose...</option>-->
-<!--                {{#each tasks}}-->
-<!--                    <option value={{title}}>{{title}}</option>-->
-<!--                {{/each}}-->
-<!--            </select>-->
-<!--        </div>-->
+        <div class="input-group mb-3">
+            <div class="input-group-prepend">
+                <label class="input-group-text" for="ideaCategory">Options</label>
+            </div>
+            <select name="ideaCategory" class="custom-select" id="ideaCategory">
+                <option selected>Choose...</option>
+                {{#each categories}}
+                    <option value={{name}}>{{name}}</option>
+                {{/each}}
+            </select>
+        </div>
 
         <div class="form-group">
             <label for="slug">Slug</label>
