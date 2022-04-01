@@ -21,8 +21,10 @@ class ideaController {
 
   //[GET] /idea/create
   async create(req, res, next) {
-    // const tasks = await Task.find({}).lean();
-    res.render('idea/create');
+    const categories = await Category.find({}).lean();
+    res.render('idea/create',{
+      categories: categories
+    });
   }
 
   async store(req, res, next) {
@@ -32,15 +34,16 @@ class ideaController {
       slug: req.body.slug,
       file: req.file.originalname,
     };
-    // const task = await Task.findOne({ title: req.body.tasks });
-    // if (!task) {
-    //   return res.render('idea/create', {
-    //     error: true,
-    //     message: 'Task does not exist!',
-    //   });
-    // }
 
-    // formData.tasks = task._id;
+    const category = await Category.findOne({ name: req.body.ideaCategory });
+    if (!category) {
+      return res.render('idea/create', {
+        error: true,
+        message: 'Category does not exist!',
+      });
+    }
+
+    formData.ideaCategory = category._id;
     const idea = new Idea(formData);
     await idea
       .save()
@@ -53,8 +56,11 @@ class ideaController {
   }
 
   //[GET] /idea/storedIdeas
-  storedIdeas(req, res, next) {
-    Idea.find({})
+  async storedIdeas(req, res, next) {
+    const ideaCategory = await Category.find({});
+    await Idea.find({ ideaCategory })
+      .lean()
+      .populate('ideaCategory', 'name', 'ideaCategories')
       .then((ideas) => {
         res.render('idea/storedIdeas', { ideas: ideas });
       })
@@ -98,6 +104,19 @@ class ideaController {
       .then((task) => {
         res.render('idea/listTask', {
           task: task,
+        });
+      })
+      .catch(next);
+  }
+
+  async listCategory(req, res, next) {
+    // const ideaCategory = await Category.find({});
+    await Category.find({ })
+      // .lean()
+      // .populate('ideaCategory', 'name', 'ideaCategories')
+      .then((categories) => {
+        res.render('idea/listCategory', {
+          categories: categories,
         });
       })
       .catch(next);

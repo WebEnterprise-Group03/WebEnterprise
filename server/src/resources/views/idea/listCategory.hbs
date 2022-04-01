@@ -1,0 +1,36 @@
+<div class="container">
+    <div>
+        <h3>My Category</h3>
+    </div>
+    <table class="table">
+        <thead class="thead-dark">
+        <tr>
+            <th scope="col">#</th>
+            <th scope="col">Name</th>
+            <th scope="col">Description</th>
+            <th scope="col">Action</th>
+        </tr>
+        </thead>
+        <tbody>
+        {{#each categories}}
+            <tr>
+                <th scope="row">{{sum @index 1}}</th>
+                <td>{{this.name}}</td>
+                <td>{{this.description}}</td>
+                <td>
+                    <button type="button" class="btn btn-info"><a href="/idea/create" style="color: white">Apply Idea</a></button>
+                </td>
+            </tr>
+
+        {{else}}
+            <tr>
+                <td colspan="8">
+                    You don't have any task.
+                </td>
+            </tr>
+        {{/each}}
+        </tbody>
+    </table>
+</div>
+
+

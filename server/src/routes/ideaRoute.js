@@ -27,6 +27,8 @@ router.delete(
   IdeaController.forceDeleteIdea,
 );
 router.post('/:id/comment', cmtController.create);
+
+router.get('/listCategory', IdeaController.listCategory);
 router.get('/listTask', IdeaController.listTask);
 
 module.exports = router;

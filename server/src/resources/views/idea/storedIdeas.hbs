@@ -6,6 +6,8 @@
             <th scope="col">Title</th>
             <th scope="col">Description</th>
             <th scope="col">Slug</th>
+<!--            <th scope="col">File</th>-->
+            <th scope="col">IdeaCategory</th>
             <th scope="col">Action</th>
         </tr>
         </thead>
@@ -16,6 +18,8 @@
                 <td>{{this.title}}</td>
                 <td>{{this.description}}</td>
                 <td>{{this.slug}}</td>
+<!--                <td>{{this.files}}</td>-->
+                <td>{{this.ideaCategory.name}}</td>
                 <td>
                     <button type="button" class="btn btn-info"><a href="/idea/{{this._id}}/update" style="color: white">Update</a></button>
                     <button type="button" class="btn btn-info"><a href="" style="color: white" data-id="{{this._id}}" data-toggle="modal" data-target="#delete-idea">Delete</a></button>

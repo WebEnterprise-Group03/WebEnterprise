@@ -29,10 +29,14 @@ const IdeaSchema = new Schema(
       type: mongoose.Schema.Types.ObjectId,
       ref: 'reactions',
     },
-    tasks: {
+    ideaCategory: {
       type: mongoose.Schema.Types.ObjectId,
-      ref: 'tasks',
+      ref: 'ideaCategories',
     },
+    // tasks: {
+    //   type: mongoose.Schema.Types.ObjectId,
+    //   ref: 'tasks',
+    // },
   },
   {
     collection: 'ideas',
