@@ -28,34 +28,47 @@ class taskController {
 
   //[POST] /task/storeTask
   async storeTask(req, res, next) {
-    const endTime = new Date();
-    const day = req.body.day;
-    const time = req.body.end;
+    const startDate = new Date();
+    const startDay = req.body.startDay;
+    const startTime = req.body.startTime;
 
-    endTime.setFullYear(day.split('-')[0]);
-    endTime.setMonth(day.split('-')[1] - 1);
-    endTime.setDate(day.split('-')[2]);
+    const endDate = new Date();
+    const endDay = req.body.endDay;
+    const endTime = req.body.endTime;
 
-    endTime.setHours(time.split(':')[0]);
-    endTime.setMinutes(time.split(':')[1]);
+    startDate.setFullYear(startDay.split('-')[0]);
+    startDate.setMonth(startDay.split('-')[1] - 1);
+    startDate.setDate(startDay.split('-')[2]);
+
+    startDate.setHours(startTime.split(':')[0]);
+    startDate.setMinutes(startTime.split(':')[1]);
+
+
+    endDate.setFullYear(endDay.split('-')[0]);
+    endDate.setMonth(endDay.split('-')[1] - 1);
+    endDate.setDate(endDay.split('-')[2]);
+
+    endDate.setHours(endTime.split(':')[0]);
+    endDate.setMinutes(endTime.split(':')[1]);
 
     const formData = {
-      endTime: endTime,
-      duration: req.body.duration,
+      startDate: startDate,
+      endDate: endDate,
+      // duration: req.body.duration,
       title: req.body.title,
       description: req.body.description,
       slug: req.body.slug,
     };
 
-    const category = await Category.findOne({ name: req.body.ideaCategory });
-    if (!category) {
-      return res.render('task/createTask', {
-        error: true,
-        message: 'Category does not exist!',
-      });
-    }
-
-    formData.ideaCategory = category._id;
+    // const category = await Category.findOne({ name: req.body.ideaCategory });
+    // if (!category) {
+    //   return res.render('task/createTask', {
+    //     error: true,
+    //     message: 'Category does not exist!',
+    //   });
+    // }
+    //
+    // formData.ideaCategory = category._id;
     const task = new Task(formData);
     await task
       .save()
@@ -121,10 +134,10 @@ class taskController {
   }
 
   async trashTask(req, res, next) {
-    const ideaCategory = await Category.find({});
-    Task.findDeleted({ ideaCategory })
-      .lean()
-      .populate('ideaCategory', 'name', 'ideaCategories')
+    // const ideaCategory = await Category.find({});
+    Task.findDeleted({ })
+      // .lean()
+      // .populate('ideaCategory', 'name', 'ideaCategories')
       .then((tasks) =>
         res.render('task/trashTask', {
           tasks,

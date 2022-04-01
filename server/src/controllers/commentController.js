@@ -1,7 +1,10 @@
 const Comment = require('../models/cmtModel.js');
 const Idea = require('../models/ideaModel');
+const Account = require('../models/accountModel');
+
 class cmtController {
   create(req, res, next) {
+
     const comment = new Comment(req.body);
     comment
       .save()

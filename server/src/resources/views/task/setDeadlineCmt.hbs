@@ -1,5 +1,5 @@
 <div class="mt-4">
-    <h3>Set Deadline For Comment</h3>
+    <h3>Set Deadline For Idea</h3>
 
     {{#if error}}
         <p class="danger">{{message}}</p>
@@ -12,31 +12,41 @@
         </div>
 
         <div class="form-group">
-            <label for="day">Day</label>
-            <input type="date" class="form-control" id="day" name="day">
+            <label for="startDay">Start Day</label>
+            <input type="date" class="form-control" id="startDay" name="startDay">
         </div>
 
         <div class="form-group">
-            <label for="end">End Time</label>
-            <input type="time" class="form-control" id="end" name="end">
+            <label for="startTime">Start Time</label>
+            <input type="time" class="form-control" id="startTime" name="startTime">
         </div>
 
         <div class="form-group">
-            <label for="duration">Duration (Minutes)</label>
-            <input type="number" class="form-control" id="duration" name="duration">
+            <label for="endDay">End Day</label>
+            <input type="date" class="form-control" id="endDay" name="endDay">
         </div>
 
-        <div class="input-group mb-3">
-            <div class="input-group-prepend">
-                <label class="input-group-text" for="ideaCategory">Options</label>
-            </div>
-            <select name="ideaCategory" class="custom-select" id="ideaCategory">
-                <option selected>Choose...</option>
-                {{#each categories}}
-                    <option value={{name}}>{{name}}</option>
-                {{/each}}
-            </select>
+        <div class="form-group">
+            <label for="endTime">End Time</label>
+            <input type="time" class="form-control" id="endTime" name="endTime">
         </div>
+
+        <!--        <div class="form-group">-->
+        <!--            <label for="duration">Duration (Minutes)</label>-->
+        <!--            <input type="number" class="form-control" id="duration" name="duration">-->
+        <!--        </div>-->
+
+        <!--        <div class="input-group mb-3">-->
+        <!--            <div class="input-group-prepend">-->
+        <!--                <label class="input-group-text" for="ideaCategory">Options</label>-->
+        <!--            </div>-->
+        <!--            <select name="ideaCategory" class="custom-select" id="ideaCategory">-->
+        <!--                <option selected>Choose...</option>-->
+            <!--                {{#each categories}}-->
+        <!--                    <option value={{name}}>{{name}}</option>-->
+            <!--                {{/each}}-->
+        <!--            </select>-->
+        <!--        </div>-->
 
         <div class="form-group">
             <label for="description">Description</label>

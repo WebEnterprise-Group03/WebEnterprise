@@ -1,15 +1,18 @@
 const Comment = require('../models/cmtModel');
 const Idea = require('../models/ideaModel');
 const Category = require('../models/ideaCategoryModel');
+const Account = require('../models/accountModel');
 const Task = require('../models/taskModel');
 
 class ideaController {
   //[GET] /idea/detail/:slug
   detail(req, res, next) {
+    Account.findOne({ _id: req.data._id})
     const commments = Comment.find({});
     Idea.findById({ _id: req.params.id })
       .lean()
       .populate('comments', 'content')
+      .populate('account','username')
       .then((ideas) => {
         res.render('idea/detail', { ideas: ideas });
       })
