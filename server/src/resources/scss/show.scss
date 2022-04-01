@@ -1,9 +1,9 @@
-@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@300&display=swap");
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300&display=swap');
 * {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
-  font-family: "Ubuntu", sans-serif;
+  font-family: 'Ubuntu', sans-serif;
 }
 
 :root {
@@ -96,7 +96,7 @@ h1 {
 }
 .choose ul li:hover a::before,
 .choose ul li.hovered a::before {
-  content: "";
+  content: '';
   position: absolute;
   right: 0;
   top: -50px;
@@ -109,7 +109,7 @@ h1 {
 }
 .choose ul li:hover a::after,
 .choose ul li.hovered a::after {
-  content: "";
+  content: '';
   position: absolute;
   right: 0;
   bottom: -50px;

@@ -80,51 +80,49 @@ class authController {
       });
   }
 
-  listAccount(req,res,next){
+  listAccount(req, res, next) {
     Account.find({})
-      .then((accounts) =>{
+      .then((accounts) => {
         res.render('auth/listAccount', {
-          accounts: accounts
-        })
+          accounts: accounts,
+        });
       })
       .catch(next);
   }
 
-  updateAccount(req,res,next){
+  updateAccount(req, res, next) {
     Account.findById(req.param.id)
-      .then((accounts) =>{
-        res.render('auth/updateAccounts',{ accounts: accounts })
+      .then((accounts) => {
+        res.render('auth/updateAccounts', { accounts: accounts });
       })
       .catch(next);
   }
 
-  update(req,res,next){
+  update(req, res, next) {}
 
-  }
-
-  deleteAccount(req,res,next){
+  deleteAccount(req, res, next) {
     Account.delete({ _id: req.params.id })
       .then(() => res.redirect('back'))
       .catch(next);
   }
 
-  forceDeleteAccount(req,res,next){
+  forceDeleteAccount(req, res, next) {
     Account.deleteOne({ _id: req.params.id })
       .then(() => res.redirect('back'))
       .catch(next);
   }
 
-  trashAccount(req,res,next){
+  trashAccount(req, res, next) {
     Account.findDeleted({})
-      .then((accounts)=>{
+      .then((accounts) => {
         res.render('auth/trashAccount', {
-          accounts: accounts
-        })
+          accounts: accounts,
+        });
       })
       .catch(next);
   }
 
-  restoreAccount(req,res,next){
+  restoreAccount(req, res, next) {
     Account.restore({ _id: req.params.id })
       .then(() => res.redirect('back'))
       .catch(next);

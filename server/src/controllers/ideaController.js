@@ -1,10 +1,10 @@
 const Comment = require('../models/cmtModel');
 const Idea = require('../models/ideaModel');
 const Category = require('../models/ideaCategoryModel');
+const Account = require('../models/accountModel');
 const Task = require('../models/taskModel');
 const User = require('../models/accountModel')
 const authJwt = require('../middlewares/authJwt')
-
 
 class ideaController {
 
@@ -33,20 +33,22 @@ class ideaController {
 
   //[GET] /idea/detail/:slug
   detail(req, res, next) {
+    Account.findOne({ _id: req.data._id})
     const commments = Comment.find({});
-    Idea.findById({ _id: req.params.id}).lean().populate('comments','content')
+    Idea.findById({ _id: req.params.id })
+      .lean()
+      .populate('comments', 'content')
+      .populate('account','username')
       .then((ideas) => {
-        res.render('idea/detail',{ ideas:ideas });
+        res.render('idea/detail', { ideas: ideas });
       })
       .catch(next);
   }
 
   //[GET] /idea/create
   async create(req, res, next) {
-    const tasks = await Task.find({}).lean();
-    res.render('idea/create', {
-      tasks: tasks
-    });
+    // const tasks = await Task.find({}).lean();
+    res.render('idea/create');
   }
 
   async store(req, res, next) {
@@ -57,15 +59,15 @@ class ideaController {
       file: req.file.originalname,
       like: req.body.like,
     };
-    const task = await Task.findOne({ title: req.body.tasks });
-    if (!task){
-      return res.render('idea/create',{
-        error: true,
-        message: 'Task does not exist!',
-      })
-    }
+    // const task = await Task.findOne({ title: req.body.tasks });
+    // if (!task) {
+    //   return res.render('idea/create', {
+    //     error: true,
+    //     message: 'Task does not exist!',
+    //   });
+    // }
 
-    formData.tasks = task._id;
+    // formData.tasks = task._id;
     const idea = new Idea(formData);
     await idea
       .save()
@@ -111,16 +113,15 @@ class ideaController {
       .then(() => res.redirect('back'))
       .catch(next);
   }
-  
-  
+
   //[DELETE] /idea/:id/forceDeleteIdea
   forceDeleteIdea(req, res, next) {}
 
-    async listTask(req,res,next){
-    const ideaCategory = await Category.find({});
-    await Task.find({ ideaCategory })
-      .lean()
-      .populate('ideaCategory', 'name', 'ideaCategories')
+  async listTask(req, res, next) {
+    // const ideaCategory = await Category.find({});
+    await Task.find({  })
+      // .lean()
+      // .populate('ideaCategory', 'name', 'ideaCategories')
       .then((task) => {
         res.render('idea/listTask', {
           task: task,
@@ -129,6 +130,5 @@ class ideaController {
       .catch(next);
   }
 }
-
 
 module.exports = new ideaController();

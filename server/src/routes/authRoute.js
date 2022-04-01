@@ -2,7 +2,7 @@ const express = require('express');
 const router = express.Router();
 const AuthController = require('../controllers/authController');
 const VerifySignUp = require('../middlewares/verifySignUp');
-const TaskController = require("../controllers/taskController");
+const TaskController = require('../controllers/taskController');
 
 router.get('/registerPage', AuthController.registerPage);
 router.post('/register', AuthController.register);

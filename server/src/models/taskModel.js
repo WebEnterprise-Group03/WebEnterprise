@@ -5,14 +5,18 @@ const mongoose_delete = require('mongoose-delete');
 
 const TaskSchema = new Schema(
   {
-    endTime: {
+    startDate: {
       type: Date,
       required: true,
     },
-    duration: {
-      type: Number,
+    endDate: {
+      type: Date,
       required: true,
     },
+    // duration: {
+    //   type: Number,
+    //   required: true,
+    // },
     title: {
       type: String,
       required: true,
@@ -27,10 +31,10 @@ const TaskSchema = new Schema(
       unique: true,
       required: true,
     },
-    ideaCategory: {
-      type: mongoose.Schema.Types.ObjectId,
-      ref: 'ideaCategories',
-    },
+    // ideaCategory: {
+    //   type: mongoose.Schema.Types.ObjectId,
+    //   ref: 'ideaCategories',
+    // },
   },
   {
     collection: 'tasks',
