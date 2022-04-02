@@ -17,10 +17,6 @@ const AccountSchema = new Schema(
       type: String,
       required: true,
     },
-    // dateOfBirth: {
-    //   type: String,
-    //   required: true,
-    // },
     phone: {
       type: Number,
       required: true,
@@ -36,15 +32,7 @@ const AccountSchema = new Schema(
     role: {
       type: String,
       required: true,
-    },
-    // avatar: {
-    //   type: String,
-    //   required: false,
-    // },
-    // role: {
-    //   type: mongoose.Schema.Types.ObjectId,
-    //   ref: 'roles',
-    // },
+    }
   },
   {
     collection: 'accounts',

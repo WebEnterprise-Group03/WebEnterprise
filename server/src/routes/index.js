@@ -11,6 +11,7 @@ function route(app) {
   app.use('/auth', auth);
   app.use('/main', main);
   app.use('/idea', idea);
+  app.use('/idea', comment);
   app.use('/category', category);
   app.use('/task', task);
   app.use('/', site);

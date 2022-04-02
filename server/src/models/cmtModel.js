@@ -3,11 +3,15 @@ const Schema = mongoose.Schema;
 
 const CmtSchema = new Schema(
   {
+    content: String,
     author: {
       type: mongoose.Schema.Types.ObjectId,
       ref: 'accounts',
     },
-    content: String,
+    idea:{
+      type: mongoose.Schema.Types.ObjectId,
+      ref: 'ideas',
+    }
   },
 
   {

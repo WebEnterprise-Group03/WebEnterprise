@@ -25,7 +25,7 @@ router.delete(
   [AuthJwt.checkLogin],
   IdeaController.forceDeleteIdea,
 );
-router.post('/:id/comment', cmtController.create);
+// router.post('/:id/comment', cmtController.create);
 
 router.get('/listCategory', IdeaController.listCategory);
 
