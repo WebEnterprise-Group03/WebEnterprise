@@ -1,5 +1,3 @@
-
-
 class siteController {
   //[GET] /
   index(req, res) {

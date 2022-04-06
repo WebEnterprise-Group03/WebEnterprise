@@ -43,7 +43,6 @@ class taskController {
     startDate.setHours(startTime.split(':')[0]);
     startDate.setMinutes(startTime.split(':')[1]);
 
-
     endDate.setFullYear(endDay.split('-')[0]);
     endDate.setMonth(endDay.split('-')[1] - 1);
     endDate.setDate(endDay.split('-')[2]);
@@ -60,24 +59,23 @@ class taskController {
       slug: req.body.slug,
     };
 
-    // const category = await Category.findOne({ name: req.body.ideaCategory });
-    // if (!category) {
-    //   return res.render('task/createTask', {
-    //     error: true,
-    //     message: 'Category does not exist!',
-    //   });
-    // }
-    //
-    // formData.ideaCategory = category._id;
+
+
     const task = new Task(formData);
     await task
       .save()
       .then(() => {
+        setTimeout(function (){
+          setTimeout(function (){
+            console.log('Run');
+          },Task.endDate)
+        },Task.startDate)
         res.redirect('/task/listTask');
       })
       .catch((e) => {
         res.send('Failed saved');
       });
+
   }
 
   //[GET] /task/:id/updateTask
@@ -134,10 +132,7 @@ class taskController {
   }
 
   async trashTask(req, res, next) {
-    // const ideaCategory = await Category.find({});
-    Task.findDeleted({ })
-      // .lean()
-      // .populate('ideaCategory', 'name', 'ideaCategories')
+    Task.findDeleted({})
       .then((tasks) =>
         res.render('task/trashTask', {
           tasks,

@@ -1,6 +1,6 @@
 const Account = require('../models/accountModel');
 const jwt = require('jsonwebtoken');
-const {verify} = require("jsonwebtoken");
+const { verify } = require('jsonwebtoken');
 const KEY = process.env.key;
 
 class authJwt {
@@ -26,22 +26,21 @@ class authJwt {
   }
 
   checkCurrentUser(req, res, next) {
-    try{
+    try {
       let token = req.cookies.token;
       let id = jwt.verify(token, KEY);
       Account.findOne({
         _id: id,
       })
-        .then((data) =>{
+        .then((data) => {
           res.locals.data = data;
           next();
         })
-        .catch(() =>{
+        .catch(() => {
           res.locals.data = null;
           next();
-        })
-    }catch (e){
-    }
+        });
+    } catch (e) {}
   }
 }
 

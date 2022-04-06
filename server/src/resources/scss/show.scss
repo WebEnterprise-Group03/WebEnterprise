@@ -37,6 +37,19 @@ h1 {
   transition: 0.5s;
   overflow: hidden;
 }
+.choose .loginBtn {
+  padding: 10px 50px;
+  border-radius: 8px;
+  background-color: var(--blue);
+  color: white;
+  border: 1px solid white;
+  outline: none;
+  position: absolute;
+  margin-top: 300px;
+  margin-left: 65px;
+  font-size: 20px;
+}
+
 .choose ul {
   position: absolute;
   top: 0;
@@ -54,6 +67,7 @@ h1 {
   margin-bottom: 10px;
   pointer-events: none;
   font-size: 25px;
+  margin-top: 20px;
 }
 .choose ul li:hover,
 .choose ul li.hovered {

@@ -1,63 +1,44 @@
-const Comment = require('../models/cmtModel.js'); 
-const Idea = require('../models/ideaModel')
-const User = require('../models/accountModel')
-class cmtController {
-<<<<<<< Updated upstream
+const Comment = require('../models/cmtModel.js');
+const Idea = require('../models/ideaModel');
+const Account = require('../models/accountModel');
 
-    create(req, res, next) {
-   const comment = new Comment(req.body);
-   
-    comment
-      .save()
-      .then(() => Idea.findById( req.params.id))
-      .then((idea) => {
-        idea.comments.unshift(comment);
-        return idea.save();
-      })
-      .then(() => 
-      res.redirect('back'))
-=======
+class cmtController {
   async doComment(req, res, next) {
     const { data } = req.data.username;
-    const { title } = req.body;
+    const { _id } = req.body;
     const formData = {
-      content: req.body.content
-    }
+      content: req.body.content,
+    };
 
-    const IdeaPost = await Idea.findOne({ title: title})
-    const author = await Account.findOne({ username: req.data.username})
+    const IdeaPost = await Idea.findOne({ _id: _id });
+    const author = await Account.findOne({ username: req.data.username });
 
     formData.idea = IdeaPost._id;
     formData.author = author._id;
-    const cmt = new Comment(formData);
-    await cmt
-      .save()
-      .then(() => res.redirect('back'))
->>>>>>> Stashed changes
-      .catch((error) => {
-        res.send('Fail');
-      });
+    Comment.create(formData, (err, item) => {
+      if (err) {
+        console.log(err);
+      } else {
+        item.save();
 
-
-    // const comment = new Comment(req.body);
-    // comment
+        IdeaPost.comments.push(item);
+        IdeaPost.save();
+        res.redirect('back');
+      }
+    });
+    // const cmt = new Comment(formData);
+    // await cmt
     //   .save()
-    //   .then(() => Idea.findById(req.params.id))
-    //   .then((idea) => {
-    //     idea.comments.unshift(comment);
-    //     return idea.save();
+    //   .then((item) => {
+    //     IdeaPost.comments.push(item);
+    //     res.redirect('back')
     //   })
-    //   .then(() => res.redirect('back'))
     //   .catch((error) => {
     //     res.send('Fail');
     //   });
   }
 
-  async print(req,res,next){
+  async print(req, res, next) {}
+}
 
-  }
- 
-
-  }
-  module.exports = new cmtController();
-
+module.exports = new cmtController();

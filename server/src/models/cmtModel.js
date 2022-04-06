@@ -8,10 +8,10 @@ const CmtSchema = new Schema(
       type: mongoose.Schema.Types.ObjectId,
       ref: 'accounts',
     },
-    idea:{
+    idea: {
       type: mongoose.Schema.Types.ObjectId,
       ref: 'ideas',
-    }
+    },
   },
 
   {

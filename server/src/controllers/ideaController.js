@@ -3,31 +3,105 @@ const Idea = require('../models/ideaModel');
 const Category = require('../models/ideaCategoryModel');
 const Account = require('../models/accountModel');
 const Task = require('../models/taskModel');
-const account = require('../models/accountModel')
-const reqLogin = require('../middlewares/authJwt')
+const account = require('../models/accountModel');
+const reqLogin = require('../middlewares/authJwt');
+const fs = require('fs');
+const archiver = require('archiver');
 
 const checkUser = reqLogin.checkCurrentUser;
 
 class ideaController {
- 
   //[GET] /idea/detail/:slug
   detail(req, res, next) {
-    Account.findOne({ _id: req.data._id})
-    const commments = Comment.find({});
-    Idea.findById({ _id: req.params.id })
-      .lean()
-      .populate('comments', 'content')
-      .populate('account','username')
-      .then((ideas) => {
-        res.render('idea/detail', { ideas: ideas });
+    const { currentUser } = req.data;
+    const { _id } = req.params.id;
+    Account.findOne({ _id: req.data.id })
+      .exec()
+      .then((info) => {
+        // console.log(info)
+        Idea.findOne({ _id: req.params.id })
+          .lean()
+          .populate({
+            path: 'comments',
+            populate: [{ path: 'author' }],
+          })
+          .exec()
+          .then((ideas) => {
+            // console.log(ideas)
+            res.render('idea/detail', { ideas: ideas, info: info });
+          })
+          .catch((err) => {
+            console.log(err);
+          });
       })
-      .catch(next);
+      .catch((err) => {
+        console.log(err);
+      });
+    // Idea.findById({ _id: req.params.id })
+    // .lean()
+    //   .populate({path: 'comments', populate: {path: 'author'}})
+    //   .populate('account')
+    // .exec()
+    // .then((ideas) => {
+    //   console.log(ideas)
+    //   res.render('idea/detail', { ideas: ideas, currentUser: currentUser  });
+    // })
+    // .catch(next);
+
+    // Post.findById(req.params.id).lean().populate({ path:'comments', populate: { path: 'author' } }).populate('author')
+  }
+
+  //[PUT] /detail/:id/like
+  async like(req, res, next) {
+    try {
+      const idea = await Idea.findById(req.params.id);
+      const currentUser = req.data._id.toString();
+      const idealike = idea.likes;
+      if (idealike.includes(currentUser)) {
+        return console.log('Idea already liked');
+      } else {
+        idea.likes.unshift(req.data._id);
+        await idea.save();
+        res.json(idea.likes);
+        console.log('Post liked');
+      }
+    } catch (err) {
+      console.error(err.message);
+      res.status(500).json('Server Error');
+    }
+  }
+
+  //[PUT] /detail/:id/dislike
+  async dislike(req, res, next) {
+    try {
+      const idea = await Idea.findById(req.params.id);
+      const currentUser = req.data._id.toString();
+      const idealike = idea.likes;
+      if (idealike.includes(currentUser) ) {
+        const removeIndex = idealike
+          .map((like) => like.toString())
+          .indexOf(currentUser);
+
+        idealike.splice(removeIndex, 1);
+        await idea.save();
+        res.json(idealike);
+        console.log("Idea Unliked");
+      }else {
+        return console.log("Idea not been liked")
+      }
+
+    } catch (err) {
+      console.error(err.message);
+      res.status(500).json("Server Error");
+    }
   }
 
   //[GET] /idea/create
   async create(req, res, next) {
-    // const tasks = await Task.find({}).lean();
-    res.render('idea/create');
+    const categories = await Category.find({}).lean();
+    res.render('idea/create', {
+      categories: categories,
+    });
   }
 
   async store(req, res, next) {
@@ -36,18 +110,17 @@ class ideaController {
       description: req.body.description,
       slug: req.body.slug,
       file: req.file.originalname,
-      
     };
-   
-    // const task = await Task.findOne({ title: req.body.tasks });
-    // if (!task) {
-    //   return res.render('idea/create', {
-    //     error: true,
-    //     message: 'Task does not exist!',
-    //   });
-    // }
 
-    // formData.tasks = task._id;
+    const category = await Category.findOne({ name: req.body.ideaCategory });
+    if (!category) {
+      return res.render('idea/create', {
+        error: true,
+        message: 'Category does not exist!',
+      });
+    }
+
+    formData.ideaCategory = category._id;
     const idea = new Idea(formData);
     idea.upVotes = [];
     idea.downVotes = [];
@@ -62,13 +135,15 @@ class ideaController {
   }
 
   //[GET] /idea/storedIdeas
-  storedIdeas(req, res, next) {
-    Idea.find({})
+  async storedIdeas(req, res, next) {
+    const ideaCategory = await Category.find({});
+    await Idea.find({ ideaCategory })
+      .lean()
+      .populate('ideaCategory', 'name', 'ideaCategories')
       .then((ideas) => {
         res.render('idea/storedIdeas', { ideas: ideas });
       })
       .catch(next);
-    // res.render('idea/storedIdeas');
   }
 
   //[GET] /idea/:id/update
@@ -99,17 +174,50 @@ class ideaController {
   //[DELETE] /idea/:id/forceDeleteIdea
   forceDeleteIdea(req, res, next) {}
 
-  async listTask(req, res, next) {
-    // const ideaCategory = await Category.find({});
-    await Task.find({  })
-      // .lean()
-      // .populate('ideaCategory', 'name', 'ideaCategories')
-      .then((task) => {
-        res.render('idea/listTask', {
-          task: task,
+  async listCategory(req, res, next) {
+    await Category.find({})
+      .then((categories) => {
+        res.render('idea/listCategory', {
+          categories: categories,
         });
       })
       .catch(next);
+  }
+
+  async downLoadFile(req, res, next) {
+    let a = req.body.check;
+    if (!a) {
+      console.log('Don have any doc');
+    }
+
+    let output = fs.createWriteStream('./src/publics/fileDownload.zip');
+    let archive = archiver('zip', {
+      zlib: { level: 9 },
+    });
+
+    output.on('close', () => {
+      console.log(archive.pointer() + ' total bytes');
+      console.log(
+        'Archiver has been finalized and the output file descriptor has closed',
+      );
+    });
+
+    output.on('end', function () {
+      console.log('Data has been drained');
+    });
+
+    archive.on('error', function (err) {
+      throw err;
+    });
+
+    archive.pipe(output);
+    for (let i = 1; i < a.length; i++) {
+      let file = 'src/publics/doc/' + a[i];
+      console.log('file name: ', file);
+      archive.append(fs.createReadStream(file), { name: a[i] });
+    }
+    await archive.finalize();
+    res.redirect('/idea/downLoadFile');
   }
 }
 

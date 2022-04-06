@@ -18,34 +18,29 @@ const IdeaSchema = new Schema(
       type: mongoose.Schema.Types.ObjectId,
       ref: 'accounts',
     },
-    comments: {
+    comments: [
+      {
         type: mongoose.Schema.Types.ObjectId,
         ref: 'comments',
       },
-    reactions: {
+    ],
+    ideaCategory: {
       type: mongoose.Schema.Types.ObjectId,
-      ref: 'reactions',
+      ref: 'ideaCategories',
     },
-    tasks: {
-      type: mongoose.Schema.Types.ObjectId,
-      ref: 'tasks',
-
-    },
-    category: [{
-      type: mongoose.Schema.Types.ObjectId,
-      ref: 'ideaCategories'
-    }],
-    like : 
-    [{ 
-      type: mongoose.Schema.Types.ObjectId, 
-      ref: 'accounts' 
-    }],
-    dislike : 
-    [{ 
-      type: mongoose.Schema.Types.ObjectId, 
-      ref: 'accounts' 
-    }],
-    }, 
+    likes: [
+      {
+        type: mongoose.Schema.Types.ObjectId,
+        ref: 'accounts',
+      },
+    ],
+    dislikes: [
+      {
+        type: mongoose.Schema.Types.ObjectId,
+        ref: 'accounts',
+      },
+    ],
+  },
 
   {
     collection: 'ideas',

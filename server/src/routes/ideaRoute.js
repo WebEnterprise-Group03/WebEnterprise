@@ -7,7 +7,11 @@ const AuthJwt = require('../middlewares/authJwt');
 const cmtController = require('../controllers/commentController');
 const Idea = require('../models/ideaModel');
 
-router.get('/detail/:id', [AuthJwt.checkLogin], IdeaController.detail);
+router.get(
+  '/detail/:id',
+  [AuthJwt.checkLogin, AuthJwt.checkCurrentUser],
+  IdeaController.detail,
+);
 router.get('/storedIdeas', [AuthJwt.checkLogin], IdeaController.storedIdeas);
 router.get('/create', [AuthJwt.checkLogin], IdeaController.create);
 router.post(
@@ -29,29 +33,35 @@ router.delete(
 
 router.get('/listCategory', IdeaController.listCategory);
 
+//like,dislike function
+router.put('/detail/:id/like', [AuthJwt.checkLogin], IdeaController.like);
+router.put('/detail/:id/dislike', [AuthJwt.checkLogin], IdeaController.dislike);
+
+router.post('/downLoadFile', IdeaController.downLoadFile);
+router.get('/downLoadFile', (req, res, next) => {
+  var x = __dirname.replace('routes', 'publics/') + 'fileDownload.zip';
+  console.log('===========');
+  console.log(x);
+  res.header('Content-Type', 'application/zip');
+  res.download(x);
+});
 
 //like function
-router.put('/detail/:id/like',[AuthJwt.checkLogin], (req,res)=>{
+router.put('/detail/:id/like', [AuthJwt.checkLogin], (req, res) => {
   Idea.findById(req.params.id).then((idea) => {
     idea.like.push(req.data._id);
     idea.save();
     return res.status(200);
- 
-})
+  });
 });
 
 //dislike funtion
-router.put('/detail/:id/dislike',[AuthJwt.checkLogin],(req,res)=>{
-
-  Idea.findById(req.params.id).
-  then((idea) => {
-    
+router.put('/detail/:id/dislike', [AuthJwt.checkLogin], (req, res) => {
+  Idea.findById(req.params.id).then((idea) => {
     idea.dislike.push(req.data._id);
     idea.save();
     return res.status(200);
-})
+  });
 });
-
-
 
 module.exports = router;

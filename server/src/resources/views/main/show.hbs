@@ -1,5 +1,5 @@
 <div class="banner-left">
-    <div class="choose">  
+    <div class="choose">
         <ul>
             <li>
                 <a href="#">
@@ -16,65 +16,65 @@
             </li>
             <li>
                 {{#if data}}
-                <a href="#">
-                    <span class="icon"><ion-icon name="help-outline"></ion-icon></span>
-                    <span class="title">Welcome, {{data.username}}</span>
-                </a>
+                    <a href="#">
+                        <span class="icon"><ion-icon name="help-outline"></ion-icon></span>
+                        <span class="title">Welcome, {{data.username}}</span>
+                    </a>
                 {{/if}}
             </li>
-<!--            <li>-->
-<!--                <a href="#">-->
-<!--                    <span class="icon"><ion-icon name="person-outline"></ion-icon></span>-->
-<!--                    <span class="title" onclick="profileList()">Profile</span>-->
-<!--                </a>-->
-<!--            </li>-->
+            <!--            <li>-->
+            <!--                <a href="#">-->
+            <!--                    <span class="icon"><ion-icon name="person-outline"></ion-icon></span>-->
+            <!--                    <span class="title" onclick="profileList()">Profile</span>-->
+            <!--                </a>-->
+            <!--            </li>-->
             {{#ifCond check "===" "admin"}}
-            <h2>Admin</h2>
-            <li>
-                <a href="/auth/listAccount">
+                <h2>Admin</h2>
+                <li>
+                    <a href="/auth/listAccount">
                         <span class="icon"><ion-icon name="list-outline"></ion-icon></span>
-                    <span class="title">Manage account</span>
-                </a>
-            </li>
-            <li>
-                <a href="/auth/registerPage">
-                    <span class="icon"><ion-icon name="person-add-outline"></ion-icon></span>
-                    <span class="title">Create New Account</span>
-                </a>
-            </li>
-            <li>
-                <a href="/task/listTask">
-                    <span class="icon"><ion-icon name="list-outline"></ion-icon></span>
-                    <span class="title">List Task</span>
-                </a>
-            </li>
-            <li>
-                <a href="/task/createTask">
-                    <span class="icon"><ion-icon name="create-outline"></ion-icon></span>
-                    <span class="title">Create New Task</span>    
-                </a>
-            </li>
+                        <span class="title">Manage account</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="/auth/registerPage">
+                        <span class="icon"><ion-icon name="person-add-outline"></ion-icon></span>
+                        <span class="title">Create New Account</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="/task/listTask">
+                        <span class="icon"><ion-icon name="list-outline"></ion-icon></span>
+                        <span class="title">List Task</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="/task/createTask">
+                        <span class="icon"><ion-icon name="create-outline"></ion-icon></span>
+                        <span class="title">Create New Task</span>
+                    </a>
+                </li>
             {{/ifCond}}
             {{#ifCond check "===" "staff"}}
-            <h2>Staff</h2>
-            <li>
-                <a href="/idea/create">
-                    <span class="icon"><ion-icon name="receipt-outline"></ion-icon></span>
-                    <span class="title">Submit Docs</span>
-                </a>
-            </li>
-            <li>
-                <a href="/idea/listCategory">
-                    <span class="icon"><ion-icon name="receipt-outline"></ion-icon></span>
-                    <span class="title">List Category</span>
-                </a>
-            </li>
-            <li>
-                <a href="#">
-                    <span class="icon"><ion-icon name="people-outline"></ion-icon></span>
-                    <span class="title">For Staff</span>
-                </a>
-            </li>
+                <h2>Staff</h2>
+                <li>
+                    <a href="/idea/create">
+                        <span class="icon"><ion-icon name="receipt-outline"></ion-icon></span>
+                        <span class="title">Submit Docs</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="/idea/listCategory">
+                        <span class="icon"><ion-icon name="receipt-outline"></ion-icon></span>
+                        <span class="title">List Category</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="#">
+                        <span class="icon"><ion-icon name="people-outline"></ion-icon></span>
+                        <span class="title">For Staff</span>
+                    </a>
+                </li>
             {{/ifCond}}
             {{#ifCond check "===" "manager"}}
                 <h2>Manager</h2>
@@ -115,7 +115,7 @@
             <li>
                 <a href="/auth/logout" class="lout">
                     <span class="icon"><ion-icon name="log-out-outline"></ion-icon></span>
-                    <span class="title">Logout</span>    
+                    <span class="title">Logout</span>
                 </a>
             </li>
         </ul>
@@ -133,21 +133,21 @@
             </div>
         </div>
         <div class="content">
-            <div id="listquestion">   
+            <div id="listquestion">
                 {{#each ideas}}
-                <div class="list-idea">
-                    <a href="/idea/detail/{{this._id}}" class="list-group-item list-group-item-action">
-                        <div class="d-flex w-100 justify-content-between">
-                            <h5 class="mb-1">{{this.title}}</h5>
-                            <small class="text-muted">Time</small>
-                        </div>
-                        {{!-- <p class="mb-1">
-                            {{this.description}}
-                        </p> --}}
-                        <small class="text-muted">Reaction.</small>
-                    </a>
-                </div>
-                <br>
+                    <div class="list-idea">
+                        <a href="/idea/detail/{{this._id}}" class="list-group-item list-group-item-action">
+                            <div class="d-flex w-100 justify-content-between">
+                                <h5 class="mb-1">{{this.title}}</h5>
+                                <small class="text-muted">Time</small>
+                            </div>
+                            {{!-- <p class="mb-1">
+                                {{this.description}}
+                            </p> --}}
+                            <small class="text-muted">Reaction.</small>
+                        </a>
+                    </div>
+                    <br>
                 {{/each}}
             </div>
             <div id="profile">
@@ -171,12 +171,12 @@
     //hover
     let list = document.querySelectorAll('.choose li');
     function activeLink(){
-        list.forEach((item) => 
-        item.classList.remove('hovered'));
+        list.forEach((item) =>
+                item.classList.remove('hovered'));
         this.classList.add('hovered');
     }
     list.forEach((item) =>
-    item.addEventListener('mouseover',activeLink));
+            item.addEventListener('mouseover',activeLink));
 </script>
 <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
 <script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>

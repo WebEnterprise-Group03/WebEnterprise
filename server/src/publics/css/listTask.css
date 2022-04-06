@@ -3,7 +3,7 @@
   margin: 0;
   padding: 0;
   box-sizing: border-box;
-  font-family: "Ubuntu", sans-serif; }
+  font-family: 'Ubuntu', sans-serif; }
 
 :root {
   --blue: #287bff;
@@ -94,7 +94,7 @@ h1 {
 
 .choose ul li:hover a::before,
 .choose ul li.hovered a::before {
-  content: "";
+  content: '';
   position: absolute;
   right: 0;
   top: -50px;
@@ -107,7 +107,7 @@ h1 {
 
 .choose ul li:hover a::after,
 .choose ul li.hovered a::after {
-  content: "";
+  content: '';
   position: absolute;
   right: 0;
   bottom: -50px;

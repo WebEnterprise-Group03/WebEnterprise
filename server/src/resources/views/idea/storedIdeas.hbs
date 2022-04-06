@@ -1,12 +1,16 @@
 <div class="container">
     <table class="table">
+        <form action="/idea/downLoadFile" method="POST">
+            <input type="hidden" name="check" id="">
+            <button id="btn-down-load-idea" type="submit" class="btn btn-info">DownLoad File</button>
         <thead class="thead-dark">
         <tr>
+            <th scope="col"></th>
             <th scope="col">#</th>
             <th scope="col">Title</th>
             <th scope="col">Description</th>
             <th scope="col">Slug</th>
-<!--            <th scope="col">File</th>-->
+            <th scope="col">File</th>
             <th scope="col">IdeaCategory</th>
             <th scope="col">Action</th>
         </tr>
@@ -14,22 +18,26 @@
         <tbody>
         {{#each ideas}}
             <tr>
+                <td>
+                    <div class="form-check">
+                        <input class="form-check-input" type="checkbox" value="{{file}}" name="check" id="myCheck">
+                    </div>
+                </td>
                 <th scope="row">{{sum @index 1}}</th>
                 <td>{{this.title}}</td>
                 <td>{{this.description}}</td>
                 <td>{{this.slug}}</td>
-<!--                <td>{{this.files}}</td>-->
+                <td>{{this.file}}</td>
                 <td>{{this.ideaCategory.name}}</td>
                 <td>
-                    <button type="button" class="btn btn-info"><a href="/idea/{{this._id}}/update" style="color: white">Update</a></button>
-                    <button type="button" class="btn btn-info"><a href="" style="color: white" data-id="{{this._id}}" data-toggle="modal" data-target="#delete-idea">Delete</a></button>
+                    <button formaction="" type="button" class="btn btn-info"><a href="/idea/{{this._id}}/update" style="color: white">Update</a></button>
+                    <button formaction="" type="button" class="btn btn-info"><a href="" style="color: white" data-id="{{this._id}}" data-toggle="modal" data-target="#delete-idea">Delete</a></button>
                 </td>
             </tr>
         {{/each}}
         </tbody>
+        </form>
     </table>
-
-    <div class="pagenumbers" id="pagination"></div>
 </div>
 
 
@@ -64,6 +72,9 @@
         let deleteForm = document.forms['delete-idea-form'];
         let btnDeleteIdea = document.getElementById('btn-delete-idea');
 
+        let downLoadForm = document.forms['download-idea-form'];
+        let btnDownLoadIdea = document.getElementById('btn-down-load-idea');
+
         //When confirm clicked
         $('#delete-idea').on('show.bs.modal', function (event) {
             let button = $(event.relatedTarget)
@@ -74,29 +85,14 @@
             deleteForm.action = '/idea/' + ideaID + '?_Method=DELETE';
             deleteForm.submit();
         }
+
+        //Download form
+        // btnDownLoadIdea.checked  = function (){
+        //   downLoadForm.action = '/idea/downLoadFile' + '?_Method=POST';
+        //   downLoadForm.submit();
+        // }
     });
 </script>
 
 
-{{!pagination}}
-<script>
-    const listItem = ideas;
-    const paginationElement = document.getElementById('pagination');
-    let current_page =1 ;
-    let row = 5;
-
-    function Displaylist(idea,wrapper,row_per_page,page){
-        wrapper.innerHTML="";
-        page--;
-        let loop_start = row_per_page *page;
-        let paginatedIdea = idea.slice(loop_start,loop_start+ row_per_page);
-        console.log(paginatedIdea);
-        for(let i =loop_start; i <loop_start + row_per_page, i++)
-        {
-
-        }
-    }
-    Displaylist(List)
-
-</script>
 

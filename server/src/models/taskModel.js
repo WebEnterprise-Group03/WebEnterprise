@@ -13,10 +13,6 @@ const TaskSchema = new Schema(
       type: Date,
       required: true,
     },
-    // duration: {
-    //   type: Number,
-    //   required: true,
-    // },
     title: {
       type: String,
       required: true,
@@ -31,10 +27,6 @@ const TaskSchema = new Schema(
       unique: true,
       required: true,
     },
-    // ideaCategory: {
-    //   type: mongoose.Schema.Types.ObjectId,
-    //   ref: 'ideaCategories',
-    // },
   },
   {
     collection: 'tasks',

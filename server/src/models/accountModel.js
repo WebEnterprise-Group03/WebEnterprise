@@ -32,7 +32,7 @@ const AccountSchema = new Schema(
     role: {
       type: String,
       required: true,
-    }
+    },
   },
   {
     collection: 'accounts',

@@ -1,0 +1,215 @@
+{{#if home}}
+    <div class="banner-left">
+        <div class="choose">
+            <ul>
+                <li>
+                    <a href="/main/show">
+                        <span class="icon"><ion-icon name="home-outline"></ion-icon></span>
+                        <span class="title">Web Enterprise</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="#">
+                        <span class="icon"></span>
+                        <span class="title" onclick="getus()">About Us</span>
+                    </a>
+                </li>
+                <!--            <li>-->
+                <!--                <a href="#">-->
+                <!--                    <span class="icon"><ion-icon name="person-outline"></ion-icon></span>-->
+                <!--                    <span class="title" onclick="profileList()">Profile</span>-->
+                <!--                </a>-->
+                <!--            </li>-->
+                {{#ifCond check "===" "admin"}}
+                    <h2>Admin</h2>
+                    <li>
+                        <a href="/auth/listAccount">
+                            <span class="icon"><ion-icon name="list-outline"></ion-icon></span>
+                            <span class="title">Manage account</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="/auth/registerPage">
+                            <span class="icon"><ion-icon name="person-add-outline"></ion-icon></span>
+                            <span class="title">Create New Account</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="/task/listTask">
+                            <span class="icon"><ion-icon name="list-outline"></ion-icon></span>
+                            <span class="title">List Task</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="/task/createTask">
+                            <span class="icon"><ion-icon name="create-outline"></ion-icon></span>
+                            <span class="title">Create New Task</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#">
+                            <span class="icon"><ion-icon name="calendar-outline"></ion-icon></span>
+                            <span class="title">Set Deadline</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="/auth/logout" class="lout">
+                            <span class="icon"><ion-icon name="log-out-outline"></ion-icon></span>
+                            <span class="title">Logout</span>
+                        </a>
+                    </li>
+                {{/ifCond}}
+                {{#ifCond check "===" "staff"}}
+                    <h2>Staff</h2>
+                    <li>
+                        <a href="/idea/create">
+                            <span class="icon"><ion-icon name="receipt-outline"></ion-icon></span>
+                            <span class="title">Submit Docs</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="/idea/listTask">
+                            <span class="icon"><ion-icon name="receipt-outline"></ion-icon></span>
+                            <span class="title">List Task</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#">
+                            <span class="icon"><ion-icon name="people-outline"></ion-icon></span>
+                            <span class="title">For Staff</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="/auth/logout" class="lout">
+                            <span class="icon"><ion-icon name="log-out-outline"></ion-icon></span>
+                            <span class="title">Logout</span>
+                        </a>
+                    </li>
+                {{/ifCond}}
+                {{#ifCond check "===" "manager"}}
+                    <h2>Manager</h2>
+                    <li>
+                        <a href="/idea/storedIdeas">
+                            <span class="icon"><ion-icon name="albums-outline"></ion-icon></span>
+                            <span class="title">Manage Idea</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="/category/view">
+                            <span class="icon"><ion-icon name="copy-outline"></ion-icon></span>
+                            <span class="title">Manage Category</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#">
+                            <span class="icon"><ion-icon name="bar-chart-outline"></ion-icon></span>
+                            <span class="title">Chart</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="/auth/logout" class="lout">
+                            <span class="icon"><ion-icon name="log-out-outline"></ion-icon></span>
+                            <span class="title">Logout</span>
+                        </a>
+                    </li>
+                {{/ifCond}}
+                {{#ifCond check "===" "coordinator"}}
+                    <h2>Coordinator</h2>
+                    <li>
+                        <a href="">
+                            <span class="icon"></span>
+                            <span class="title" href="#">Manage Category</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="">
+                            <span class="icon"></span>
+                            <span class="title" href="#">For Coordinator </span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="/auth/logout" class="lout">
+                            <span class="icon"><ion-icon name="log-out-outline"></ion-icon></span>
+                            <span class="title">Logout</span>
+                        </a>
+                    </li>
+                {{/ifCond}}
+                {{!-- <li class="loginSite">
+                    <a href="/auth/loginPage">
+                        <span class="icon"><ion-icon name="log-in-outline"></ion-icon></span>
+                        <span class="title" id="login" onclick="login()">Login</span>
+                    </a>
+                </li> --}}
+                <a href="/auth/loginPage">
+                    <button class="loginBtn">Login</button>
+                </a>
+            </ul>
+        </div>
+    </div>
+{{/if}}
+<div id="infor">
+    <h1 id="content-home">Welcome to our website project</h1>
+    <div class="wrapper-coloured">
+        <div class="sectiontitle">
+            <h3 class="heading">Our Team</h3>
+        </div>
+        <div class="tm-container-inner tm-persons">
+            <div class="row">
+                <article class="col-lg-6">
+                    <figure class="tm-person">
+                        <img src="/img/tu.jpg" alt="Image" class="img-fluid tm-person-img" />
+                        <figcaption class="tm-person-description">
+                            <h4 class="tm-person-name">Do Huu Tu</h4>
+                            <p class="tm-person-title">Leader and Back-End Developer</p>
+                        </figcaption>
+                    </figure>
+                </article>
+                <article class="col-lg-6">
+                    <figure class="tm-person">
+                        <img src="/img/luong.jpg" alt="Image" style="width:130px; height:130px"
+                             class="img-fluid tm-person-img" />
+                        <figcaption class="tm-person-description">
+                            <h4 class="tm-person-name">Tran Duc Luong</h4>
+                            <p class="tm-person-title">Back-End Developer and Database Designer</p>
+                        </figcaption>
+                    </figure>
+                </article>
+                <article class="col-lg-6">
+                    <figure class="tm-person">
+                        <img src="" alt="Image" class="img-fluid tm-person-img" />
+                        <figcaption class="tm-person-description">
+                            <h4 class="tm-person-name">Tran Van Minh</h4>
+                            <p class="tm-person-title">Scrum Master</p>
+                        </figcaption>
+                    </figure>
+                </article>
+                <article class="col-lg-6">
+                    <figure class="tm-person">
+                        <img src="/img/hoanganh.jpg" alt="Image" class="img-fluid tm-person-img" />
+                        <figcaption class="tm-person-description">
+                            <h4 class="tm-person-name">Mai Hoang Anh</h4>
+                            <p class="tm-person-title">Front-end Developer</p>
+                        </figcaption>
+                    </figure>
+                </article>
+                <article class="col-lg-6">
+                    <figure class="tm-person">
+                        <img src="" alt="Image" class="img-fluid tm-person-img" />
+                        <figcaption class="tm-person-description">
+                            <h4 class="tm-person-name">Ha Quyet Tien</h4>
+                            <p class="tm-person-title">Tester</p>
+                        </figcaption>
+                    </figure>
+                </article>
+            </div>
+        </div>
+    </div>
+</div>
+<script>
+    let usInfor = document.getElementById('infor')
+    function getus(){
+        usInfor.style.display="block";
+    }
+</script>
+<script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
+<script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>

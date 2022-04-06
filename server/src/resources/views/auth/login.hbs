@@ -46,7 +46,7 @@
             })
                     .then(data=>{
                         setCookie('token', data.token, 1);
-                        location.assign('/main/show/:page');
+                        location.assign('/main/show');
                     })
                     .catch(err=>{
                         console.log(err);

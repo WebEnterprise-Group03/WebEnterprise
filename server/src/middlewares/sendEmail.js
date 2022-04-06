@@ -1,7 +1,6 @@
 const nodemailer = require('nodemailer');
 
 class sendEmail {
-
   send(req, res, next) {
     const mailOptions = {
       from: 'tuhuu7165@gmail.com',
