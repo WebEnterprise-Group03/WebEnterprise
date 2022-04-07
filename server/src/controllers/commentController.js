@@ -26,16 +26,6 @@ class cmtController {
         res.redirect('back');
       }
     });
-    // const cmt = new Comment(formData);
-    // await cmt
-    //   .save()
-    //   .then((item) => {
-    //     IdeaPost.comments.push(item);
-    //     res.redirect('back')
-    //   })
-    //   .catch((error) => {
-    //     res.send('Fail');
-    //   });
   }
 
   async print(req, res, next) {}

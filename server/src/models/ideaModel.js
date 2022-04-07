@@ -34,14 +34,10 @@ const IdeaSchema = new Schema(
         ref: 'accounts',
       },
     ],
-    dislikes: [
-      {
-        type: mongoose.Schema.Types.ObjectId,
-        ref: 'accounts',
-      },
-    ],
+    vote:{
+      type: Number
+    }
   },
-
   {
     collection: 'ideas',
   },

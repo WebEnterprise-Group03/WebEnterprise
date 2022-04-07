@@ -31,6 +31,21 @@ class sendEmail {
       next();
     });
   }
+
+  sendAfterCmt(req,res,next){
+    const data = req.data.email;
+
+    const mailOptions = {
+      from: 'tuhuu7165@gmail.com',
+      to: 'tudhgch18565@fpt.edu.vn',
+      subject: 'The staff submitted the idea',
+      text:
+        'Dear Mr Coordinator ,\n' +
+        'There is a staff who submits the idea. Please check it and give any feedback to the staff\n' +
+        'Thank you in advance.',
+    };
+
+  }
 }
 
 module.exports = new sendEmail();

@@ -1,5 +1,6 @@
 const Task = require('../models/taskModel');
 const Category = require('../models/ideaCategoryModel');
+const schedule = require('node-schedule');
 
 class taskController {
   //[GET] /task/listTask
@@ -53,27 +54,27 @@ class taskController {
     const formData = {
       startDate: startDate,
       endDate: endDate,
-      // duration: req.body.duration,
       title: req.body.title,
       description: req.body.description,
-      slug: req.body.slug,
+      complete: req.body.complete,
     };
-
-
 
     const task = new Task(formData);
     await task
       .save()
       .then(() => {
-        setTimeout(function (){
-          setTimeout(function (){
-            console.log('Run');
-          },Task.endDate)
-        },Task.startDate)
+        schedule.scheduleJob(endDate, function(){
+          const complete = "Completed";
+          Task.updateOne(
+            {
+              complete: complete,
+            })
+          console.log('Completed Successfull')
+        });
+
         res.redirect('/task/listTask');
-      })
-      .catch((e) => {
-        res.send('Failed saved');
+      }).catch((e) => {
+        next(e);
       });
 
   }
@@ -101,7 +102,7 @@ class taskController {
       name: req.body.ideaCategory,
     });
     const description = req.body.description;
-    const slug = req.body.slug;
+    const complete = req.body.complete;
 
     Task.updateOne(
       { _id: req.body._id },
@@ -112,7 +113,7 @@ class taskController {
         duration: duration,
         ideaCategory: ideaCategory._id,
         description: description,
-        slug: slug,
+        complete: complete,
       },
     )
       .then(() => res.redirect('/task/listTask'))

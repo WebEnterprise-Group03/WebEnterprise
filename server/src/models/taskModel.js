@@ -1,6 +1,6 @@
 const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
-const slug = require('mongoose-slug-generator');
+// const slug = require('mongoose-slug-generator');
 const mongoose_delete = require('mongoose-delete');
 
 const TaskSchema = new Schema(
@@ -21,11 +21,15 @@ const TaskSchema = new Schema(
       type: String,
       require: true,
     },
-    slug: {
+    // slug: {
+    //   type: String,
+    //   slug: 'title',
+    //   unique: true,
+    //   required: true,
+    // },
+    complete:{
       type: String,
-      slug: 'title',
-      unique: true,
-      required: true,
+      require: true,
     },
   },
   {
@@ -33,7 +37,7 @@ const TaskSchema = new Schema(
   },
 );
 
-mongoose.plugin(slug);
+// mongoose.plugin(slug);
 TaskSchema.plugin(mongoose_delete, {
   deleteAt: true,
   overrideMethods: 'all',

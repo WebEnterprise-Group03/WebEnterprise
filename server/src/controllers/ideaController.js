@@ -7,6 +7,7 @@ const account = require('../models/accountModel');
 const reqLogin = require('../middlewares/authJwt');
 const fs = require('fs');
 const archiver = require('archiver');
+const alert = require('alert');
 
 const checkUser = reqLogin.checkCurrentUser;
 
@@ -37,18 +38,6 @@ class ideaController {
       .catch((err) => {
         console.log(err);
       });
-    // Idea.findById({ _id: req.params.id })
-    // .lean()
-    //   .populate({path: 'comments', populate: {path: 'author'}})
-    //   .populate('account')
-    // .exec()
-    // .then((ideas) => {
-    //   console.log(ideas)
-    //   res.render('idea/detail', { ideas: ideas, currentUser: currentUser  });
-    // })
-    // .catch(next);
-
-    // Post.findById(req.params.id).lean().populate({ path:'comments', populate: { path: 'author' } }).populate('author')
   }
 
   //[PUT] /detail/:id/like
@@ -58,12 +47,13 @@ class ideaController {
       const currentUser = req.data._id.toString();
       const idealike = idea.likes;
       if (idealike.includes(currentUser)) {
-        return console.log('Idea already liked');
+        return alert('Idea already liked');
       } else {
         idea.likes.unshift(req.data._id);
+        idea.vote += 1;
         await idea.save();
         res.json(idea.likes);
-        console.log('Post liked');
+        alert('Idea liked');
       }
     } catch (err) {
       console.error(err.message);
@@ -83,11 +73,12 @@ class ideaController {
           .indexOf(currentUser);
 
         idealike.splice(removeIndex, 1);
+        idea.vote -=1;
         await idea.save();
         res.json(idealike);
-        console.log("Idea Unliked");
+        alert("Idea Unliked");
       }else {
-        return console.log("Idea not been liked")
+        return alert("Idea not been liked")
       }
 
     } catch (err) {
@@ -110,6 +101,7 @@ class ideaController {
       description: req.body.description,
       slug: req.body.slug,
       file: req.file.originalname,
+      // account: req.data.email
     };
 
     const category = await Category.findOne({ name: req.body.ideaCategory });
@@ -122,8 +114,7 @@ class ideaController {
 
     formData.ideaCategory = category._id;
     const idea = new Idea(formData);
-    idea.upVotes = [];
-    idea.downVotes = [];
+    idea.vote = 0 ;
     await idea
       .save()
       .then(() => {

@@ -12,7 +12,7 @@
             <th scope="col">Start Date</th>
             <th scope="col">End Date</th>
             <th scope="col">Description</th>
-            <th scope="col">Slug</th>
+            <th scope="col">Complete</th>
             <th scope="col">Action</th>
         </tr>
         </thead>
@@ -24,7 +24,7 @@
                 <td>{{this.startDate}}</td>
                 <td>{{this.endDate}}</td>
                 <td>{{this.description}}</td>
-                <td>{{this.slug}}</td>
+                <td>{{this.complete}}</td>
                 <td>
                     <button type="button" class="btn btn-info"><a href="" style="color: white" class="btn-restore-task" data-id="{{this._id}}">Restore</a></button>
                     <button type="button" class="btn btn-info"><a href="" style="color: white" data-id="{{this._id}}" data-toggle="modal" data-target="#delete-task">Delete Forever</a></button>
