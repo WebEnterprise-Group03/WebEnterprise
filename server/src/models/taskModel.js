@@ -21,16 +21,6 @@ const TaskSchema = new Schema(
       type: String,
       require: true,
     },
-    // slug: {
-    //   type: String,
-    //   slug: 'title',
-    //   unique: true,
-    //   required: true,
-    // },
-    complete:{
-      type: String,
-      require: true,
-    },
   },
   {
     collection: 'tasks',

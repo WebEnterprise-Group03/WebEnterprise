@@ -1,6 +1,7 @@
 const Task = require('../models/taskModel');
 const Category = require('../models/ideaCategoryModel');
 const schedule = require('node-schedule');
+const SendEmail = require('../middlewares/sendEmail');
 
 class taskController {
   //[GET] /task/listTask
@@ -56,7 +57,6 @@ class taskController {
       endDate: endDate,
       title: req.body.title,
       description: req.body.description,
-      complete: req.body.complete,
     };
 
     const task = new Task(formData);
@@ -64,12 +64,7 @@ class taskController {
       .save()
       .then(() => {
         schedule.scheduleJob(endDate, function(){
-          const complete = "Completed";
-          Task.updateOne(
-            {
-              complete: complete,
-            })
-          console.log('Completed Successfull')
+          SendEmail.sendAfterCompletedDeadline();
         });
 
         res.redirect('/task/listTask');
@@ -102,7 +97,6 @@ class taskController {
       name: req.body.ideaCategory,
     });
     const description = req.body.description;
-    const complete = req.body.complete;
 
     Task.updateOne(
       { _id: req.body._id },
@@ -113,7 +107,6 @@ class taskController {
         duration: duration,
         ideaCategory: ideaCategory._id,
         description: description,
-        complete: complete,
       },
     )
       .then(() => res.redirect('/task/listTask'))
