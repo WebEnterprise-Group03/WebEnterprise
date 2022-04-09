@@ -12,6 +12,12 @@ router.get(
   [AuthJwt.checkLogin, AuthJwt.checkCurrentUser],
   IdeaController.detail,
 );
+
+router.get(
+  '/dashBoard',
+  [AuthJwt.checkLogin, AuthJwt.checkCurrentUser],
+  IdeaController.dashBoard,
+);
 router.get('/storedIdeas', [AuthJwt.checkLogin], IdeaController.storedIdeas);
 router.get('/create', [AuthJwt.checkLogin], IdeaController.create);
 router.post(

@@ -14,24 +14,23 @@ class cmtController {
       content: req.body.content,
     };
 
-
     const IdeaPost = await Idea.findOne({ _id: _id });
     const author = await Account.findOne({ username: req.data.username });
-    const TaskDealine = await Task.findOne({ title: "SetDeadlineComment" });
+    const TaskDealine = await Task.findOne({ title: 'SetDeadlineComment' });
     const endDate = TaskDealine.endDate;
 
     formData.idea = IdeaPost._id;
     formData.author = author._id;
     Comment.create(formData, (err, item) => {
-        if (getCurrentDate > endDate){
-          item.save();
+      if (getCurrentDate > endDate) {
+        item.save();
 
-          IdeaPost.comments.push(item);
-          IdeaPost.save();
-          res.redirect('back');
-        }else {
-          console.log('Da den deadline');
-        }
+        IdeaPost.comments.push(item);
+        IdeaPost.save();
+        res.redirect('back');
+      } else {
+        console.log('Da den deadline');
+      }
     });
   }
 

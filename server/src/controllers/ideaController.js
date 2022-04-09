@@ -40,6 +40,17 @@ class ideaController {
       });
   }
 
+  async dashBoard(req,res,next){
+      const idea = await Idea.find({});
+      await Category.find({ idea })
+        .lean()
+        .populate('ideas', 'title', 'ideas')
+        .then((categories) => {
+          res.render('idea/dashBoard', { categories: categories });
+        })
+        .catch(next);
+  }
+
   //[PUT] /detail/:id/like
   async like(req, res, next) {
     try {
@@ -67,23 +78,22 @@ class ideaController {
       const idea = await Idea.findById(req.params.id);
       const currentUser = req.data._id.toString();
       const idealike = idea.likes;
-      if (idealike.includes(currentUser) ) {
+      if (idealike.includes(currentUser)) {
         const removeIndex = idealike
           .map((like) => like.toString())
           .indexOf(currentUser);
 
         idealike.splice(removeIndex, 1);
-        idea.vote -=1;
+        idea.vote -= 1;
         await idea.save();
         res.json(idealike);
-        alert("Idea Unliked");
-      }else {
-        return alert("Idea not been liked")
+        alert('Idea Unliked');
+      } else {
+        return alert('Idea not been liked');
       }
-
     } catch (err) {
       console.error(err.message);
-      res.status(500).json("Server Error");
+      res.status(500).json('Server Error');
     }
   }
 
@@ -114,10 +124,12 @@ class ideaController {
 
     formData.ideaCategory = category._id;
     const idea = new Idea(formData);
-    idea.vote = 0 ;
+    idea.vote = 0;
     await idea
       .save()
-      .then(() => {
+      .then((item) => {
+        category.ideas.push(item);
+        category.save();
         res.redirect('/main/show');
       })
       .catch((error) => {

@@ -1,7 +1,7 @@
 const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
 const comment = require('./cmtModel');
-const bcrypt = require('bcryptjs')
+const bcrypt = require('bcryptjs');
 const mongoose_delete = require('mongoose-delete');
 
 const AccountSchema = new Schema(
@@ -64,6 +64,5 @@ AccountSchema.methods.comparePassword = function (password, done) {
     done(err, isMatch);
   });
 };
-
 
 module.exports = mongoose.model('accounts', AccountSchema);

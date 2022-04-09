@@ -63,15 +63,15 @@ class taskController {
     await task
       .save()
       .then(() => {
-        schedule.scheduleJob(endDate, function(){
+        schedule.scheduleJob(endDate, function () {
           SendEmail.sendAfterCompletedDeadline();
         });
 
         res.redirect('/task/listTask');
-      }).catch((e) => {
+      })
+      .catch((e) => {
         next(e);
       });
-
   }
 
   //[GET] /task/:id/updateTask

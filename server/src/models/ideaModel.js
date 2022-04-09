@@ -34,9 +34,9 @@ const IdeaSchema = new Schema(
         ref: 'accounts',
       },
     ],
-    vote:{
-      type: Number
-    }
+    vote: {
+      type: Number,
+    },
   },
   {
     collection: 'ideas',

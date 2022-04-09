@@ -32,7 +32,7 @@ class sendEmail {
     });
   }
 
-  sendAfterCmt(req,res,next){
+  sendAfterCmt(req, res, next) {
     const data = req.data.email;
 
     const mailOptions = {
@@ -46,7 +46,7 @@ class sendEmail {
     };
   }
 
-  sendAfterCompletedDeadline(req,res,next){
+  sendAfterCompletedDeadline(req, res, next) {
     const mailCompleted = {
       from: 'tuhuu7165@gmail.com',
       to: 'tudhgch18565@fpt.edu.vn',
