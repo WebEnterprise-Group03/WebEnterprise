@@ -114,6 +114,7 @@ class ideaController {
       // account: req.data.email
     };
 
+    const email = await Account.findOne({ email: req.data.email });
     const category = await Category.findOne({ name: req.body.ideaCategory });
     if (!category) {
       return res.render('idea/create', {
@@ -123,6 +124,7 @@ class ideaController {
     }
 
     formData.ideaCategory = category._id;
+    formData.account = email._id;
     const idea = new Idea(formData);
     idea.vote = 0;
     await idea
@@ -130,6 +132,7 @@ class ideaController {
       .then((item) => {
         category.ideas.push(item);
         category.save();
+
         res.redirect('/main/show');
       })
       .catch((error) => {

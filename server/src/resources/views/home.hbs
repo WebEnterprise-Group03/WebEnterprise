@@ -1,19 +1,185 @@
-<div class="banner">
-    <div class="left-banner">
-        {{!-- <div class="search-box">
-            <img src="img/search.png">
-            <input type="text">
-        </div> --}}
-        <h1>Idea Enterprise Web<br><span class="title1">Software Development</span></h1>
-        <h3>Empowering the world <span class="title1">develop technology through exchange knowledge</span></h3>
-        <p>Our public platform serves 10,000 people every month, making it one of the most popular websites in the world. <br>
 
-            Our asynchronous knowledge management and collaboration offering, we are transforming how people work.</p>
-        <div class="btn">
-            <button class="btn" type="submit"><a href="/auth/loginPage">Login</a></button>
+
+<div class="banner-left">
+    <div class="choose">
+        <ul>
+            <li>
+                <a href="/main/show">
+                    <span class="icon"><ion-icon name="home-outline"></ion-icon></span>
+                    <span class="title">Web Enterprise</span>
+                </a>
+            </li>
+            {{!-- <li>
+                <a href="/main/show">
+                    <span class="icon"><ion-icon name="home-outline"></ion-icon></span>
+                    <span class="title">Web Enterprise</span>
+                </a>
+            </li> --}}
+            <li>
+                <a href="#">
+                    <span class="icon"></span>
+                    <span class="title" onclick="getus()">About Us</span>
+                </a>
+            </li>
+            <li>
+                <a href="#">
+                    <span class="icon"></span>
+                    <span class="title" onclick="getus()">About Our Project</span>
+                </a>
+            </li>
+            <button class="loginBtn" onclick="loginf()">Login</button>
+        </ul>
+    </div>
+    <div class="main">
+
+        {{!-- login form --}}
+        <div id="loginid">
+            <div class="form">
+                <h2>Login</h2>
+                <input id="username" type="text" class="input" name="username" placeholder="Username">
+                <input id="password" type="password" class="input" name="password" placeholder="Password" required>
+                {{!-- <input id="btn-login" class="btn" type="submit"> --}}
+                <button id="btn-login" class="btn" type="submit">Submit</button>
+            </div>
+        </div>
+        {{!-- infor of team --}}
+        <div id="infor">
+            <h1 id="content-home">Welcome to our website project</h1>
+            <div class="wrapper-coloured">
+                <div class="sectiontitle">
+                    <h3 class="heading">Our Team</h3>
+                </div>
+                <div class="tm-container-inner tm-persons">
+                    <div class="row">
+                        <article class="col-lg-6">
+                            <figure class="tm-person">
+                                <img src="/img/tu.jpg" alt="Image" class="img-fluid tm-person-img" />
+                                <figcaption class="tm-person-description">
+                                    <h4 class="tm-person-name">Do Huu Tu</h4>
+                                    <p class="tm-person-title">Leader and Back-End Developer</p>
+                                </figcaption>
+                            </figure>
+                        </article>
+                        <article class="col-lg-6">
+                            <figure class="tm-person">
+                                <img src="/img/luong.jpg" alt="Image" style="width:130px; height:130px"
+                                     class="img-fluid tm-person-img" />
+                                <figcaption class="tm-person-description">
+                                    <h4 class="tm-person-name">Tran Duc Luong</h4>
+                                    <p class="tm-person-title">Back-End Developer and Database Designer</p>
+                                </figcaption>
+                            </figure>
+                        </article>
+                        <article class="col-lg-6">
+                            <figure class="tm-person">
+                                <img src="" alt="Image" class="img-fluid tm-person-img" />
+                                <figcaption class="tm-person-description">
+                                    <h4 class="tm-person-name">Tran Van Minh</h4>
+                                    <p class="tm-person-title">Scrum Master</p>
+                                </figcaption>
+                            </figure>
+                        </article>
+                        <article class="col-lg-6">
+                            <figure class="tm-person">
+                                <img src="/img/hoanganh.jpg" alt="Image" class="img-fluid tm-person-img" />
+                                <figcaption class="tm-person-description">
+                                    <h4 class="tm-person-name">Mai Hoang Anh</h4>
+                                    <p class="tm-person-title">Front-end Developer</p>
+                                </figcaption>
+                            </figure>
+                        </article>
+                        <article class="col-lg-6">
+                            <figure class="tm-person">
+                                <img src="" alt="Image" class="img-fluid tm-person-img" />
+                                <figcaption class="tm-person-description">
+                                    <h4 class="tm-person-name">Ha Quyet Tien</h4>
+                                    <p class="tm-person-title">Tester</p>
+                                </figcaption>
+                            </figure>
+                        </article>
+                    </div>
+                </div>
+            </div>
         </div>
     </div>
-    <div class="right-banner">
-        <img src="/img/banner1.jpg">
-    </div>
 </div>
+<script>
+    let usInfor = document.getElementById('infor');
+    function getus(){
+        usInfor.style.display="block";
+        signin.style.display="none";
+    };
+
+    //show the list of question
+    let question = document.getElementById('listquestion');
+    function questionList(){
+        question.style.display="block";
+    };
+
+    let signin = document.getElementById('loginid');
+    function loginf(){
+        signin.style.display="block";
+        usInfor.style.display="none";
+    };
+</script>
+{{!-- Login Js --}}
+<script>
+
+    let isAuthenticated = false;
+    function setCookie(cname, cvalue, exdays) {
+        const d = new Date();
+        d.setTime(d.getTime() + (exdays*24*60*60*1000));
+        let expires = "expires="+ d.toUTCString();
+        document.cookie = cname + "=" + cvalue + ";" + expires + ";path=/";
+    }
+    function getCookie(cname) {
+        let name = cname + "=";
+        let decodedCookie = decodeURIComponent(document.cookie);
+        let ca = decodedCookie.split(';');
+        for(let i = 0; i <ca.length; i++) {
+            let c = ca[i];
+            while (c.charAt(0) == ' ') {
+                c = c.substring(1);
+            }
+            if (c.indexOf(name) == 0) {
+                return c.substring(name.length, c.length);
+            }
+        }
+        return "";
+    }
+
+    document.addEventListener('DOMContentLoaded', function (){
+        let btnLogin = document.getElementById('btn-login')
+
+        btnLogin.onclick = function (){
+            $.ajax({
+                url: '/auth/login',
+                method: 'POST',
+                data: {
+                    username: $('#username').val(),
+                    password: $('#password').val(),
+                }
+            })
+                    .then(data=>{
+                        setCookie('token', data.token, 1);
+                        location.assign('/main/show');
+                    })
+                    .catch(err=>{
+                        console.log(err);
+                    })
+        }
+    })
+</script>
+<script>
+    //add hower for choose menu
+    let list = document.querySelectorAll('.choose li');
+    function activeLink(){
+        list.forEach((item) =>
+                item.classList.remove('hovered'));
+        this.classList.add('hovered');
+    }
+    list.forEach((item) =>
+            item.addEventListener('mouseover',activeLink));
+</script>
+<script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
+<script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>

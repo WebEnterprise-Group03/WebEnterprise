@@ -2,26 +2,38 @@
     <div class="choose">
         <ul>
             <li>
-                <a href="#">
+                <a href="/main/show">
                     <span class="icon"><ion-icon name="home-outline"></ion-icon></span>
-                    <span class="title">Home</span>
+                    <span class="title">Web Enterprise</span>
                 </a>
             </li>
-            <h2>Public</h2>
-            <li>
-                <a href="#">
-                    <span class="icon"><ion-icon name="help-outline"></ion-icon></span>
-                    <span class="title" onclick="questionList()">Ideas</span>
+            {{#if home}}
+            {{!-- <li>
+                <a href="/main/show">
+                    <span class="icon"><ion-icon name="home-outline"></ion-icon></span>
+                    <span class="title">Web Enterprise</span>
                 </a>
-            </li>
-            <li>
-                {{#if data}}
+            </li> --}}
+                <li>
                     <a href="#">
-                        <span class="icon"><ion-icon name="help-outline"></ion-icon></span>
-                        <span class="title">Welcome, {{data.username}}</span>
+                        <span class="icon"></span>
+                        <span class="title" onclick="getus()">About Us</span>
                     </a>
-                {{/if}}
-            </li>
+                </li>
+                <li>
+                    <a href="#">
+                        <span class="icon"></span>
+                        <span class="title" onclick="thisProject()">About Project</span>
+                    </a>
+                </li>
+                <button class="loginBtn" onclick="loginf()">Login</button>
+            {{/if}}
+            {{!-- <li>
+               <a href="#">
+                   <span class="icon"><ion-icon name="help-outline"></ion-icon></span>
+                   <span class="title" onclick="questionList()">Ideas</span>
+               </a>
+           </li> --}}
             <!--            <li>-->
             <!--                <a href="#">-->
             <!--                    <span class="icon"><ion-icon name="person-outline"></ion-icon></span>-->
@@ -29,6 +41,13 @@
             <!--                </a>-->
             <!--            </li>-->
             {{#ifCond check "===" "admin"}}
+                <h2>Public</h2>
+                <li>
+                    <a href="#">
+                        <span class="icon"><ion-icon name="help-outline"></ion-icon></span>
+                        <span class="title" onclick="questionList()">Ideas</span>
+                    </a>
+                </li>
                 <h2>Admin</h2>
                 <li>
                     <a href="/auth/listAccount">
@@ -54,8 +73,21 @@
                         <span class="title">Create New Task</span>
                     </a>
                 </li>
+                <li>
+                    <a href="/auth/logout" class="lout">
+                        <span class="icon"><ion-icon name="log-out-outline"></ion-icon></span>
+                        <span class="title">Logout</span>
+                    </a>
+                </li>
             {{/ifCond}}
             {{#ifCond check "===" "staff"}}
+                <h2>Public</h2>
+                <li>
+                    <a href="#">
+                        <span class="icon"><ion-icon name="help-outline"></ion-icon></span>
+                        <span class="title" onclick="questionList()">Ideas</span>
+                    </a>
+                </li>
                 <h2>Staff</h2>
                 <li>
                     <a href="/idea/create">
@@ -75,8 +107,21 @@
                         <span class="title">For Staff</span>
                     </a>
                 </li>
+                <li>
+                    <a href="/auth/logout" class="lout">
+                        <span class="icon"><ion-icon name="log-out-outline"></ion-icon></span>
+                        <span class="title">Logout</span>
+                    </a>
+                </li>
             {{/ifCond}}
             {{#ifCond check "===" "manager"}}
+                <h2>Public</h2>
+                <li>
+                    <a href="#">
+                        <span class="icon"><ion-icon name="help-outline"></ion-icon></span>
+                        <span class="title" onclick="questionList()">Ideas</span>
+                    </a>
+                </li>
                 <h2>Manager</h2>
                 <li>
                     <a href="/idea/storedIdeas">
@@ -96,8 +141,21 @@
                         <span class="title">Chart</span>
                     </a>
                 </li>
+                <li>
+                    <a href="/auth/logout" class="lout">
+                        <span class="icon"><ion-icon name="log-out-outline"></ion-icon></span>
+                        <span class="title">Logout</span>
+                    </a>
+                </li>
             {{/ifCond}}
             {{#ifCond check "===" "coordinator"}}
+                <h2>Public</h2>
+                <li>
+                    <a href="#">
+                        <span class="icon"><ion-icon name="help-outline"></ion-icon></span>
+                        <span class="title" onclick="questionList()">Ideas</span>
+                    </a>
+                </li>
                 <h2>Coordinator</h2>
                 <li>
                     <a href="">
@@ -111,64 +169,185 @@
                         <span class="title" href="#">For Coordinator </span>
                     </a>
                 </li>
+                <li>
+                    <a href="/auth/logout" class="lout">
+                        <span class="icon"><ion-icon name="log-out-outline"></ion-icon></span>
+                        <span class="title">Logout</span>
+                    </a>
+                </li>
             {{/ifCond}}
-            <li>
-                <a href="/auth/logout" class="lout">
-                    <span class="icon"><ion-icon name="log-out-outline"></ion-icon></span>
-                    <span class="title">Logout</span>
+            {{!-- <li class="loginSite">
+                <a href="">
+                    <span class="icon"><ion-icon name="log-in-outline"></ion-icon></span>
+                    <span class="title" onclick="loginf()">Login</span>
                 </a>
-            </li>
+            </li> --}}
+
+
+
         </ul>
     </div>
-    <div class="main">
-        <div class="topbar">
-            <div class="toggle">
-                <ion-icon name="menu-outline"></ion-icon>
-            </div>
-            <div class="search">
-                <label class="search-box">
-                    <input class="box-search" type="text" placeholder="Search here">
-                    <ion-icon name="search-outline"></ion-icon>
-                </label>
-            </div>
+</div>
+<div class="main">
+
+    {{!-- login form --}}
+    <div id="loginid">
+        <div class="form">
+            <h2>Login</h2>
+            <input id="username" type="text" class="input" name="username" placeholder="Username">
+            <input id="password" type="password" class="input" name="password" placeholder="Password" required>
+            {{!-- <input id="btn-login" class="btn" type="submit"> --}}
+            <button id="btn-login" class="btn" type="submit">Submit</button>
         </div>
-        <div class="content">
-            <div id="listquestion">
-                {{#each ideas}}
-                    <div class="list-idea">
-                        <a href="/idea/detail/{{this._id}}" class="list-group-item list-group-item-action">
-                            <div class="d-flex w-100 justify-content-between">
-                                <h5 class="mb-1">{{this.title}}</h5>
-                                <small class="text-muted">Time</small>
-                            </div>
-                            {{!-- <p class="mb-1">
-                                {{this.description}}
-                            </p> --}}
-                            <small class="text-muted">Reaction.</small>
-                        </a>
+    </div>
+
+    {{!-- ideas --}}
+    <div id="listquestion">
+        {{#each ideas}}
+            <div class="list-idea">
+                <a href="/idea/detail/{{this._id}}" class="list-group-item list-group-item-action">
+                    <div class="d-flex w-100 justify-content-between">
+                        <h5 class="mb-1">{{this.title}}</h5>
+                        <small class="text-muted">Time</small>
                     </div>
-                    <br>
-                {{/each}}
+                    <small class="text-muted">Reaction.</small>
+                </a>
             </div>
-            <div id="profile">
-                <h1>this is profile</h1>
+            <br>
+        {{/each}}
+    </div>
+    {{!-- About this Project --}}
+
+    {{!-- infor of team --}}
+    <div id="infor">
+        <h1 id="content-home">Welcome to our website project</h1>
+        <div class="wrapper-coloured">
+            <div class="sectiontitle">
+                <h3 class="heading">Our Team</h3>
+            </div>
+            <div class="tm-container-inner tm-persons">
+                <div class="row">
+                    <article class="col-lg-6">
+                        <figure class="tm-person">
+                            <img src="/img/tu.jpg" alt="Image" class="img-fluid tm-person-img" />
+                            <figcaption class="tm-person-description">
+                                <h4 class="tm-person-name">Do Huu Tu</h4>
+                                <p class="tm-person-title">Leader and Back-End Developer</p>
+                            </figcaption>
+                        </figure>
+                    </article>
+                    <article class="col-lg-6">
+                        <figure class="tm-person">
+                            <img src="/img/luong.jpg" alt="Image" style="width:130px; height:130px"
+                                 class="img-fluid tm-person-img" />
+                            <figcaption class="tm-person-description">
+                                <h4 class="tm-person-name">Tran Duc Luong</h4>
+                                <p class="tm-person-title">Back-End Developer and Database Designer</p>
+                            </figcaption>
+                        </figure>
+                    </article>
+                    <article class="col-lg-6">
+                        <figure class="tm-person">
+                            <img src="" alt="Image" class="img-fluid tm-person-img" />
+                            <figcaption class="tm-person-description">
+                                <h4 class="tm-person-name">Tran Van Minh</h4>
+                                <p class="tm-person-title">Scrum Master</p>
+                            </figcaption>
+                        </figure>
+                    </article>
+                    <article class="col-lg-6">
+                        <figure class="tm-person">
+                            <img src="/img/hoanganh.jpg" alt="Image" class="img-fluid tm-person-img" />
+                            <figcaption class="tm-person-description">
+                                <h4 class="tm-person-name">Mai Hoang Anh</h4>
+                                <p class="tm-person-title">Front-end Developer</p>
+                            </figcaption>
+                        </figure>
+                    </article>
+                    <article class="col-lg-6">
+                        <figure class="tm-person">
+                            <img src="" alt="Image" class="img-fluid tm-person-img" />
+                            <figcaption class="tm-person-description">
+                                <h4 class="tm-person-name">Ha Quyet Tien</h4>
+                                <p class="tm-person-title">Tester</p>
+                            </figcaption>
+                        </figure>
+                    </article>
+                </div>
             </div>
         </div>
     </div>
 </div>
-
-
+{{!-- display js --}}
 <script>
+    let usInfor = document.getElementById('infor');
+    function getus(){
+        usInfor.style.display="block";
+        signin.style.display="none";
+    };
+
     //show the list of question
     let question = document.getElementById('listquestion');
     function questionList(){
         question.style.display="block";
     };
-    let profile = document.getElementById('profile');
-    function profileList(){
-        profile.style.display="block";
+
+    let signin = document.getElementById('loginid');
+    function loginf(){
+        signin.style.display="block";
+        usInfor.style.display="none";
     };
-    //hover
+</script>
+{{!-- Login Js --}}
+<script>
+
+    let isAuthenticated = false;
+    function setCookie(cname, cvalue, exdays) {
+        const d = new Date();
+        d.setTime(d.getTime() + (exdays*24*60*60*1000));
+        let expires = "expires="+ d.toUTCString();
+        document.cookie = cname + "=" + cvalue + ";" + expires + ";path=/";
+    }
+    function getCookie(cname) {
+        let name = cname + "=";
+        let decodedCookie = decodeURIComponent(document.cookie);
+        let ca = decodedCookie.split(';');
+        for(let i = 0; i <ca.length; i++) {
+            let c = ca[i];
+            while (c.charAt(0) == ' ') {
+                c = c.substring(1);
+            }
+            if (c.indexOf(name) == 0) {
+                return c.substring(name.length, c.length);
+            }
+        }
+        return "";
+    }
+
+    document.addEventListener('DOMContentLoaded', function (){
+        let btnLogin = document.getElementById('btn-login')
+
+        btnLogin.onclick = function (){
+            $.ajax({
+                url: '/auth/login',
+                method: 'POST',
+                data: {
+                    username: $('#username').val(),
+                    password: $('#password').val(),
+                }
+            })
+                    .then(data=>{
+                        setCookie('token', data.token, 1);
+                        location.assign('/main/show');
+                    })
+                    .catch(err=>{
+                        console.log(err);
+                    })
+        }
+    })
+</script>
+<script>
+    //add hower for choose menu
     let list = document.querySelectorAll('.choose li');
     function activeLink(){
         list.forEach((item) =>

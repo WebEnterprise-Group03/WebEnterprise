@@ -20,13 +20,7 @@ router.get(
 );
 router.get('/storedIdeas', [AuthJwt.checkLogin], IdeaController.storedIdeas);
 router.get('/create', [AuthJwt.checkLogin], IdeaController.create);
-router.post(
-  '/store',
-  AuthJwt.checkLogin,
-  FileUpload.single('file'),
-  SendEmail.send,
-  IdeaController.store,
-);
+router.post('/store', [AuthJwt.checkLogin,AuthJwt.checkCurrentUser,FileUpload.single('file'),SendEmail.send], IdeaController.store);
 router.get('/:id/update', [AuthJwt.checkLogin], IdeaController.update);
 router.put('/:id', [AuthJwt.checkLogin], IdeaController.updateIdea);
 router.delete('/:id', [AuthJwt.checkLogin], IdeaController.deleteIdea);

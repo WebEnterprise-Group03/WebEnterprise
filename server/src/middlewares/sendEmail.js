@@ -33,17 +33,37 @@ class sendEmail {
   }
 
   sendAfterCmt(req, res, next) {
-    const data = req.data.email;
+    const email = req.data.email;
+    const fullName = req.data
 
-    const mailOptions = {
+    const mailAfterCmt = {
       from: 'tuhuu7165@gmail.com',
-      to: 'tudhgch18565@fpt.edu.vn',
-      subject: 'The staff submitted the idea',
+      to: `${email}`,
+      subject: 'One more person commented on your post',
       text:
-        'Dear Mr Coordinator ,\n' +
-        'There is a staff who submits the idea. Please check it and give any feedback to the staff\n' +
+        'Dear Mr Staff ,\n' +
+        'There is a completed task. Please check it and set the status for the task.\n' +
         'Thank you in advance.',
     };
+
+    //Email transport configuration
+    const transporter = nodemailer.createTransport({
+      service: 'gmail',
+      auth: {
+        user: 'tuhuu7165@gmail.com',
+        pass: '123@123a',
+      },
+    });
+
+    //Send email
+    transporter.sendMail(mailAfterCmt, (error, info) => {
+      if (error) {
+        console.log(error);
+      } else {
+        console.log('Email send: ' + info.response);
+      }
+      next();
+    });
   }
 
   sendAfterCompletedDeadline(req, res, next) {

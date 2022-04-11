@@ -1,8 +1,4 @@
-* {
-  box-sizing: border-box;
-  font-family: sans-serif; }
-
-.login {
+#loginid {
   width: 320px;
   height: 450px;
   border: 1px solid #d4c1c1;
@@ -11,12 +7,12 @@
   border-radius: 20px;
   background-color: white; }
 
-.login .form {
+#loginid .form {
   width: 100%;
   height: 100%;
   padding: 15px 25px; }
 
-.login .form h2 {
+#loginid .form h2 {
   color: #dd8787;
   text-align: center;
   font-weight: normal;
@@ -24,8 +20,8 @@
   margin-top: 60px;
   margin-bottom: 80px; }
 
-.login .form input {
-  width: 100%;
+#loginid .form input {
+  width: 300px;
   height: 40px;
   margin-top: 20px;
   background: rgba(255, 255, 255, 0.5);
@@ -35,7 +31,7 @@
   border-radius: 5px;
   font-size: 14px; }
 
-.login .form input:focus {
+#loginid .form input:focus {
   border: 1px solid rgba(255, 255, 255, 0.8);
   outline: none; }
 
@@ -44,4 +40,5 @@
   color: #444;
   font-size: 15px;
   margin-top: 40px;
-  font-weight: bold; }
+  font-weight: bold;
+  margin-left: 95px; }

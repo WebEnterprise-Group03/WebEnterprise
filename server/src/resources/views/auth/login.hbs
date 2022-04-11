@@ -1,57 +1,57 @@
 
-<div class="login">
-  <div class="form">
-    <h2>Login</h2>
-    <input id="username" type="text" class="input" name="username" placeholder="Username">
-    <input id="password" type="password" class="input" name="password" placeholder="Password" required>
-    {{!-- <input id="btn-login" class="btn" type="submit"> --}}
-    <button id="btn-login" class="btn" type="submit">Submit</button>
-  </div>
-</div>
-<script>
-    let isAuthenticated = false;
-    function setCookie(cname, cvalue, exdays) {
-        const d = new Date();
-        d.setTime(d.getTime() + (exdays*24*60*60*1000));
-        let expires = "expires="+ d.toUTCString();
-        document.cookie = cname + "=" + cvalue + ";" + expires + ";path=/";
-    }
-    function getCookie(cname) {
-        let name = cname + "=";
-        let decodedCookie = decodeURIComponent(document.cookie);
-        let ca = decodedCookie.split(';');
-        for(let i = 0; i <ca.length; i++) {
-            let c = ca[i];
-            while (c.charAt(0) == ' ') {
-                c = c.substring(1);
-            }
-            if (c.indexOf(name) == 0) {
-                return c.substring(name.length, c.length);
-            }
-        } 
-        return "";
-    }
+<!--<div class="login">-->
+<!--  <div class="form">-->
+<!--    <h2>Login</h2>-->
+<!--    <input id="username" type="text" class="input" name="username" placeholder="Username">-->
+<!--    <input id="password" type="password" class="input" name="password" placeholder="Password" required>-->
+<!--    {{!-- <input id="btn-login" class="btn" type="submit"> --}}-->
+<!--    <button id="btn-login" class="btn" type="submit">Submit</button>-->
+<!--  </div>-->
+<!--</div>-->
+<!--<script>-->
+<!--    let isAuthenticated = false;-->
+<!--    function setCookie(cname, cvalue, exdays) {-->
+<!--        const d = new Date();-->
+<!--        d.setTime(d.getTime() + (exdays*24*60*60*1000));-->
+<!--        let expires = "expires="+ d.toUTCString();-->
+<!--        document.cookie = cname + "=" + cvalue + ";" + expires + ";path=/";-->
+<!--    }-->
+<!--    function getCookie(cname) {-->
+<!--        let name = cname + "=";-->
+<!--        let decodedCookie = decodeURIComponent(document.cookie);-->
+<!--        let ca = decodedCookie.split(';');-->
+<!--        for(let i = 0; i <ca.length; i++) {-->
+<!--            let c = ca[i];-->
+<!--            while (c.charAt(0) == ' ') {-->
+<!--                c = c.substring(1);-->
+<!--            }-->
+<!--            if (c.indexOf(name) == 0) {-->
+<!--                return c.substring(name.length, c.length);-->
+<!--            }-->
+<!--        } -->
+<!--        return "";-->
+<!--    }-->
 
-    document.addEventListener('DOMContentLoaded', function (){
-      let btnLogin = document.getElementById('btn-login')
+<!--    document.addEventListener('DOMContentLoaded', function (){-->
+<!--      let btnLogin = document.getElementById('btn-login')-->
 
-        btnLogin.onclick = function (){
-            $.ajax({
-                url: '/auth/login',
-                method: 'POST',
-                data: {
-                    username: $('#username').val(),
-                    password: $('#password').val(),
-                }
-            })
-                    .then(data=>{
-                        setCookie('token', data.token, 1);
-                        location.assign('/main/show');
-                    })
-                    .catch(err=>{
-                        console.log(err);
-                    })
-        }
-    })
-    
-</script>
+<!--        btnLogin.onclick = function (){-->
+<!--            $.ajax({-->
+<!--                url: '/auth/login',-->
+<!--                method: 'POST',-->
+<!--                data: {-->
+<!--                    username: $('#username').val(),-->
+<!--                    password: $('#password').val(),-->
+<!--                }-->
+<!--            })-->
+<!--                    .then(data=>{-->
+<!--                        setCookie('token', data.token, 1);-->
+<!--                        location.assign('/main/show');-->
+<!--                    })-->
+<!--                    .catch(err=>{-->
+<!--                        console.log(err);-->
+<!--                    })-->
+<!--        }-->
+<!--    })-->
+<!--    -->
+<!--</script>-->

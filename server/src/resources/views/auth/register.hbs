@@ -1,12 +1,33 @@
- <div>
-    UserName:<input type="text" id="username"><br>
-    PassWord:<input type="text" id="password"><br>
-    FullName:<input type="text" id="fullName"><br>
-    Phone:<input type="text" id="phone"><br>
-    Email:<input type="text" id="email"><br>
-    Gender:<input type="text" id="gender"><br>
-    Role:<input type="text" id="role"><br>
-    <button onclick="register()">Register</button>
+<div class="banner-left">
+    <div class="choose">
+        <ul>
+            <li>
+                <a href="/main/show">
+                    <span class="icon"><ion-icon name="home-outline"></ion-icon></span>
+                    <span class="title">Web Enterprise</span>
+                </a>
+            </li>
+            <li>
+                <a href="/main/show">
+                    <span class="icon"><ion-icon name="arrow-back-outline"></ion-icon></span>
+                    <span class="title">Back to Main</span>
+                </a>
+            </li>
+        </ul>
+    </div>
+</div>
+<div id="register">
+    <div class="form">
+        <h2>Register</h2>
+        UserName:<input type="text" id="username"><br>
+        PassWord:<input type="text" id="password"><br>
+        FullName:<input type="text" id="fullName"><br>
+        Phone:<input type="text" id="phone"><br>
+        Email:<input type="text" id="email"><br>
+        Gender:<input type="text" id="gender"><br>
+        Role:<input type="text" id="role"><br>
+        <button class="btn" onclick="register()">Register</button>
+    </div>
 </div>
 <script>
     (function() {
@@ -45,8 +66,10 @@
                 location.assign('/');
             },
             error:function (){
-            alert('Access failure');
+                alert('Access failure');
             }
         });
     }
 </script>
+<script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
+<script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>

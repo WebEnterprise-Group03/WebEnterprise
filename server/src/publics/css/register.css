@@ -1,74 +1,34 @@
-* {
-  box-sizing: border-box;
-  font-family: sans-serif; }
-
-.register {
+#register {
   width: 320px;
-  height: 900px;
+  height: 730px;
   border: 1px solid #d4c1c1;
   background-size: cover;
-  margin: 30px auto;
+  margin: 0 auto;
   border-radius: 20px;
-  background-color: #676175; }
+  background-color: white; }
 
-.register .form {
+#register .form {
   width: 100%;
   height: 100%;
   padding: 15px 25px; }
 
-.register .form h2 {
-  color: rgba(61, 163, 204, 0.9);
+#register .form h2 {
+  color: #dd8787;
   text-align: center;
   font-weight: normal;
   font-size: 50px;
-  margin-top: 60px;
-  margin-bottom: 80px; }
+  margin-bottom: 20px; }
 
-.register .form button {
-  background: rgba(61, 163, 204, 0.9);
-  color: #444;
-  font-size: 15px;
-  margin-top: 40px;
-  font-weight: bold;
-  margin-left: 90px; }
-
-label {
-  display: block;
-  margin-bottom: 5px; }
-
-label i {
-  color: #999;
-  font-size: 80%; }
-
-input,
-select {
-  border: 1px solid rgba(31, 135, 231, 0.1);
-  padding: 0 15px;
-  display: block;
+input {
   width: 100%;
   height: 40px;
-  box-sizing: border-box;
-  border-radius: 5px;
+  margin-top: 10px;
   background: rgba(255, 255, 255, 0.5);
-  color: #070707; }
+  border: 1px solid black;
+  padding: 0 15px;
+  color: #070707;
+  border-radius: 5px;
+  font-size: 14px; }
 
-.box {
-  padding-bottom: 10px; }
-
-.form-inline {
-  border: 1px solid rgba(31, 135, 231, 0.1);
-  padding: 8px 10px 4px;
-  border-radius: 6px; }
-
-.form-inline label,
-.form-inline input {
-  display: inline-block;
-  width: auto;
-  padding-right: 15px; }
-
-.error {
-  color: red;
-  font-size: 90%; }
-
-input[type='text'] {
+input[type="text"] {
   outline: none; }
