@@ -34,7 +34,7 @@ class sendEmail {
 
   sendAfterCmt(req, res, next) {
     const email = req.data.email;
-    const fullName = req.data
+    const fullName = req.data;
 
     const mailAfterCmt = {
       from: 'tuhuu7165@gmail.com',

@@ -30,5 +30,5 @@ input {
   border-radius: 5px;
   font-size: 14px; }
 
-input[type="text"] {
+input[type='text'] {
   outline: none; }

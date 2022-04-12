@@ -19,13 +19,13 @@ class cmtController {
     const TaskDealine = await Task.findOne({ title: 'SetDeadlineComment' });
     const endDate = TaskDealine.endDate;
     const test = IdeaPost.account;
-    const email = test.emai
+    const email = test.emai;
 
     formData.idea = IdeaPost._id;
     formData.author = author._id;
     Comment.create(formData, (err, item) => {
       if (getCurrentDate > endDate) {
-        console.log(email)
+        console.log(email);
         item.save();
 
         IdeaPost.comments.push(item);

@@ -1,9 +1,9 @@
-@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@300&display=swap");
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300&display=swap');
 * {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
-  font-family: "Dosis", sans-serif;
+  font-family: 'Dosis', sans-serif;
   //background: white;
   background-attachment: fixed;
   //background-image: url(/img/bghome.jpg);
@@ -22,7 +22,7 @@ article img {
   padding-left: 200px;
   padding-top: 40px;
 }
-.main #infor .wrapper-coloured h3{
+.main #infor .wrapper-coloured h3 {
   margin-bottom: 10px;
 }
 :root {
@@ -56,7 +56,7 @@ h1 {
   transition: 0.5s;
   overflow: hidden;
 }
-.choose .loginBtn{
+.choose .loginBtn {
   padding: 10px 50px;
   border-radius: 8px;
   background-color: var(--blue);
@@ -130,7 +130,7 @@ h1 {
 
 .choose ul li:hover a::before,
 .choose ul li.hovered a::before {
-  content: "";
+  content: '';
   position: absolute;
   right: 0;
   top: -50px;
@@ -143,7 +143,7 @@ h1 {
 }
 .choose ul li:hover a::after,
 .choose ul li.hovered a::after {
-  content: "";
+  content: '';
   position: absolute;
   right: 0;
   bottom: -50px;
@@ -165,7 +165,12 @@ h1 {
   //margin-top: 20px;
 }
 
-.main #listquestion, #infor, #loginid, #listAccount, #listTask, #createTask {
+.main #listquestion,
+#infor,
+#loginid,
+#listAccount,
+#listTask,
+#createTask {
   display: none;
 }
 

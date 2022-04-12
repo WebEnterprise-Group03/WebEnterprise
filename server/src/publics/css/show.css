@@ -3,7 +3,7 @@
   margin: 0;
   padding: 0;
   box-sizing: border-box;
-  font-family: "Dosis", sans-serif;
+  font-family: 'Dosis', sans-serif;
   background-attachment: fixed; }
 
 .main .wrapper-coloured {
@@ -120,7 +120,7 @@ h1 {
 
 .choose ul li:hover a::before,
 .choose ul li.hovered a::before {
-  content: "";
+  content: '';
   position: absolute;
   right: 0;
   top: -50px;
@@ -133,7 +133,7 @@ h1 {
 
 .choose ul li:hover a::after,
 .choose ul li.hovered a::after {
-  content: "";
+  content: '';
   position: absolute;
   right: 0;
   bottom: -50px;
@@ -152,7 +152,12 @@ h1 {
   background: var(--white);
   transition: 0.5s; }
 
-.main #listquestion, #infor, #loginid, #listAccount, #listTask, #createTask {
+.main #listquestion,
+#infor,
+#loginid,
+#listAccount,
+#listTask,
+#createTask {
   display: none; }
 
 .topbar {

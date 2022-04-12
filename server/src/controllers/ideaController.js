@@ -40,15 +40,15 @@ class ideaController {
       });
   }
 
-  async dashBoard(req,res,next){
-      const idea = await Idea.find({});
-      await Category.find({ idea })
-        .lean()
-        .populate('ideas', 'title', 'ideas')
-        .then((categories) => {
-          res.render('idea/dashBoard', { categories: categories });
-        })
-        .catch(next);
+  async dashBoard(req, res, next) {
+    const idea = await Idea.find({});
+    await Category.find({ idea })
+      .lean()
+      .populate('ideas', 'title', 'ideas')
+      .then((categories) => {
+        res.render('idea/dashBoard', { categories: categories });
+      })
+      .catch(next);
   }
 
   //[PUT] /detail/:id/like
