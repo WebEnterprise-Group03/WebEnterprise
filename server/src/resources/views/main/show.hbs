@@ -208,13 +208,53 @@
                 <a href="/idea/detail/{{this._id}}" class="list-group-item list-group-item-action">
                     <div class="d-flex w-100 justify-content-between">
                         <h5 class="mb-1">{{this.title}}</h5>
-                        <small class="text-muted">Time</small>
+                        <small class="text-muted">{{this.createAt}}</small>
                     </div>
-                    <small class="text-muted">Reaction.</small>
+                    <small class="text-muted">Votes: {{this.vote}}</small>
                 </a>
             </div>
             <br>
         {{/each}}
+
+        <div class="pagination pagination-centered">
+            <ul>
+                {{#paginate pagination type="first"}}
+                    <li {{#if disabled}}class="disabled"{{/if}}>
+                        <a href="?p={{n}}">
+                        First
+                        </a>
+                    </li>
+                {{/paginate}}
+                {{#paginate pagination type="previous"}}
+                    <li {{#if disabled}}class="disabled"{{/if}}>
+                        <a href="?p={{n}}">
+                        Prev
+                        </a>
+                    </li>
+                {{/paginate}}
+                {{#paginate pagination type="middle" limit=pagination.pageCount}}
+                    <li {{#if active}}class="active"{{/if}}>
+                        <a href="?p={{n}}">
+                            {{n}}
+                        </a>
+                    </li>
+                {{/paginate}}
+                {{#paginate pagination type="next"}}
+                    <li {{#if disabled}}class="disabled"{{/if}}>
+                        <a href="?p={{n}}">
+                        Next
+                        </a>
+                    </li>
+                {{/paginate}}
+                {{#paginate pagination type="last"}}
+                    <li {{#if disabled}}class="disabled"{{/if}}>
+                        <a href="?p={{n}}">
+                        Last
+                        </a>
+                    </li>
+                {{/paginate}}
+            </ul>
+        </div>
     </div>
     {{!-- About this Project --}}
 

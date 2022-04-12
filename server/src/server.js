@@ -8,6 +8,8 @@ const {
 } = require('@handlebars/allow-prototype-access');
 const Handlebars = require('handlebars');
 const methodOverride = require('method-override');
+const paginate = require('handlebars-paginate');
+
 require('dotenv').config();
 
 const app = express();
@@ -33,7 +35,7 @@ const hbs = create({
           break;
       }
     },
-    times: (n) => {},
+    paginate: paginate,
   },
 });
 

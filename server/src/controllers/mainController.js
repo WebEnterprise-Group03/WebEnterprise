@@ -4,46 +4,35 @@ const Idea = require('../models/ideaModel');
 class mainController {
   //[GET] /main/show
   show(req, res, next) {
+    const perPage = 8
+    const page = req.query.p
+
     if (req.data) {
       Idea.find({})
-        .then((ideas) => {
-          res.render('main/show', {
-            ideas: ideas,
-            check: req.data.role,
+        .skip((perPage * page) - perPage)
+        .limit(perPage)
+        .lean()
+        .exec(function (err, ideas){
+          Idea.countDocuments().exec(function (err, count){
+              res.render('main/show', {
+                pagination: {
+                  page: req.query.p || 1,
+                  pageCount: Math.ceil(count/perPage)
+                },
+                ideas: ideas,
+                check: req.data.role,
+              });
           });
-        })
-        .catch(next);
+        });
+        // .then((ideas) => {
+        //   res.render('main/show', {
+        //     ideas: ideas,
+        //     check: req.data.role,
+        //   });
+        // })
+        // .catch(next);
     }
   }
-
-  // show(req, res, next) {
-  //   let perPage = 16;
-  //   let page = req.param.pageY || 1;
-  //
-  //   if (req.data) {
-  //     Idea.find({})
-  //       .skip(perPage * page - perPage)
-  //       .limit(perPage)
-  //       .exec((err, ideas) => {
-  //         Idea.countDocuments((err, count) => {
-  //           if (err) return next(err);
-  //           res.render('main/show', {
-  //             ideas: ideas,
-  //             check: req.data.role,
-  //             current: page,
-  //             pages: Math.ceil(count / perPage),
-  //           });
-  //         });
-  //         // .then((ideas) => {
-  //         //   res.render('main/show', {
-  //         //     ideas: ideas,
-  //         //     check: req.data.role,
-  //         //   });
-  //         // })
-  //         // .catch(next);
-  //       });
-  //   }
-  // }
 }
 
 module.exports = new mainController();
