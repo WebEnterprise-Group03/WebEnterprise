@@ -37,6 +37,12 @@ const IdeaSchema = new Schema(
     vote: {
       type: Number,
     },
+    createAt: {
+      type: Date, default: Date.now
+    },
+    updateAt: {
+      type: Date, default: Date.now
+    },
   },
   {
     collection: 'ideas',

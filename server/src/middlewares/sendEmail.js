@@ -33,7 +33,7 @@ class sendEmail {
   }
 
   sendAfterCmt(req, res, next) {
-    const email = req.data.email;
+    const emaila = req.data.email;
     const fullName = req.data;
 
     const mailAfterCmt = {
