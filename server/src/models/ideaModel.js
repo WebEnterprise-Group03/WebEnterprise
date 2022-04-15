@@ -38,10 +38,12 @@ const IdeaSchema = new Schema(
       type: Number,
     },
     createAt: {
-      type: Date, default: Date.now
+      type: Date,
+      default: Date.now,
     },
     updateAt: {
-      type: Date, default: Date.now
+      type: Date,
+      default: Date.now,
     },
   },
   {

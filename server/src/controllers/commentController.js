@@ -2,9 +2,9 @@ const Comment = require('../models/cmtModel.js');
 const Idea = require('../models/ideaModel');
 const Account = require('../models/accountModel');
 const Task = require('../models/taskModel');
-const nodemailer = require("nodemailer");
+const nodemailer = require('nodemailer');
 
-function sendEmailAfterCmt(email){
+function sendEmailAfterCmt(email) {
   const mailOptions = {
     from: 'tuhuu7165@gmail.com',
     to: `${email}`,
@@ -35,7 +35,6 @@ function sendEmailAfterCmt(email){
 }
 
 class cmtController {
-
   async doComment(req, res, next) {
     const DateNow = Date.now();
     const getCurrentDate = new Date(DateNow);
@@ -56,12 +55,11 @@ class cmtController {
     formData.author = author._id;
     Comment.create(formData, (err, item) => {
       if (getCurrentDate > endDate) {
-        Account.findOne({ _id: test})
-          .then((user)=>{
-            const email = user.email;
-            sendEmailAfterCmt(email);
-            console.log(email)
-          })
+        Account.findOne({ _id: test }).then((user) => {
+          const email = user.email;
+          sendEmailAfterCmt(email);
+          console.log(email);
+        });
         item.save();
 
         IdeaPost.comments.push(item);

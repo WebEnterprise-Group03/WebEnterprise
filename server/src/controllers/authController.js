@@ -1,4 +1,5 @@
 const Account = require('../models/accountModel');
+const bcrypt = require('bcryptjs');
 const jwt = require('jsonwebtoken');
 const KEY = process.env.key;
 
@@ -51,33 +52,51 @@ class authController {
   }
 
   //[POST] /auth/login
-  login(req, res) {
+  async login(req, res) {
     let username = req.body.username;
     let password = req.body.password;
 
-    Account.findOne({
+    const data = await Account.findOne({
       username: username,
-      password: password,
-    })
-      .then((data) => {
-        if (data) {
-          let token = jwt.sign(
-            {
-              _id: data._id,
-            },
-            KEY,
-          );
-          return res.json({
-            message: 'Dang nhap thanh cong',
-            token: token,
-          });
-        } else {
-          return res.json('Thap bai');
-        }
-      })
-      .catch((err) => {
-        res.status(500).json('Loi server', err);
+    });
+
+    const isMatch = await bcrypt.compare(password, data.password);
+
+    if (isMatch) {
+      let token = jwt.sign(
+        {
+          _id: data._id,
+        },
+        KEY,
+      );
+      return res.json({
+        message: 'Dang nhap thanh cong',
+        token: token,
       });
+    } else {
+      return res.json('Thap bai');
+    }
+
+    // .then((data) => {
+    //   const isMatch = bcrypt.compare(password, data.password);
+    //   if (isMatch) {
+    //       let token = jwt.sign(
+    //         {
+    //           _id: data._id,
+    //         },
+    //         KEY,
+    //       );
+    //       return res.json({
+    //         message: 'Dang nhap thanh cong',
+    //         token: token,
+    //       });
+    //   } else {
+    //     return res.json('Thap bai');
+    //   }
+    // })
+    // .catch((err) => {
+    //   res.status(500).json('Loi server', err);
+    // });
   }
 
   listAccount(req, res, next) {
