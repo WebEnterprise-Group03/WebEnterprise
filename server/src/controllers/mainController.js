@@ -33,6 +33,10 @@ class mainController {
       // .catch(next);
     }
   }
+
+  profile(req,res,next){
+
+  }
 }
 
 module.exports = new mainController();

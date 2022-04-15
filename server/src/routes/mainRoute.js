@@ -11,4 +11,11 @@ router.get(
   MainController.show,
 );
 
+
+router.get(
+  '/profile',
+  [AuthJwt.checkLogin, AuthJwt.checkCurrentUser],
+  MainController.profile,
+);
+
 module.exports = router;
