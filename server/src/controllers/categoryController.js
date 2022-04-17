@@ -5,7 +5,7 @@ class categoryController {
   create(req, res, next) {
     res.render('category/create');
   }
-  // [Post] /category/store    
+  // [Post] /category/store
   store(req, res, next) {
     const formData = req.body;
     const category = new Category(formData);
