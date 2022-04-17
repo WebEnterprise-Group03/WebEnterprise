@@ -1,47 +1,115 @@
-<div class="mt-4">
-    <h3>Set Deadline For Idea</h3>
+<!--<div class="mt-4">-->
+<!--    <h3>Set Deadline For Idea</h3>-->
+
+<!--    {{#if error}}-->
+<!--        <p class="danger">{{message}}</p>-->
+<!--    {{/if}}-->
+
+<!--    <form method="POST" action="/task/storeTask">-->
+<!--        <div class="form-group">-->
+<!--            <label for="name">title</label>-->
+<!--            <input type="text" class="form-control" id="title" name="title">-->
+<!--        </div>-->
+
+<!--        <div class="form-group">-->
+<!--            <label for="startDay">Start Day</label>-->
+<!--            <input type="date" class="form-control" id="startDay" name="startDay">-->
+<!--        </div>-->
+
+<!--        <div class="form-group">-->
+<!--            <label for="startTime">Start Time</label>-->
+<!--            <input type="time" class="form-control" id="startTime" name="startTime">-->
+<!--        </div>-->
+
+<!--        <div class="form-group">-->
+<!--            <label for="endDay">End Day</label>-->
+<!--            <input type="date" class="form-control" id="endDay" name="endDay">-->
+<!--        </div>-->
+
+<!--        <div class="form-group">-->
+<!--            <label for="endTime">End Time</label>-->
+<!--            <input type="time" class="form-control" id="endTime" name="endTime">-->
+<!--        </div>-->
+
+<!--        <div class="form-group">-->
+<!--            <label for="description">Description</label>-->
+<!--            <input type="text" class="form-control" id="description" name="description">-->
+<!--        </div>-->
+
+<!--        <div class="form-group">-->
+<!--            <label for="complete">Complete</label>-->
+<!--            <input type="text" class="form-control" id="complete" name="complete">-->
+<!--        </div>-->
+
+<!--        <hr>-->
+<!--        <button type="submit" class="btn btn-primary">Set Deadline</button>-->
+<!--    </form>-->
+<!--</div>-->
+
+<div class="banner-left">
+    <div class="choose">
+        <ul>
+            <li>
+                <a href="/main/show">
+                    <span class="icon"><ion-icon name="home-outline"></ion-icon></span>
+                    <span class="title">Web Enterprise</span>
+                </a>
+            </li>
+            <li>
+                <a href="/main/show">
+                    <span class="icon"><ion-icon name="arrow-back-outline"></ion-icon></span>
+                    <span class="title">Go Back</span>
+                </a>
+            </li>
+        </ul>
+    </div>
+</div>
+<div style="margin-left: 300px;">
+    <h3 style="color: rgb(221, 135, 135); font-weight: normal; font-size: 50px;margin-bottom: 20px; margin-left:530px">Set Deadline For Idea</h3>
 
     {{#if error}}
         <p class="danger">{{message}}</p>
     {{/if}}
 
-    <form method="POST" action="/task/storeTask">
+    <form method="POST" action="/task/storeTask" style="margin-left: 530px;">
         <div class="form-group">
-            <label for="name">title</label>
-            <input type="text" class="form-control" id="title" name="title">
+            <label for="name" style="font-size: 20px; font-weight: bold;color:rgb(24, 147, 218)">Title</label>
+            <input style="border: 1px solid black; width: 500px;" type="text" class="form-control" id="title" name="title">
         </div>
 
         <div class="form-group">
-            <label for="startDay">Start Day</label>
-            <input type="date" class="form-control" id="startDay" name="startDay">
+            <label for="startDay" style="font-size: 20px; font-weight: bold;color:rgb(24, 147, 218)">Start Day</label>
+            <input style="border: 1px solid black; width: 500px;" type="date" class="form-control" id="startDay" name="startDay">
         </div>
 
         <div class="form-group">
-            <label for="startTime">Start Time</label>
-            <input type="time" class="form-control" id="startTime" name="startTime">
+            <label for="startTime" style="font-size: 20px; font-weight: bold;color:rgb(24, 147, 218)">Start Time</label>
+            <input style="border: 1px solid black; width: 500px;" type="time" class="form-control" id="startTime" name="startTime">
         </div>
 
         <div class="form-group">
-            <label for="endDay">End Day</label>
-            <input type="date" class="form-control" id="endDay" name="endDay">
+            <label for="endDay" style="font-size: 20px; font-weight: bold;color:rgb(24, 147, 218)">End Day</label>
+            <input style="border: 1px solid black; width: 500px;" type="date" class="form-control" id="endDay" name="endDay">
         </div>
 
         <div class="form-group">
-            <label for="endTime">End Time</label>
-            <input type="time" class="form-control" id="endTime" name="endTime">
+            <label for="endTime" style="font-size: 20px; font-weight: bold;color:rgb(24, 147, 218)">End Time</label>
+            <input style="border: 1px solid black; width: 500px;" type="time" class="form-control" id="endTime" name="endTime">
         </div>
 
         <div class="form-group">
-            <label for="description">Description</label>
-            <input type="text" class="form-control" id="description" name="description">
+            <label for="description" style="font-size: 20px; font-weight: bold;color:rgb(24, 147, 218)">Description</label>
+            <input style="border: 1px solid black; width: 500px;" type="text" class="form-control" id="description" name="description">
         </div>
 
         <div class="form-group">
-            <label for="complete">Complete</label>
-            <input type="text" class="form-control" id="complete" name="complete">
+            <label for="complete" style="font-size: 20px; font-weight: bold;color:rgb(24, 147, 218)">Complete</label>
+            <input style="border: 1px solid black; width: 500px;" type="text" class="form-control" id="complete" name="complete">
         </div>
 
         <hr>
-        <button type="submit" class="btn btn-primary">Set Deadline</button>
+        <button type="submit" class="btn btn-primary" style="margin-left: 200px;">Set Deadline</button>
     </form>
 </div>
+<script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
+<script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>

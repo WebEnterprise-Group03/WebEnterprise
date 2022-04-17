@@ -48,6 +48,14 @@
                         <span class="title" onclick="questionList()">Ideas</span>
                     </a>
                 </li>
+                <li>
+                    {{#if data}}
+                        <a href="#">
+                            <span class="icon"><ion-icon name="help-outline"></ion-icon></span>
+                            <span class="title">Welcome, {{data.username}}</span>
+                        </a>
+                    {{/if}}
+                </li>
                 <h2>Admin</h2>
                 <li>
                     <a href="/auth/listAccount">
@@ -87,6 +95,14 @@
                         <span class="icon"><ion-icon name="help-outline"></ion-icon></span>
                         <span class="title" onclick="questionList()">Ideas</span>
                     </a>
+                </li>
+                <li>
+                    {{#if data}}
+                        <a href="#">
+                            <span class="icon"><ion-icon name="help-outline"></ion-icon></span>
+                            <span class="title">Welcome, {{data.username}}</span>
+                        </a>
+                    {{/if}}
                 </li>
                 <h2>Staff</h2>
                 <li>

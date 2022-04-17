@@ -6,8 +6,9 @@ class mainController {
   show(req, res, next) {
     const perPage = 8;
     const page = req.query.p;
+    const data = req.data;
 
-    if (req.data) {
+    if (data) {
       Idea.find({})
         .skip(perPage * page - perPage)
         .limit(perPage)
@@ -35,7 +36,6 @@ class mainController {
   }
 
   profile(req,res,next){
-
   }
 }
 

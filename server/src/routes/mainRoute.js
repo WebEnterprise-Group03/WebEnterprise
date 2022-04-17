@@ -5,12 +5,7 @@ const VerifySignUp = require('../middlewares/verifySignUp');
 const MainController = require('../controllers/mainController');
 
 // router.get('/show', [AuthJwt.checkLogin, AuthJwt.checkCurrentUser], MainController.show);
-router.get(
-  '/show',
-  [AuthJwt.checkLogin, AuthJwt.checkCurrentUser],
-  MainController.show,
-);
-
+router.get('/show', [AuthJwt.checkLogin, AuthJwt.checkCurrentUser], MainController.show,);
 
 router.get(
   '/profile',
