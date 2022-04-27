@@ -54,7 +54,7 @@ class cmtController {
     formData.idea = IdeaPost._id;
     formData.author = author._id;
     Comment.create(formData, (err, item) => {
-      if (getCurrentDate > endDate) {
+      // if (getCurrentDate > endDate) {
         Account.findOne({ _id: test }).then((user) => {
           const email = user.email;
           sendEmailAfterCmt(email);
@@ -66,9 +66,9 @@ class cmtController {
         IdeaPost.save();
 
         res.redirect('back');
-      } else {
-        console.log('Da den deadline');
-      }
+      // } else {
+      //   console.log('Da den deadline');
+      // }
     });
   }
 

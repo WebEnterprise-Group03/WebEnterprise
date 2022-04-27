@@ -35,9 +35,7 @@ class ideaController {
             console.log(err);
           });
       })
-      .catch((err) => {
-        console.log(err);
-      });
+      .catch((err) => { console.log(err); });
   }
 
   async dashBoard(req, res, next) {
